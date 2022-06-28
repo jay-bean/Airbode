@@ -83,8 +83,6 @@ export const removeDig = data => async dispatch => {
   }
 }
 
-
-
 const initialState = {};
 
 const digReducer = (state = initialState, action) => {
@@ -99,7 +97,7 @@ const digReducer = (state = initialState, action) => {
       newState[action.dig.id] = action.dig
       return newState;
     case UPDATE:
-      newState[action.dig.id] = action.dig;
+      newState[action.dig.id] = action.dig
       return newState;
     case REMOVE:
       delete newState[action.dig.id]

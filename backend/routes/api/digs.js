@@ -1,9 +1,9 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
-const { check } = require('express-validator');
+const { validationResult } = require('express-validator');
 
-const { handleValidationErrors } = require('../../utils/validation');
 const { Dig } = require('../../db/models');
+const { digValidators } = require('../../validations');
 
 const router = express.Router();
 
@@ -18,33 +18,65 @@ router.get('/',
   }),
 );
 
-router.get('/:digId',
+router.get('/:digId(\\d+)',
   asyncHandler(async (req, res) => {
     const dig = await Dig.findOne(req.params.id);
     return res.json(dig);
 }));
 
 router.post('/',
+  digValidators,
   asyncHandler(async (req, res) => {
-    const { address, city, state, country, name, price, userId } = req.body;
+    const { address, city, state, country, title, price, description, guests, bedrooms, beds, baths, pets, userId } = req.body;
     console.log(req.user);
     const dig = Dig.build({
       address,
       city,
       state,
       country,
-      name,
+      title,
       price,
+      description,
+      guests,
+      bedrooms,
+      beds,
+      baths,
+      pets,
       userId
     });
+    // const validatorErrors = validationResult(req);
 
-    const result = await dig.save();
+    // if (validatorErrors.isEmpty()) {
+      const result = await dig.save();
+      return res.status(200).json(result);
+    // }
+    // else {
+    //   const errors = validatorErrors.array().map(error => error.msg);
 
-    return res.status(200).json(result);
+    // }
   })
 )
 
-router.put(`/:digId`,
+// const validatorErrors = validationResult(req);
+
+// if (validatorErrors.isEmpty()) {
+//   await route.save();
+//   res.redirect(`/routes/${route.id}`);
+// }
+// else {
+//   const errors = validatorErrors.array().map((error) => error.msg);
+//   res.render('route-add', {
+//     route,
+//     crags,
+//     errors,
+//     csrfToken: req.csrfToken()
+//   });
+// }
+
+
+
+
+router.put(`/:digId(\\d+)`,
   asyncHandler(async (req, res) => {
 
     const dig = await Dig.findByPk(req.params.digId);
@@ -53,20 +85,26 @@ router.put(`/:digId`,
     dig.city = req.body.city;
     dig.state = req.body.state;
     dig.country = req.body.country;
-    dig.name = req.body.name;
+    dig.title = req.body.title;
     dig.price = req.body.price;
+    dig.description = req.body.description;
+    dig.guests = req.body.guests;
+    dig.bedrooms = req.body.bedrooms;
+    dig.beds = req.body.beds;
+    dig.baths = req.body.baths;
+    dig.pets = req.body.pets;
 
     const result = await dig.save();
     return res.status(200).json(result);
   })
 )
 
-router.delete('/:digId',
+router.delete('/:digId(\\d+)',
   asyncHandler(async (req, res) => {
     const dig = await Dig.findByPk(req.params.digId);
 
     await dig.destroy();
-    return res.json({ message: 'Success!' });
+    return res.json({id: dig.id});
   })
 
 );

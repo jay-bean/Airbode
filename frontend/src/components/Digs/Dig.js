@@ -25,12 +25,18 @@ function Dig() {
       {dig && (
         <ul>
           <li>
-            <div>{dig.name}</div>
+            <div>{dig.title}</div>
             <div>{dig.address}</div>
             <div>{dig.city}</div>
             <div>{dig.state}</div>
             <div>{dig.country}</div>
             <div>{dig.price}</div>
+            <div>{dig.description}</div>
+            <div>{dig.guests}</div>
+            <div>{dig.bedrooms}</div>
+            <div>{dig.beds}</div>
+            <div>{dig.baths}</div>
+            <div>{dig.pets ? 'Pets are welcomed!' : 'Pets are not allowed at this time.'}</div>
           </li>
         </ul>
       )}

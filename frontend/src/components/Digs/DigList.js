@@ -9,7 +9,7 @@ function DigList() {
   return (
     <ul>
       {Object.values(digs).map(dig => {
-        return  <Link key={dig.id} to={`/digs/${dig.id}`}><li dig={dig}>{dig.name}</li></Link>
+        return  <Link key={dig.id} to={`/digs/${dig.id}`}><li dig={dig}>{dig.title}</li></Link>
       })}
     </ul>
   );
