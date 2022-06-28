@@ -1,4 +1,4 @@
-import { useParams, Link, Redirect, useHistory } from 'react-router-dom';
+import { useParams, Link, useHistory } from 'react-router-dom';
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { getDigs, removeDig } from '../../store/digs';
@@ -14,9 +14,10 @@ function Dig() {
     dispatch(getDigs())
   }, [digId]);
 
-  const deleteHandler = () => {
-      dispatch(removeDig(dig));
-      return history.push("/");
+  const deleteHandler = async () => {
+      await dispatch(removeDig(dig));
+      const redirect = await history.push("/");
+      return redirect;
   }
 
   return (

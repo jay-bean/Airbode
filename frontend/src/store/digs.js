@@ -8,9 +8,9 @@ const ADD = 'digs/ADD';
 const UPDATE = 'digs/UPDATE';
 const REMOVE = 'digs/REMOVE';
 
-const load = list => ({
+const load = digs => ({
   type: LOAD,
-  list
+  digs
 });
 
 const add = dig => ({
@@ -32,8 +32,8 @@ export const getDigs = () => async dispatch => {
   const response = await fetch(`/api/digs`);
 
   if (response.ok) {
-    const list = await response.json();
-    dispatch(load(list.digs));
+    const digs = await response.json();
+    dispatch(load(digs));
   }
 };
 
@@ -76,7 +76,11 @@ export const removeDig = data => async dispatch => {
   const response = await csrfFetch(`/api/digs/${data.id}`, {
     method: 'delete',
   });
-
+  if (response.ok) {
+    const dig = await response.json();
+    dispatch(remove(dig));
+    return dig;
+  }
 }
 
 
@@ -87,7 +91,7 @@ const digReducer = (state = initialState, action) => {
   let newState = { ...state };
   switch (action.type) {
     case LOAD:
-      action.list.forEach(dig => {
+      action.digs.digs.forEach(dig => {
         newState[dig.id] = dig;
       });
       return newState;
@@ -98,7 +102,7 @@ const digReducer = (state = initialState, action) => {
       newState[action.dig.id] = action.dig;
       return newState;
     case REMOVE:
-      delete newState[action.payload.id]
+      delete newState[action.dig.id]
       return newState
     default:
       return state;
