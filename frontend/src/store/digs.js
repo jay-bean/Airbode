@@ -5,6 +5,8 @@ import { csrfFetch } from "./csrf";
 
 const LOAD = 'digs/LOAD';
 const ADD = 'digs/ADD';
+const UPDATE = 'digs/UPDATE';
+const REMOVE = 'digs/REMOVE';
 
 const load = list => ({
   type: LOAD,
@@ -16,12 +18,21 @@ const add = dig => ({
   dig
 });
 
+const update = dig => ({
+  type: UPDATE,
+  dig
+});
+
+const remove = dig => ({
+  type: REMOVE,
+  dig
+})
+
 export const getDigs = () => async dispatch => {
   const response = await fetch(`/api/digs`);
 
   if (response.ok) {
     const list = await response.json();
-    console.log(list, 'this is the listtttt')
     dispatch(load(list.digs));
   }
 };
@@ -45,24 +56,50 @@ export const addDig = data => async dispatch => {
   }
 };
 
+export const editDig = (data, id) => async dispatch => {
+  const response = await csrfFetch(`/api/digs/${id}`, {
+    method: 'put',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  });
+
+  if (response.ok) {
+    const dig = await response.json();
+    dispatch(update(dig));
+    return dig;
+  }
+};
+
+export const removeDig = data => async dispatch => {
+  const response = await csrfFetch(`/api/digs/${data.id}`, {
+    method: 'delete',
+  });
+
+}
+
+
+
 const initialState = {};
 
 const digReducer = (state = initialState, action) => {
+  let newState = { ...state };
   switch (action.type) {
     case LOAD:
-      const allDigs = {};
       action.list.forEach(dig => {
-        allDigs[dig.id] = dig;
+        newState[dig.id] = dig;
       });
-      return {
-        ...allDigs,
-        ...state,
-      };
+      return newState;
     case ADD:
-      return {
-        ...state,
-        [action.dig.id]: action.dig
-      }
+      newState[action.dig.id] = action.dig
+      return newState;
+    case UPDATE:
+      newState[action.dig.id] = action.dig;
+      return newState;
+    case REMOVE:
+      delete newState[action.payload.id]
+      return newState
     default:
       return state;
   }

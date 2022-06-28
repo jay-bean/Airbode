@@ -1,15 +1,15 @@
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 
 
 function DigList() {
   const digs = useSelector((state) => state.digs);
-  console.log(digs, 'this is the diggggg');
+
   return (
     <ul>
       {Object.values(digs).map(dig => {
-        console.log(dig)
-        return  <li key={dig.id} dig={dig}>{dig.name}</li>
+        return  <Link key={dig.id} to={`/digs/${dig.id}`}><li dig={dig}>{dig.name}</li></Link>
       })}
     </ul>
   );

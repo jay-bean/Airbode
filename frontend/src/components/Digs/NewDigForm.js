@@ -1,22 +1,31 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import { addDig } from '../../store/digs';
+import { useHistory, useParams } from 'react-router-dom';
+import { addDig, getDigs, editDig } from '../../store/digs';
 
-function NewDigForm() {
+function NewDigForm({edit}) {
+  const digIdObj = useParams();
+  const id = digIdObj.digId;
+  console.log(id)
+  const dig = useSelector(state => state.digs[id]);
+  console.log(dig, 'this is dig i need on form page');
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const [address, setAddress] = useState('');
-  const [city, setCity] = useState('');
-  const [state, setState] = useState('');
-  const [country, setCountry] = useState('');
-  const [name, setName] = useState('');
-  const [price, setPrice] = useState(0);
-  const [description, setDescription] = useState('');
+  const [address, setAddress] = useState(edit ? dig.address : '');
+  const [city, setCity] = useState(edit ? dig.city : '');
+  const [state, setState] = useState(edit ? dig.state : '');
+  const [country, setCountry] = useState(edit ? dig.country : '');
+  const [name, setName] = useState(edit ? dig.name : '');
+  const [price, setPrice] = useState(edit ? dig.price : '');
+  const [description, setDescription] = useState(edit ? dig.description : '');
 
   const sessionUser = useSelector(state => state.session.user);
-  console.log(sessionUser)
+
+  useEffect(() => {
+    dispatch(getDigs());
+  }, [])
+
   const handleCancel = (e) => {
     history.push("/")
   };
@@ -24,7 +33,7 @@ function NewDigForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const dig = {
+    const data = {
       address,
       city,
       state,
@@ -37,7 +46,7 @@ function NewDigForm() {
 
     let newDig;
     try {
-      newDig = await dispatch(addDig(dig));
+      newDig = edit ? await dispatch(editDig(data, id)) : await dispatch(addDig(data));
     }
     catch (error) {
       console.log(error)
@@ -70,7 +79,7 @@ function NewDigForm() {
         />
         <input
           type="state"
-          placeholder="State"
+          placeholder="State/Province"
           required
           value={state}
           onChange={(e) => setState(e.target.value)}
@@ -94,7 +103,7 @@ function NewDigForm() {
           placeholder="Price per night"
           required
           value={price}
-          onChange={(e) => setPrice(e.target.value)}
+          onChange={(e) => setPrice(Number(e.target.value))}
         />
         <textarea
           type="description"

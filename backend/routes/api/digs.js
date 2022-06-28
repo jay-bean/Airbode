@@ -39,7 +39,7 @@ router.post('/',
     });
 
     const result = await dig.save();
-    console.log(result);
+
     return res.status(200).json(result);
   })
 )
@@ -47,7 +47,28 @@ router.post('/',
 router.put(`/:digId`,
   asyncHandler(async (req, res) => {
 
+    const dig = await Dig.findByPk(req.params.digId);
+    console.log(req.params)
+    dig.address = req.body.address;
+    dig.city = req.body.city;
+    dig.state = req.body.state;
+    dig.country = req.body.country;
+    dig.name = req.body.name;
+    dig.price = req.body.price;
+
+    const result = await dig.save();
+    return res.status(200).json(result);
   })
 )
+
+router.delete('/:digId',
+  asyncHandler(async (req, res) => {
+    const dig = await Dig.findByPk(req.params.digId);
+
+    await dig.destroy();
+    return res.json({ message: 'Success!' });
+  })
+
+);
 
 module.exports = router;

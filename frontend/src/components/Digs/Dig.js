@@ -1,22 +1,26 @@
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, Redirect, useHistory } from 'react-router-dom';
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
-import { getDigs } from '../../store/digs';
+import { getDigs, removeDig } from '../../store/digs';
 
 function Dig() {
+  const history = useHistory();
   const { digId } = useParams();
-  console.log(digId,'this is the dig IDDDD');
   const dispatch = useDispatch();
   const dig = useSelector(state => state.digs[digId]);
   const sessionUser = useSelector(state => state.session.user);
-  console.log(dig, 'this is the dig i need');
 
   useEffect(() => {
     dispatch(getDigs())
   }, [digId]);
 
+  const deleteHandler = () => {
+      dispatch(removeDig(dig));
+      return history.push("/");
+  }
+
   return (
-    <>
+    <div>
       {dig && (
         <ul>
           <li>
@@ -29,9 +33,9 @@ function Dig() {
           </li>
         </ul>
       )}
-      {/* {dig.userId === sessionUser.id ? <Link to="/digs/:digId/edit"><button>Edit</button></Link> : null} */}
-
-    </>
+      {dig && dig.userId === sessionUser.id ? <Link to={`/digs/edit/${dig.id}`}><button>Edit</button></Link> : null}
+      {dig && dig.userId === sessionUser.id ? <button onClick={deleteHandler}>Delete</button> : null}
+    </div>
   );
 }
 
