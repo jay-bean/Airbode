@@ -3,22 +3,21 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { addDig, getDigs, editDig } from '../../store/digs';
 
-function NewDigForm({edit}) {
+function EditDigForm() {
   const digIdObj = useParams();
   const id = digIdObj.digId;
-  console.log(id)
   const dig = useSelector(state => state.digs[id]);
   console.log(dig, 'this is dig i need on form page');
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const [address, setAddress] = useState('');
-  const [city, setCity] = useState('');
-  const [state, setState] = useState('');
-  const [country, setCountry] = useState('');
-  const [name, setName] = useState('');
-  const [price, setPrice] = useState('');
-  const [description, setDescription] = useState('');
+  const [address, setAddress] = useState(dig.address);
+  const [city, setCity] = useState(dig.city);
+  const [state, setState] = useState(dig.state);
+  const [country, setCountry] = useState(dig.country);
+  const [name, setName] = useState(dig.name);
+  const [price, setPrice] = useState(dig.price);
+  const [description, setDescription] = useState(dig.description);
 
   const sessionUser = useSelector(state => state.session.user);
 
@@ -46,7 +45,7 @@ function NewDigForm({edit}) {
 
     let newDig;
     try {
-      newDig = await dispatch(addDig(data));
+      newDig = await dispatch(editDig(data, id));
     }
     catch (error) {
       console.log(error)
@@ -113,11 +112,11 @@ function NewDigForm({edit}) {
           onChange={(e) => setDescription(e.target.value)}
         />
 
-        <button type="submit">Add Home</button>
+        <button type="submit">Submit</button>
         <button type="button" onClick={handleCancel}>Cancel</button>
       </form>
     </>
   );
 }
 
-export default NewDigForm;
+export default EditDigForm;
