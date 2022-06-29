@@ -1,37 +1,29 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
-import { addDig, getDigs } from '../../store/digs';
+import { addDig } from '../../store/digs';
 
 function NewDigForm() {
-  const digIdObj = useParams();
-  const id = digIdObj.digId;
-  console.log(id)
-  const dig = useSelector(state => state.digs[id]);
-  console.log(dig, 'this is dig i need on form page');
   const history = useHistory();
   const dispatch = useDispatch();
+  const sessionUser = useSelector(state => state.session.user);
 
+  const [validationErrors, setValidationErrors] = useState([]);
   const [address, setAddress] = useState('');
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
   const [country, setCountry] = useState('');
   const [title, setTitle] = useState('');
-  const [price, setPrice] = useState();
+  const [price, setPrice] = useState(0);
   const [description, setDescription] = useState('');
-  const [guests, setGuests] = useState();
-  const [bedrooms, setBedrooms] = useState();
-  const [beds, setBeds] = useState();
-  const [baths, setBaths] = useState();
+  const [guests, setGuests] = useState(0);
+  const [bedrooms, setBedrooms] = useState(0);
+  const [beds, setBeds] = useState(0);
+  const [baths, setBaths] = useState(0);
   const [pets, setPets] = useState(false);
 
-  const sessionUser = useSelector(state => state.session.user);
-
-  useEffect(() => {
-    dispatch(getDigs());
-  }, [])
-
-  const handleCancel = (e) => {
+  const handleCancel = () => {
+    setValidationErrors([]);
     history.push("/")
   };
 
@@ -59,10 +51,12 @@ function NewDigForm() {
       newDig = await dispatch(addDig(data));
     }
     catch (error) {
-      console.log(error)
+      const err = await error.json();
+      setValidationErrors(err);
     }
 
     if (newDig) {
+      setValidationErrors([]);
       history.push(`/digs/${newDig.id}`);
     }
   }
@@ -70,13 +64,17 @@ function NewDigForm() {
   return (
     <>
       <h1>New House Form</h1>
+      {validationErrors.length > 0 && (
+        validationErrors.map(error => {
+          return <div>{error}</div>
+        })
+      )}
       <form
         onSubmit={handleSubmit}
       >
         <label> Address:
         <input
           type="address"
-          placeholder="123 West Avenue"
           required
           value={address}
           onChange={(e) => setAddress(e.target.value)}
@@ -85,7 +83,6 @@ function NewDigForm() {
         <label> City:
         <input
           type="city"
-          placeholder="Colorado Springs"
           required
           value={city}
           onChange={(e) => setCity(e.target.value)}
@@ -94,7 +91,6 @@ function NewDigForm() {
         <label> State/Province:
         <input
           type="state"
-          placeholder="Colorado"
           required
           value={state}
           onChange={(e) => setState(e.target.value)}
@@ -103,7 +99,6 @@ function NewDigForm() {
         <label> Country:
         <input
           type="country"
-          placeholder="United States"
           required
           value={country}
           onChange={(e) => setCountry(e.target.value)}
@@ -120,7 +115,7 @@ function NewDigForm() {
         </label>
         <label> Price per night:
         <input
-          type="price"
+          type="number"
           required
           value={price}
           onChange={(e) => setPrice(e.target.value)}
@@ -135,9 +130,9 @@ function NewDigForm() {
           onChange={(e) => setDescription(e.target.value)}
         />
         </label>
-        <label> How many guests allowed:
+        <label> Guests:
         <input
-          type="guest"
+          type="number"
           required
           value={guests}
           onChange={(e) => setGuests(e.target.value)}
@@ -145,7 +140,7 @@ function NewDigForm() {
         </label>
         <label> Bedrooms:
         <input
-          type="bedrooms"
+          type="number"
           required
           value={bedrooms}
           onChange={(e) => setBedrooms(e.target.value)}
@@ -153,7 +148,7 @@ function NewDigForm() {
         </label>
         <label> Beds:
         <input
-          type="beds"
+          type="number"
           required
           value={beds}
           onChange={(e) => setBeds(e.target.value)}
@@ -161,7 +156,7 @@ function NewDigForm() {
         </label>
         <label> Bathrooms:
         <input
-          type="baths"
+          type="number"
           required
           value={baths}
           onChange={(e) => setBaths(e.target.value)}
@@ -170,22 +165,18 @@ function NewDigForm() {
         <label> Pets Okay?
         <input
           type="radio"
-          value="no"
+          value={true}
           name="pets"
           onChange={(e) => setPets(e.target.value)}
-          checked={pets === 'no' ? false : true}
-        />
-        Yes
-        </label>
-        <label>
+          checked={pets}
+        /> Yes
         <input
             type="radio"
-            value="yes"
+            value={false}
             name="pets"
             onChange={(e) => setPets(e.target.value)}
-            checked={pets === 'yes' ? true : false}
-        />
-        No
+            checked={!pets}
+        /> No
         </label>
         <button type="submit">Add Home</button>
         <button type="button" onClick={handleCancel}>Cancel</button>

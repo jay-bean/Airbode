@@ -11,6 +11,7 @@ function EditDigForm() {
   const history = useHistory();
   const dispatch = useDispatch();
 
+  const [validationErrors, setValidationErrors] = useState([]);
   const [address, setAddress] = useState(dig.address);
   const [city, setCity] = useState(dig.city);
   const [state, setState] = useState(dig.state);
@@ -22,16 +23,18 @@ function EditDigForm() {
   const [bedrooms, setBedrooms] = useState(dig.bedrooms);
   const [beds, setBeds] = useState(dig.beds);
   const [baths, setBaths] = useState(dig.baths);
-  const [pets, setPets] = useState(dig.pets);
+  const [pets, setPets] = useState(dig.pets ? 'yes' : 'no');
+  console.log(typeof dig.pets, 'this is digipets', dig.pets);
 
 
   const sessionUser = useSelector(state => state.session.user);
 
   useEffect(() => {
     dispatch(getDigs());
-  }, [])
+  }, [dispatch])
 
   const handleCancel = (e) => {
+    setValidationErrors([]);
     history.push("/")
   };
 
@@ -59,24 +62,31 @@ function EditDigForm() {
       newDig = await dispatch(editDig(data, id));
     }
     catch (error) {
-      console.log(error)
+      const err = await error.json();
+      setValidationErrors(err);
+
     }
 
     if (newDig) {
+      setValidationErrors([]);
       history.push(`/digs/${newDig.id}`);
     }
   }
 
   return (
     <>
-      <h1>New House Form</h1>
+      <h1>Edit Home</h1>
+      {validationErrors.length > 0 && (
+        validationErrors.map(error => {
+          return <div>{error}</div>
+        })
+      )}
       <form
         onSubmit={handleSubmit}
       >
         <label> Address:
         <input
           type="address"
-          placeholder="123 West Avenue"
           required
           value={address}
           onChange={(e) => setAddress(e.target.value)}
@@ -85,7 +95,6 @@ function EditDigForm() {
         <label> City:
         <input
           type="city"
-          placeholder="Colorado Springs"
           required
           value={city}
           onChange={(e) => setCity(e.target.value)}
@@ -94,7 +103,6 @@ function EditDigForm() {
         <label> State/Province:
         <input
           type="state"
-          placeholder="Colorado"
           required
           value={state}
           onChange={(e) => setState(e.target.value)}
@@ -103,7 +111,6 @@ function EditDigForm() {
         <label> Country:
         <input
           type="country"
-          placeholder="United States"
           required
           value={country}
           onChange={(e) => setCountry(e.target.value)}
@@ -112,7 +119,6 @@ function EditDigForm() {
         <label> Title:
         <input
           type="title"
-          placeholder="Cottage in the mountain"
           required
           value={title}
           onChange={(e) => setTitle(e.target.value)}
@@ -129,13 +135,12 @@ function EditDigForm() {
         <label> Description:
         <textarea
           type="description"
-          placeholder="Tell us about your home..."
           required
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
         </label>
-        <label> How many guests allowed:
+        <label> Guests:
         <input
           type="guest"
           required
@@ -170,22 +175,18 @@ function EditDigForm() {
         <label> Pets Okay?
         <input
           type="radio"
-          value="no"
+          value="yes"
           name="pets"
           onChange={(e) => setPets(e.target.value)}
-          checked={pets === 'no' ? false : true}
-        />
-        Yes
-        </label>
-        <label>
+          checked={pets === 'yes'}
+        /> Yes
         <input
             type="radio"
-            value="yes"
+            value="no"
             name="pets"
             onChange={(e) => setPets(e.target.value)}
-            checked={pets === 'yes' ? true : false}
-        />
-        No
+            checked={pets === 'no'}
+        /> No
         </label>
         <button type="submit">Submit</button>
         <button type="button" onClick={handleCancel}>Cancel</button>

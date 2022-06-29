@@ -2,6 +2,7 @@ import { useParams, Link, useHistory } from 'react-router-dom';
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { getDigs, removeDig } from '../../store/digs';
+import BookingForm from '../Bookings/BookingForm';
 
 function Dig() {
   const history = useHistory();
@@ -36,12 +37,13 @@ function Dig() {
             <div>{dig.bedrooms}</div>
             <div>{dig.beds}</div>
             <div>{dig.baths}</div>
-            <div>{dig.pets ? 'Pets are welcomed!' : 'Pets are not allowed at this time.'}</div>
+            <div>{dig.pets ? 'Pets are welcomed.' : 'Pets are not allowed at this time.'}</div>
           </li>
         </ul>
       )}
-      {dig && dig.userId === sessionUser.id ? <Link to={`/digs/edit/${dig.id}`}><button>Edit</button></Link> : null}
+      {dig && dig.userId === sessionUser.id ? <Link to={`/digs/${dig.id}/edit`}><button>Edit</button></Link> : null}
       {dig && dig.userId === sessionUser.id ? <button onClick={deleteHandler}>Delete</button> : null}
+      {dig && dig.userId !== sessionUser.id ? <BookingForm price={dig.price}/> : null}
     </div>
   );
 }
