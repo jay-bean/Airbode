@@ -13,7 +13,7 @@ function Navigation({ isLoaded }){
   if (sessionUser) {
     sessionLinks = (
       <>
-        <Link to='/digs/new'><button>Become a Host</button></Link>
+        <Link to='/digs/new'><button>Host your Home</button></Link>
         <ProfileButton user={sessionUser} />
       </>
     );

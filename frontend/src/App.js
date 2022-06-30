@@ -7,6 +7,10 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation/Navigation";
 import Dig from "./components/Digs/Dig";
 import NewDigForm from "./components/Digs/NewDigForm";
+import EditDigForm from "./components/Digs/EditDigForm";
+import UsersBookings from "./components/Bookings/UsersBookings";
+import Booking from "./components/Bookings/Booking";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -27,13 +31,19 @@ function App() {
             <SignupFormPage />
           </Route>
           <Route exact path="/digs/new">
-            <NewDigForm edit={false}/>
+            <NewDigForm />
           </Route>
-          <Route exact path="/digs/edit/:digId">
-            <NewDigForm edit={true}/>
+          <Route exact path="/digs/:digId/edit">
+            <EditDigForm />
           </Route>
           <Route exact path="/digs/:digId">
             <Dig/>
+          </Route>
+          <Route exact path="/bookings">
+            <UsersBookings/>
+          </Route>
+          <Route exact path="/bookings/:bookingId">
+            <Booking/>
           </Route>
         </Switch>
       )}

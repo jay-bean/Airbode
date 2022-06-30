@@ -25,13 +25,37 @@ module.exports = {
         type: Sequelize.STRING(150),
         allowNull: false
       },
-      name: {
+      title: {
         type: Sequelize.STRING(50),
         allowNull: false,
         unique: true
       },
       price: {
         type: Sequelize.DECIMAL(10,2),
+        allowNull: false
+      },
+      description: {
+        type: Sequelize.TEXT,
+        allowNull: false
+      },
+      guests: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+      },
+      bedrooms: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+      },
+      beds: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+      },
+      baths: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+      },
+      pets: {
+        type: Sequelize.BOOLEAN,
         allowNull: false
       },
       userId: {

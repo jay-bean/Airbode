@@ -1,7 +1,4 @@
-// import { ValidationError } from '../utils/validationError';
-
 import { csrfFetch } from "./csrf";
-
 
 const LOAD = 'digs/LOAD';
 const ADD = 'digs/ADD';
@@ -40,7 +37,7 @@ export const getDigs = () => async dispatch => {
 export const addDig = data => async dispatch => {
   try {
     const response = await csrfFetch(`/api/digs`, {
-      method: 'post',
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
@@ -52,13 +49,14 @@ export const addDig = data => async dispatch => {
     return dig;
   }
   catch (error) {
+    console.log("in store", error);
     throw error;
   }
 };
 
 export const editDig = (data, id) => async dispatch => {
   const response = await csrfFetch(`/api/digs/${id}`, {
-    method: 'put',
+    method: 'PUT',
     headers: {
       'Content-Type': 'application/json'
     },
@@ -74,7 +72,7 @@ export const editDig = (data, id) => async dispatch => {
 
 export const removeDig = data => async dispatch => {
   const response = await csrfFetch(`/api/digs/${data.id}`, {
-    method: 'delete',
+    method: 'DELETE',
   });
   if (response.ok) {
     const dig = await response.json();
@@ -82,8 +80,6 @@ export const removeDig = data => async dispatch => {
     return dig;
   }
 }
-
-
 
 const initialState = {};
 
@@ -99,7 +95,7 @@ const digReducer = (state = initialState, action) => {
       newState[action.dig.id] = action.dig
       return newState;
     case UPDATE:
-      newState[action.dig.id] = action.dig;
+      newState[action.dig.id] = action.dig
       return newState;
     case REMOVE:
       delete newState[action.dig.id]
