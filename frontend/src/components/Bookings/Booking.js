@@ -16,7 +16,7 @@ function Booking() {
   useEffect(() => {
     dispatch(getBookings())
     dispatch(getDigs())
-  }, [bookingId]);
+  }, [bookingId, dispatch]);
 
   const deleteHandler = () => {
 
@@ -24,14 +24,21 @@ function Booking() {
 
   return (
     <>
-      {booking && (
-        <ul>
-          <li>
-            {/* <div>{dig.name}</div> */}
-            <div>{booking.startDate}</div>
-            <div>{booking.endDate}</div>
-          </li>
-        </ul>
+      {booking && dig && (
+        <div>
+          <ul>
+            <li>
+              <div>Your trip starts {booking.startDate}</div>
+              <div>Your trip ends {booking.endDate}</div>
+              <div>You reserved this on {booking.createdAt}</div>
+            </li>
+          </ul>
+          <div> Where are you going?
+              <Link to={`/digs/${dig.id}`}><div>{dig.title}</div></Link>
+              <div>{dig.city}, {dig.state}</div>
+              <div>{dig.country}</div>
+           </div>
+        </div>
       )}
       <Link><button>Edit</button></Link>
       <button onClick={deleteHandler}>Delete</button>

@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { getDigs, removeDig } from '../../store/digs';
 import BookingForm from '../Bookings/BookingForm';
+import Reservation from '../Reservation/Reservation';
 
 function Dig() {
   const history = useHistory();
@@ -13,7 +14,7 @@ function Dig() {
 
   useEffect(() => {
     dispatch(getDigs())
-  }, [digId]);
+  }, [digId, dispatch]);
 
   const deleteHandler = async () => {
       await dispatch(removeDig(dig));
