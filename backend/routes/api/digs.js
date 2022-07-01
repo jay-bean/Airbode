@@ -1,17 +1,17 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
 const { validationResult } = require('express-validator');
-const { Dig } = require('../../db/models');
+const { Dig, Image } = require('../../db/models');
 const { digValidators } = require('../../validations');
 
 const router = express.Router();
 
 router.get('/',
   asyncHandler(async (_req, res) => {
-    const digs = await Dig.findAll();
-    return res.status(200).json({
-      digs
+    const digs = await Dig.findAll({
+      include: [{model: Image, as: 'images'}]
     });
+    return res.status(200).json({digs});
   })
 );
 
@@ -32,6 +32,7 @@ router.post('/',
       const errors = validationErrors.array().map(error => error.msg);
       return res.status(400).json(errors);
     }
+
     const dig = Dig.build({
       address,
       city,
@@ -47,12 +48,31 @@ router.post('/',
       pets,
       userId
     });
-    const result = await dig.save();
-    return res.status(200).json(result);
+    const result = await dig.save({raw: true});
+
+    // multer trials
+    const img = req.file;
+    const imageUrl = img.path;
+
+    const image = Image.build({
+      url: imageUrl,
+      digId: result.id
+    });
+
+    const imageResult = await image.save();
+    // multer^^^^
+
+    const response = {
+        ...result.dataValues,
+        images: imageResult.dataValues
+    }
+
+    return res.status(200).json(response);
   })
 )
 
 router.put(`/:digId(\\d+)`,
+  digValidators,
   asyncHandler(async (req, res) => {
     const dig = await Dig.findByPk(req.params.digId);
     dig.address = req.body.address;
@@ -68,7 +88,24 @@ router.put(`/:digId(\\d+)`,
     dig.baths = req.body.baths;
     dig.pets = req.body.pets;
     const result = await dig.save();
-    return res.status(200).json(result);
+
+    // multer trials
+    const img = req.file;
+    const imageUrl = img.path;
+
+    const image = Image.build({
+      url: imageUrl,
+      digId: result.id
+    });
+
+    const imageResult = await image.save();
+    // multer^^^^
+
+    const response = {
+      ...result.dataValues,
+      images: imageResult.dataValues
+  }
+    return res.status(200).json(response);
   })
 )
 

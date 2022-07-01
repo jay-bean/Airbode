@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
+import { DateRangePicker } from "react-dates";
+import "react-dates/initialize";
+import "react-dates/lib/css/_datepicker.css";
 
 import { addBooking } from '../../store/bookings';
+import "./booking-calender.css";
 
-function BookingForm({price}) {
+function Calender({price}) {
   const history = useHistory();
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
@@ -14,22 +18,23 @@ function BookingForm({price}) {
   const [validationErrors, setValidationErrors] = useState([]);
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
+  const [focusedInput, setFocusedInput] = useState();
+  // const [disabled, setDisabled] = useState();
 
   let total;
   let nights;
   if (startDate && endDate) {
-    const startDay = startDate.split('-')[2];
-    const endDay = endDate.split('-')[2];
-    nights = endDay - startDay;
-    total = nights * price;
-    if (total < 0) {
-      total = 0;
-    }
+    nights = endDate.diff(startDate, 'days');
+    total = price * nights;
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    let newBooking;
+    try {
+    if (!sessionUser) {
+      throw(new Error('You must be logged in to make reservations.'))
+    }
     const data = {
       startDate,
       endDate,
@@ -37,16 +42,16 @@ function BookingForm({price}) {
       digId
     };
 
-    let newBooking;
-    try {
       newBooking = await dispatch(addBooking(data));
     }
     catch (error) {
+      if (!sessionUser) return window.alert(error.message);
       const err = await error.json();
       setValidationErrors(err);
     }
     if (newBooking) {
       setValidationErrors([]);
+      window.alert('Thanks for booking! Visit your trips page to manage your reservations.')
       history.push(`/digs/${digId}`);
     }
   }
@@ -55,28 +60,24 @@ function BookingForm({price}) {
     <div>
       {validationErrors.length > 0 && (
         validationErrors.map(error => {
-          return <div>{error}</div>
+          return <div key={error}>{error}</div>
         })
       )}
       <form
         onSubmit={handleSubmit}
       >
-        <label> Check-In
-          <input
-            type="date"
-            required
-            value={startDate}
-            onChange={(e) => setStartDate(e.target.value)}
-          />
-        </label>
-        <label> Checkout
-          <input
-            type="date"
-            required
-            value={endDate}
-            onChange={(e) => setEndDate(e.target.value)}
-          />
-        </label>
+        <DateRangePicker
+          startDate={startDate}
+          startDateId="start-date"
+          endDate={endDate}
+          endDateId="end-date"
+          onDatesChange={({ startDate, endDate }) => {
+            setStartDate(startDate);
+            setEndDate(endDate);
+          }}
+          focusedInput={focusedInput}
+          onFocusChange={(focusedInput) => setFocusedInput(focusedInput)}
+        />
         <button type="submit">Reserve</button>
       </form>
       {nights ? nights > 1 ? (<div>{nights} nights</div>) : (<div>{nights} night</div>) : null}
@@ -88,4 +89,4 @@ function BookingForm({price}) {
   );
 }
 
-export default BookingForm;
+export default Calender;

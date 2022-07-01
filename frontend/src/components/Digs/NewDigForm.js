@@ -20,7 +20,8 @@ function NewDigForm() {
   const [bedrooms, setBedrooms] = useState(0);
   const [beds, setBeds] = useState(0);
   const [baths, setBaths] = useState(0);
-  const [pets, setPets] = useState(false);
+  const [pets, setPets] = useState('no');
+  const [image, setImage] = useState();
 
   const handleCancel = () => {
     setValidationErrors([]);
@@ -30,25 +31,42 @@ function NewDigForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const data = {
-      address,
-      city,
-      state,
-      country,
-      title,
-      price,
-      description,
-      guests,
-      bedrooms,
-      beds,
-      baths,
-      pets,
-      userId: sessionUser.id
-    };
+    // const data = {
+    //   address,
+    //   city,
+    //   state,
+    //   country,
+    //   title,
+    //   price,
+    //   description,
+    //   guests,
+    //   bedrooms,
+    //   beds,
+    //   baths,
+    //   pets,
+    //   userId: sessionUser.id,
+    //   image
+    // };
+
+    const formData = new FormData();
+    formData.append('title', title);
+    formData.append('address', address);
+    formData.append('city', city);
+    formData.append('state', state);
+    formData.append('country', country);
+    formData.append('price', price);
+    formData.append('description', description);
+    formData.append('guests', guests);
+    formData.append('bedrooms', bedrooms);
+    formData.append('beds', beds);
+    formData.append('baths', baths);
+    formData.append('pets', pets);
+    formData.append('userId', sessionUser.id);
+    formData.append('image', image);
 
     let newDig;
     try {
-      newDig = await dispatch(addDig(data));
+      newDig = await dispatch(addDig(formData));
     }
     catch (error) {
       const err = await error.json();
@@ -71,6 +89,7 @@ function NewDigForm() {
       )}
       <form
         onSubmit={handleSubmit}
+        encType="multipart/form-data"
       >
         <label> Address:
         <input
@@ -165,18 +184,25 @@ function NewDigForm() {
         <label> Pets Okay?
         <input
           type="radio"
-          value={true}
+          value="yes"
           name="pets"
           onChange={(e) => setPets(e.target.value)}
-          checked={pets}
+          checked={pets === 'yes'}
         /> Yes
         <input
             type="radio"
-            value={false}
+            value="no"
             name="pets"
             onChange={(e) => setPets(e.target.value)}
-            checked={!pets}
+            checked={pets === "no"}
         /> No
+        </label>
+        <label> Upload Image
+        <input
+          type="file"
+          name="file"
+          onChange={(e) => setImage(e.target.files[0])}
+        />
         </label>
         <button type="submit">Add Home</button>
         <button type="button" onClick={handleCancel}>Cancel</button>

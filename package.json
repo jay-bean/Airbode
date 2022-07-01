@@ -22,5 +22,13 @@
   "bugs": {
     "url": "https://github.com/jay-bean/Airbodes/issues"
   },
-  "homepage": "https://github.com/jay-bean/Airbodes#readme"
+  "homepage": "https://github.com/jay-bean/Airbodes#readme",
+  "dependencies": {
+    "@babel/runtime": "^7.18.6",
+    "moment": "^2.29.3",
+    "react": "^16.14.0",
+    "react-dates": "^21.8.0",
+    "react-dom": "^16.14.0",
+    "react-with-direction": "^1.4.0"
+  }
 }

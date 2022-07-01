@@ -10,7 +10,8 @@ import NewDigForm from "./components/Digs/NewDigForm";
 import EditDigForm from "./components/Digs/EditDigForm";
 import UsersBookings from "./components/Bookings/UsersBookings";
 import Booking from "./components/Bookings/Booking";
-
+import UsersDigs from "./components/Digs/UsersDigs";
+import HostsBookings from "./components/Bookings/HostsBookings";
 
 function App() {
   const dispatch = useDispatch();
@@ -30,14 +31,20 @@ function App() {
           <Route exact path="/signup">
             <SignupFormPage />
           </Route>
+          <Route exact path="/digs">
+            <UsersDigs />
+          </Route>
           <Route exact path="/digs/new">
             <NewDigForm />
+          </Route>
+          <Route exact path="/digs/:digId">
+            <Dig/>
           </Route>
           <Route exact path="/digs/:digId/edit">
             <EditDigForm />
           </Route>
-          <Route exact path="/digs/:digId">
-            <Dig/>
+          <Route exact path="/digs/:digId/bookings">
+            <HostsBookings />
           </Route>
           <Route exact path="/bookings">
             <UsersBookings/>

@@ -3,7 +3,6 @@ import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { getDigs, removeDig } from '../../store/digs';
 import BookingForm from '../Bookings/BookingForm';
-import Reservation from '../Reservation/Reservation';
 
 function Dig() {
   const history = useHistory();
@@ -27,6 +26,7 @@ function Dig() {
       {dig && (
         <ul>
           <li>
+            {dig.images && dig.images.length ? <img src={`http://localhost:5000/${dig.images[0].url}`}/> : null}
             <div>{dig.title}</div>
             <div>{dig.address}</div>
             <div>{dig.city}</div>
@@ -42,9 +42,13 @@ function Dig() {
           </li>
         </ul>
       )}
-      {dig && dig.userId === sessionUser.id ? <Link to={`/digs/${dig.id}/edit`}><button>Edit</button></Link> : null}
-      {dig && dig.userId === sessionUser.id ? <button onClick={deleteHandler}>Delete</button> : null}
-      {dig && dig.userId !== sessionUser.id ? <BookingForm price={dig.price}/> : null}
+
+      {dig && sessionUser && dig.userId === sessionUser.id ? <Link to={`/digs/${dig.id}/edit`}><button>Edit</button></Link> : null}
+      {dig && sessionUser && dig.userId === sessionUser.id ? <button onClick={deleteHandler}>Delete</button> : null}
+      {dig && sessionUser && dig.userId === sessionUser.id ? <Link to="/digs">View Your Homes</Link> : null}
+      {dig && sessionUser && dig.userId === sessionUser.id ? <Link to={`/digs/${dig.id}/bookings`}>View Bookings</Link> : null}
+      {dig && sessionUser && dig.userId !== sessionUser.id ? <BookingForm price={dig.price}/> : null}
+      {dig && !sessionUser && (<BookingForm price={dig.price}/>)}
     </div>
   );
 }

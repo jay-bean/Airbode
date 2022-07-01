@@ -1,25 +1,47 @@
 import { useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useHistory, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { getBookings } from '../../store/bookings';
+import { getBookings, removeBooking } from '../../store/bookings';
 import { getDigs } from '../../store/digs';
+import moment from 'moment';
 
 function Booking() {
+  const history = useHistory();
   const dispatch = useDispatch();
   const { bookingId } = useParams();
 
   const booking = useSelector(state => state.bookings[bookingId]);
-  const digId = booking.digId;
+
+  let digId;
+  if (booking) {
+    digId = booking.digId;
+  }
   const dig = useSelector(state => state.digs[digId]);
-  console.log(dig);
 
   useEffect(() => {
     dispatch(getBookings())
     dispatch(getDigs())
-  }, [bookingId, dispatch]);
+  }, [dispatch]);
 
-  const deleteHandler = () => {
-
+  const deleteHandler = async () => {
+    try {
+      const today = moment();
+      const startDate = moment(booking.startDate);
+      let a = moment(today);
+      let b = moment(startDate);
+      let difference = b.diff(a, 'days');
+      if (difference >= 7 && window.confirm('Are you sure you want to cancel your reservation?')) {
+        await dispatch(removeBooking(booking));
+        const redirect = history.push("/bookings");
+        return redirect;
+      }
+      else {
+        if (difference < 7) throw(new Error('Sorry your cancelation is not within the one week period.'))
+      }
+    }
+    catch (error) {
+      window.alert(error.message);
+    }
   }
 
   return (
@@ -28,9 +50,9 @@ function Booking() {
         <div>
           <ul>
             <li>
-              <div>Your trip starts {booking.startDate}</div>
-              <div>Your trip ends {booking.endDate}</div>
-              <div>You reserved this on {booking.createdAt}</div>
+              <div>Your trip starts {moment(booking.startDate).format('L')}</div>
+              <div>Your trip ends {moment(booking.endDate).format('L')}</div>
+              <div>You reserved this on {moment(booking.createdAt).format('')}</div>
             </li>
           </ul>
           <div> Where are you going?
@@ -40,8 +62,8 @@ function Booking() {
            </div>
         </div>
       )}
-      <Link><button>Edit</button></Link>
       <button onClick={deleteHandler}>Delete</button>
+      <Link to="/bookings">Back to Resverations</Link>
     </>
   );
 }
