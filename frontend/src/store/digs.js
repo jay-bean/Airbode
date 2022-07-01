@@ -34,22 +34,20 @@ export const getDigs = () => async dispatch => {
   }
 };
 
+
+
 export const addDig = data => async dispatch => {
   try {
     const response = await csrfFetch(`/api/digs`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    });
+      body: data
+    }, false);
 
     const dig = await response.json();
     dispatch(add(dig));
     return dig;
   }
   catch (error) {
-    console.log("in store", error);
     throw error;
   }
 };
@@ -57,11 +55,8 @@ export const addDig = data => async dispatch => {
 export const editDig = (data, id) => async dispatch => {
   const response = await csrfFetch(`/api/digs/${id}`, {
     method: 'PUT',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data)
-  });
+    body: data
+  }, false);
 
   if (response.ok) {
     const dig = await response.json();

@@ -60,7 +60,7 @@ module.exports = (sequelize, DataTypes) => {
     Dig.belongsTo(models.User, { foreignKey: 'userId' });
     Dig.hasMany(models.Review, { foreignKey: 'digId' });
     Dig.hasMany(models.Booking, { foreignKey: 'digId' });
-    Dig.hasMany(models.Image, { foreignKey: 'digId' });
+    Dig.hasMany(models.Image, { as: 'images', foreignKey: 'digId' });
   };
   return Dig;
 };

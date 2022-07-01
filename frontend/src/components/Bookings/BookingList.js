@@ -1,38 +1,32 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import moment from 'moment';
 
 function BookingList() {
   const bookings = useSelector((state) => state.bookings);
   const sessionUser = useSelector((state) => state.session.user);
   const dig = useSelector((state) => state.digs[bookings.digId])
-  console.log(dig)
-  const usersBookings = Object.values(bookings).filter(booking => booking.userId === sessionUser.id);
+  const usersBookings = Object.values(bookings).filter(booking => booking.userId === sessionUser.id).reverse();
 
   return (
     <>
       <table>
         <thead>
           <th>Destination</th>
-          <th>Start Date</th>
-          <th>End Date</th>
-          <th>Reservation Made</th>
+          <th>Reservation</th>
         </thead>
         <tbody>
           {usersBookings && (usersBookings.map(booking => {
-            // const dig = useSelector(state => state.digs[booking.digId]);
-            // return <Link to={`/bookings/${booking.id}`} key={booking.id}><li>{booking.digId}</li></Link>
             return (
               <tr>
-                <Link key={booking.id} to={`/bookings/${booking.id}`}>
-                  <td>Dig Destination?</td>
-                  <td>{booking.startDate}</td>
-                  <td>{booking.endDate}</td>
-                  <td>{booking.createdAt}</td>
-                </Link>
-              </tr>)
+                <td>Dig Destination? With link to dig page?</td>
+                <td><Link key={booking.id} to={`/bookings/${booking.id}`}>{moment(booking.startDate).format('L')} - {moment(booking.endDate).format('L')}</Link></td>
+              </tr>
+            )
           }))}
         </tbody>
       </table>
+      <div>Ready to book another trip?<Link to="/">Click Here</Link></div>
     </>
   );
 }

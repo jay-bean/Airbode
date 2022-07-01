@@ -97,17 +97,9 @@ const bookingValidators = [
   check('startDate')
     .exists({ checkFalsy: true })
     .withMessage('Please provide a start date.'),
-  check('startDate')
+  check('endDate')
     .exists({ checkFalsy: true })
     .withMessage('Please provide a end date.')
-    // .custom((value) => {
-    //   if (value < startDate) {
-    //     return Promise.reject('End date must come after start date.');
-    //   }
-    //   else {
-    //     return true
-    //   }
-    // })
 ]
 
 module.exports = {

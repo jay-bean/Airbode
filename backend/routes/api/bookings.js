@@ -28,10 +28,8 @@ router.post('/',
     const { startDate, endDate, digId, userId } = req.body;
 
     const validationErrors = validationResult(req);
-    console.log(validationErrors);
     if (!validationErrors.isEmpty()) {
       const errors = validationErrors.array().map(error => error.msg);
-      console.log(errors);
       return res.status(400).json(errors);
     }
 

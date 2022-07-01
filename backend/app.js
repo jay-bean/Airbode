@@ -4,7 +4,12 @@ const cors = require('cors');
 const csurf = require('csurf');
 const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
+const path = require('path');
 const { ValidationError } = require('sequelize');
+
+// image trial
+const multer = require('multer');
+// ^^^
 
 const { environment } = require('./config');
 const routes = require('./routes');
@@ -15,7 +20,37 @@ const app = express();
 
 app.use(morgan('dev'));
 app.use(cookieParser());
-app.use(express.json());
+app.use(express.json({ limit: "50mb" }));
+
+// multer middleware
+const fileStorage = multer.diskStorage({
+  destination: (_req, _file, cb) => {
+    cb(null, 'images');
+  },
+  filename: (_req, file, cb) => {
+    cb(null, new Date().toISOString() + '-' + file.originalname);
+  }
+});
+
+const fileFilter = (_req, file, cb) => {
+  if (
+    file.mimetype === 'image/png' ||
+    file.mimetype === 'image/jpg' ||
+    file.mimetype === 'image/jpeg'
+    ) {
+      cb(null, true);
+    } else {
+      cb(null, false);
+    }
+  };
+  // ^^^^^
+
+  // use multer
+  app.use(
+    multer({ storage: fileStorage, fileFilter: fileFilter }).single('image')
+  );
+
+app.use('/images', express.static(path.join(__dirname, 'images')));
 
 if (!isProduction) {
   // enable cors only in development
