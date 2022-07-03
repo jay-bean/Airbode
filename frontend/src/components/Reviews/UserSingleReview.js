@@ -41,12 +41,12 @@ function UserSingleReview({review}) {
       </div>
       <div className='users-reviews-reviews'>
         {!showEditForm && <div key={review.id}>
-          <div>{review.review}</div>
-          <div>{review.rating}</div>
+          <div className='users-reviews-comment'>Comment: {review.review}</div>
+          <div className='users-reviews-rating'>Rating: {review.rating}</div>
           {sessionUser && sessionUser.id === review.userId && (
-            <div>
-              <button onClick={deleteHandler}>Delete</button>
-              <button onClick={editHandler}>Edit</button>
+            <div className='users-reviews-btn-div'>
+              <button className='users-reviews-delete-btn' onClick={deleteHandler}>Delete</button>
+              <button className='users-reviews-edit-btn' onClick={editHandler}>Edit</button>
             </div>
           )}
         </div>}

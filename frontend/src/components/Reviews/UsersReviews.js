@@ -22,7 +22,7 @@ function UsersReviews() {
   return (
     <div className='users-reviews-page'>
       <h1 className='users-reviews-review-head'>Your Reviews</h1>
-      <div>
+      <div className='users-reviews-div-div'>
         {usersReviews && usersReviews.length ? usersReviews.map(review => (<UserSingleReview review={review} key={review.id}/>)) : <p>You currently don't have any reviews.</p>}
       </div>
     </div>
