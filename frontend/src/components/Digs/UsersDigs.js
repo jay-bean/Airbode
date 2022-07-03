@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getDigs } from '../../store/digs';
-import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 // import moment from 'moment';
 
@@ -21,14 +20,12 @@ function UsersDigs() {
       <p>To manage your homes navigate to the individual pages by clicking one of them below.</p>
       {usersDigs && (usersDigs.map(dig => {
         return (
-        <>
           <Link key={dig.id} to={`/digs/${dig.id}`}>
-            <div>
+            <div key={dig.id}>
               <div>IMAGE GOES HERE</div>
               <div>{dig.title}</div>
             </div>
           </Link>
-        </>
         )
       }))}
     </>

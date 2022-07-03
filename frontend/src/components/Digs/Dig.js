@@ -26,7 +26,7 @@ function Dig() {
       {dig && (
         <ul>
           <li>
-            {dig.images && dig.images.length ? <img src={`http://localhost:5000/${dig.images[0].url}`}/> : null}
+            {dig.images && dig.images.length ? <img src={`/${dig.images[0].url}`}/> : null}
             <div>{dig.title}</div>
             <div>{dig.address}</div>
             <div>{dig.city}</div>

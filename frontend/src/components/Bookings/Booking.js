@@ -63,7 +63,7 @@ function Booking() {
         </div>
       )}
       <button onClick={deleteHandler}>Delete</button>
-      <Link to="/bookings">Back to Resverations</Link>
+      <Link to="/bookings">Back to Reservations</Link>
     </>
   );
 }

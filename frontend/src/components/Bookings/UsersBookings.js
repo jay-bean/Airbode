@@ -2,12 +2,14 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { getBookings } from '../../store/bookings';
 import BookingList from './BookingList';
+import { getDigs } from '../../store/digs';
 
 function UsersBookings() {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getBookings());
+    dispatch(getDigs())
   }, [dispatch]);
 
   return (
