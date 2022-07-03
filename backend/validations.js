@@ -4,9 +4,9 @@ const { Dig } = require('./db/models');
 const digValidators = [
   check('address')
     .exists({ checkFalsy: true })
-    .withMessage('Please provide an address')
+    .withMessage('Please provide an address.')
     .isLength({ max: 100 })
-    .withMessage('Address must not exceed 100 characters')
+    .withMessage('Address must not exceed 100 characters.')
     .custom((value) => {
       return Dig.findOne({ where: { address: value } })
         .then((dig) => {
@@ -17,7 +17,7 @@ const digValidators = [
     }),
   check('city')
     .exists({ checkFalsy: true })
-    .withMessage('Please provide a city')
+    .withMessage('Please provide a city.')
     .isLength({ max: 100 })
     .withMessage('City must not exceed 100 characters.'),
   check('state')
@@ -102,7 +102,19 @@ const bookingValidators = [
     .withMessage('Please provide a end date.')
 ]
 
+const reviewValidators = [
+  check('review')
+  .exists({ checkFalsy: true })
+  .withMessage('Please provide a comment.')
+  .isLength({ max: 255 })
+  .withMessage('Review must not exceed 255 characters.'),
+  check('rating')
+  .exists({ checkFalsy: true })
+  .withMessage('Please provide a rating.'),
+]
+
 module.exports = {
   digValidators,
-  bookingValidators
+  bookingValidators,
+  reviewValidators
 }

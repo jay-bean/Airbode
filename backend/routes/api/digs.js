@@ -11,7 +11,7 @@ router.get('/',
     const digs = await Dig.findAll({
       include: [{model: Image, as: 'images'}]
     });
-    return res.status(200).json({digs});
+    return res.status(200).json(digs);
   })
 );
 

@@ -45,23 +45,12 @@ router.post('/',
   })
 );
 
-router.put('/:bookingId(\\d+)',
-  bookingValidators,
-  asyncHandler(async (req, res) => {
-    const booking = await Booking.findByPk(req.params.bookingId);
-    booking.startDate = req.body.startDate;
-    booking.endDate = req.body.endDate;
-    const result = await booking.save();
-    return res.status(200).json(result);
-  })
-);
-
 router.delete('/:bookingId(\\d+)',
   asyncHandler(async (req, res) => {
     const booking = await Booking.findByPk(req.params.bookingId);
     await booking.destroy();
     return res.json({id: booking.id});
   })
-)
+);
 
 module.exports = router;

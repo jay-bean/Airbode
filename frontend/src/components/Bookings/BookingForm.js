@@ -1,31 +1,59 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { DateRangePicker } from "react-dates";
 import "react-dates/initialize";
 import "react-dates/lib/css/_datepicker.css";
+import moment from 'moment';
 
-import { addBooking } from '../../store/bookings';
+import { addBooking, getBookings } from '../../store/bookings';
 import "./booking-calender.css";
 
 function Calender({price}) {
   const history = useHistory();
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
+  const bookings = useSelector(state => state.bookings);
   const digIdObj = useParams();
-  const digId = parseInt(digIdObj.digId, 10)
+  const digId = parseInt(digIdObj.digId, 10);
+  const digBookings = Object.values(bookings).filter(booking => booking.digId === digId);
+  const disabledDays = [];
+
+  digBookings.forEach(booking => {
+    const start = moment(booking.startDate);
+    const momentEnd = moment(booking.endDate);
+    while (start.isSameOrBefore(momentEnd)) {
+      disabledDays.push(start.clone());
+      start.add(1, 'days');
+    }
+  })
 
   const [validationErrors, setValidationErrors] = useState([]);
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
   const [focusedInput, setFocusedInput] = useState();
-  // const [disabled, setDisabled] = useState();
+
+  // disabled days
+  useEffect(() => {
+    dispatch(getBookings());
+  }, [dispatch]);
 
   let total;
   let nights;
   if (startDate && endDate) {
     nights = endDate.diff(startDate, 'days');
     total = price * nights;
+  }
+
+  const getBookingRange = (start, end) => {
+    const currentBooking = [];
+    const currentStart = start.clone()
+    const currentEnd = end;
+    while (currentStart.isSameOrBefore(currentEnd)) {
+      currentBooking.push(currentStart.clone().format('L'));
+      currentStart.add(1, 'days');
+    }
+    return currentBooking;
   }
 
   const handleSubmit = async (e) => {
@@ -35,6 +63,15 @@ function Calender({price}) {
     if (!sessionUser) {
       throw(new Error('You must be logged in to make reservations.'))
     }
+
+    const formattedDisabledDays = disabledDays.map(day => day.format("L"));
+    const currentBooking = getBookingRange(startDate, endDate);
+    const doubleBooked = currentBooking.some(day => formattedDisabledDays.includes(day));
+    if (doubleBooked) {
+      setValidationErrors(['These dates are not available']);
+      return;
+    }
+
     const data = {
       startDate,
       endDate,
@@ -51,11 +88,12 @@ function Calender({price}) {
     }
     if (newBooking) {
       setValidationErrors([]);
+      setStartDate();
+      setEndDate();
       window.alert('Thanks for booking! Visit your trips page to manage your reservations.')
       history.push(`/digs/${digId}`);
     }
   }
-
   return (
     <div>
       {validationErrors.length > 0 && (
@@ -67,6 +105,8 @@ function Calender({price}) {
         onSubmit={handleSubmit}
       >
         <DateRangePicker
+          isDayBlocked={(day) => disabledDays.some(date => day.isSame(date, 'day'))}
+          // isOutsideRange={(day) => disabledDays.some(date => day.isSame(date, 'day'))}
           startDate={startDate}
           startDateId="start-date"
           endDate={endDate}

@@ -82,7 +82,7 @@ const digReducer = (state = initialState, action) => {
   let newState = { ...state };
   switch (action.type) {
     case LOAD:
-      action.digs.digs.forEach(dig => {
+      action.digs.forEach(dig => {
         newState[dig.id] = dig;
       });
       return newState;
