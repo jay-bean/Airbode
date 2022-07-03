@@ -14,6 +14,7 @@ import UsersDigs from "./components/Digs/UsersDigs";
 import HostsBookings from "./components/Bookings/HostsBookings";
 import UsersReviews from "./components/Reviews/UsersReviews";
 import ReviewModal from "./components/Reviews/ReviewModal";
+import AboutMe from "./components/AboutMe/AboutMe";
 
 function App() {
   const dispatch = useDispatch();
@@ -57,6 +58,9 @@ function App() {
           </Route>
           <Route exact path="/reviews">
             <UsersReviews/>
+          </Route>
+          <Route exact path="/about-me">
+            <AboutMe/>
           </Route>
         </Switch>
       )}

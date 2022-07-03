@@ -43,7 +43,6 @@ function EditReview({reviewProp, toggleShow}) {
 
   return (
       <div>
-        <h2>Edit Review</h2>
         {validationErrors && validationErrors.length > 0 && (
           validationErrors.map(error => {
             return <div>{error}</div>

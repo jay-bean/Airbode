@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getReviews } from '../../store/reviews';
-import Review from "./Review";
+import UserSingleReview from './UserSingleReview';
 
 
 function UsersReviews() {
@@ -9,9 +9,10 @@ function UsersReviews() {
   const sessionUser = useSelector((state) => state.session.user);
   const reviews = useSelector((state) => state.reviews);
 
+
   let usersReviews;
   if (sessionUser && reviews) {
-    usersReviews = Object.values(reviews).filter(review => review.userId === sessionUser.id);
+    usersReviews = Object.values(reviews).filter(review => review.userId === sessionUser.id).reverse();
   }
 
   useEffect(() => {
@@ -20,8 +21,10 @@ function UsersReviews() {
 
   return (
     <>
+      <h3>Travel Location</h3>
+      <h3>Review</h3>
       <div>
-        {usersReviews && usersReviews.length ? usersReviews.map(review => (<Review review={review} key={review.id}/>)) : <p>You currently don't have any reviews.</p>}
+        {usersReviews && usersReviews.length ? usersReviews.map(review => (<UserSingleReview review={review} key={review.id}/>)) : <p>You currently don't have any reviews.</p>}
       </div>
     </>
   );
