@@ -28,7 +28,7 @@ function Review({review}) {
           </div>
         )}
       </div>}
-      {showEditForm && <EditReview reviewId={review.id} toggleShow={setShowEditForm}/>}
+      {showEditForm && <EditReview reviewProp={review} toggleShow={setShowEditForm}/>}
     </div>
   );
 

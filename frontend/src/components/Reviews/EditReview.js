@@ -1,23 +1,18 @@
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { useHistory, useParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { editReview } from '../../store/reviews';
 
-function EditReview({reviewId, toggleShow}) {
-  const history = useHistory();
+function EditReview({reviewProp, toggleShow}) {
   const dispatch = useDispatch();
-  const sessionUser = useSelector(state => state.session.user);
-  const { digId } = useParams();
-  const dig = useSelector(state => state.digs[digId]);
 
   const [validationErrors, setValidationErrors] = useState();
-  const [review, setReview] = useState('');
-  const [rating, setRating] = useState('');
+  const [review, setReview] = useState(reviewProp.review);
+  const [rating, setRating] = useState(reviewProp.rating);
 
   const handleCancel = () => {
     setValidationErrors([]);
-    setRating('');
-    setReview('');
+    setRating(reviewProp.review);
+    setReview(reviewProp.rating);
     toggleShow();
   };
 
@@ -31,7 +26,7 @@ function EditReview({reviewId, toggleShow}) {
 
     let newReview;
     try {
-      newReview = await dispatch(editReview(data, reviewId));
+      newReview = await dispatch(editReview(data, reviewProp.id));
     }
     catch (error) {
       const err = await error.json();
@@ -43,7 +38,6 @@ function EditReview({reviewId, toggleShow}) {
       setReview('');
       setValidationErrors([]);
       toggleShow();
-      // history.push(`/digs/${dig.id}`);
     }
   }
 

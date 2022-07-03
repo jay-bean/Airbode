@@ -42,6 +42,7 @@ function ProfileButton({ user }) {
           <li>{user.email}</li>
           <Link to='/bookings'><li><button>Trips</button></li></Link>
           <Link to='/digs'><li><button>Homes</button></li></Link>
+          <Link to='/reviews'><li><button>Reviews</button></li></Link>
           <li>
             <button onClick={logout}>Log Out</button>
           </li>
