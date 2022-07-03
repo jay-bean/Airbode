@@ -26,6 +26,6 @@ Airbode is a AirBnB clone. Users can host their homes, book trips and leave revi
   *photos on photos on photos
   
 ### Index
-* [Feature List]
+* [Feature List](https://github.com/jay-bean/Airbode/wiki/feature-list)
 * [Database Schema]
 * [Redux Store State Shape]
