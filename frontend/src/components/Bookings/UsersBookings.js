@@ -5,12 +5,12 @@ import BookingList from './BookingList';
 import { getDigs } from '../../store/digs';
 
 function UsersBookings() {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getBookings());
-    dispatch(getDigs())
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(getBookings());
+  //   dispatch(getDigs())
+  // }, [dispatch]);
 
   return (
     <>
