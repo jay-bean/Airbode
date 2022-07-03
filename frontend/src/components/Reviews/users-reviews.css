@@ -1,0 +1,59 @@
+.users-reviews-page {
+  margin: 4% 11%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+}
+
+.users-reviews-review-head {
+  grid-column: 1 / 2;
+  font-weight: 600;
+  margin: 3% 0;
+}
+
+.users-reviews-div {
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+  padding: 6%;
+}
+
+.users-reviews-book-again-div {
+  margin-top: 3%;
+}
+
+.users-reviews-dig {
+  background-color: rgb(241, 241, 241);
+  padding: 2%;
+  border-radius: 30px;
+}
+
+.users-reviews-reviews {
+  background-color: rgb(255, 255, 255);
+  padding: 2%;
+}
+
+.users-reviews-book-again {
+  margin-right: .5%;
+  text-decoration: none;
+  color: #f63a40;
+}
+
+.users-reviews-book-again:hover {
+  color: #ff0008;
+}
+
+.users-reviews-dig-info {
+  font-size: 18px;
+}
+
+#users-reviews-country {
+  margin-bottom: 1%;
+}
+
+#users-reviews-city-state {
+
+}
+
+#users-reviews-title {
+  margin-bottom: 3%;
+}

@@ -28,25 +28,29 @@ function UserSingleReview({review}) {
   }, [dispatch])
 
   return (
-    <div>
-      {dig && (
-        <div>
-          <div>{dig.title}</div>
-          <div>{dig.city}, {dig.state}</div>
-          <div>{dig.Country}</div>
-          <div>Ready for another trip?<Link to={`/digs/${dig.id}`}>Click here</Link>to book again.</div>
-        </div>
-      )}
-      {!showEditForm && <div key={review.id}>
-        <div>{review.review}</div>
-        <div>{review.rating}</div>
-        {sessionUser && sessionUser.id === review.userId && (
-          <div>
-            <button onClick={deleteHandler}>Delete</button>
-            <button onClick={editHandler}>Edit</button>
+    <div className='users-reviews-div'>
+      <div className='users-reviews-dig'>
+        {dig && (
+          <div >
+            <div className='users-reviews-dig-info' id="users-reviews-title">{dig.title}</div>
+            <div className='users-reviews-dig-info' id="users-reviews-city-state">{dig.city}, {dig.state}</div>
+            <div className='users-reviews-dig-info' id="users-reviews-country">{dig.country}</div>
+            <div className="users-reviews-book-again-div"><Link className="users-reviews-book-again" to={`/digs/${dig.id}`}>Click here</Link>to book again.</div>
           </div>
         )}
-      </div>}
+      </div>
+      <div className='users-reviews-reviews'>
+        {!showEditForm && <div key={review.id}>
+          <div>{review.review}</div>
+          <div>{review.rating}</div>
+          {sessionUser && sessionUser.id === review.userId && (
+            <div>
+              <button onClick={deleteHandler}>Delete</button>
+              <button onClick={editHandler}>Edit</button>
+            </div>
+          )}
+        </div>}
+      </div>
       {showEditForm && <EditReview reviewProp={review} toggleShow={setShowEditForm}/>}
     </div>
   );

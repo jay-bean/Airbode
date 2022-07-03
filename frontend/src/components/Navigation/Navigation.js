@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal/LoginFormModal';
@@ -13,7 +13,7 @@ function Navigation({ isLoaded }){
   if (sessionUser) {
     sessionLinks = (
       <>
-        <NavLink to='/digs/new'><button>Host your Home</button></NavLink>
+        <NavLink className="host-home" to='/digs/new'>Host your Home</NavLink>
         <ProfileButton user={sessionUser} />
       </>
     );
@@ -28,13 +28,16 @@ function Navigation({ isLoaded }){
   }
 
   return (
-    <ul>
-      <li>
-        <NavLink exact to="/">Home</NavLink>
-        <NavLink exact to="/about-me">About Me</NavLink>
+    <>
+    <ul className="nav">
+      <li className="nav-bar">
+        <NavLink className="home" exact to="/">Airbode</NavLink>
+        <NavLink className="about-me" exact to="/about-me">About Me</NavLink>
         {isLoaded && sessionLinks}
       </li>
     </ul>
+    <hr/>
+    </>
   );
 }
 

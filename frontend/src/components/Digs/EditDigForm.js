@@ -11,18 +11,18 @@ function EditDigForm() {
   const dispatch = useDispatch();
 
   const [validationErrors, setValidationErrors] = useState([]);
-  const [address, setAddress] = useState(dig.address);
-  const [city, setCity] = useState(dig.city);
-  const [state, setState] = useState(dig.state);
-  const [country, setCountry] = useState(dig.country);
-  const [title, setTitle] = useState(dig.title);
-  const [price, setPrice] = useState(dig.price);
-  const [description, setDescription] = useState(dig.description);
-  const [guests, setGuests] = useState(dig.guests);
-  const [bedrooms, setBedrooms] = useState(dig.bedrooms);
-  const [beds, setBeds] = useState(dig.beds);
-  const [baths, setBaths] = useState(dig.baths);
-  const [pets, setPets] = useState(dig.pets ? 'yes' : 'no');
+  const [address, setAddress] = useState(dig ? dig.address : '');
+  const [city, setCity] = useState(dig ? dig.city : '');
+  const [state, setState] = useState(dig ? dig.state : '');
+  const [country, setCountry] = useState(dig ? dig.country : '');
+  const [title, setTitle] = useState(dig ? dig.title : '');
+  const [price, setPrice] = useState(dig ? dig.price : '');
+  const [description, setDescription] = useState(dig ? dig.description : '');
+  const [guests, setGuests] = useState(dig ? dig.guests : '');
+  const [bedrooms, setBedrooms] = useState(dig ? dig.bedrooms : '');
+  const [beds, setBeds] = useState(dig ? dig.beds : '');
+  const [baths, setBaths] = useState(dig ? dig.baths : '');
+  const [pets, setPets] = useState(dig && dig.pets ? 'yes' : 'no');
   const [image, setImage] = useState();
 
   const sessionUser = useSelector(state => state.session.user);

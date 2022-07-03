@@ -20,25 +20,25 @@ function BookingList() {
 
   return (
     <>
-      <table>
+      <table className="booking-list-table">
         <thead>
-          <tr>
-            <th>Destination</th>
-            <th>Reservation</th>
+          <tr className="booking-list-header">
+            <th className="booking-list-th">Destination</th>
+            <th className="booking-list-th">Reservation</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="booking-list-body">
           {digs && Object.keys(digs).length !== 0 && usersBookings.length ? (usersBookings.map(booking => {
             return (
-              <tr key={booking.id}>
-                <td><Link to={`/digs/${digs[booking.digId].id}`}>{digs[booking.digId].title}</Link></td>
-                <td><Link to={`/bookings/${booking.id}`}>{moment(booking.startDate).format('L')} - {moment(booking.endDate).format('L')}</Link></td>
+              <tr className="booking-list-body-row" key={booking.id}>
+                <td><Link className="booking-list-dig" to={`/digs/${digs[booking.digId].id}`}>{digs[booking.digId].title}</Link></td>
+                <td><Link className="booking-list-res" to={`/bookings/${booking.id}`}>{moment(booking.startDate).format('L')} - {moment(booking.endDate).format('L')}</Link></td>
               </tr>
             )
           })) : null}
         </tbody>
       </table>
-      <div>Ready to book another trip?<Link to="/">Click Here</Link></div>
+      <div className="booking-list-book">Ready for another trip?<Link className='click-here' to="/">Click Here</Link></div>
     </>
   );
 }
