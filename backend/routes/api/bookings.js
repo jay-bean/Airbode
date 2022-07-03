@@ -9,9 +9,7 @@ const router = express.Router();
 router.get('/',
   asyncHandler(async (_req, res) => {
     const bookings = await Booking.findAll();
-    return res.status(200).json({
-      bookings
-    });
+    return res.status(200).json(bookings);
   })
 );
 
