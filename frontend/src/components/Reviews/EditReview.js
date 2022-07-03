@@ -1,23 +1,19 @@
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { useHistory, useParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { editReview } from '../../store/reviews';
+import './users-reviews.css';
 
-function EditReview({reviewId, toggleShow}) {
-  const history = useHistory();
+function EditReview({reviewProp, toggleShow}) {
   const dispatch = useDispatch();
-  const sessionUser = useSelector(state => state.session.user);
-  const { digId } = useParams();
-  const dig = useSelector(state => state.digs[digId]);
 
   const [validationErrors, setValidationErrors] = useState();
-  const [review, setReview] = useState('');
-  const [rating, setRating] = useState('');
+  const [review, setReview] = useState(reviewProp.review);
+  const [rating, setRating] = useState(reviewProp.rating);
 
   const handleCancel = () => {
     setValidationErrors([]);
-    setRating('');
-    setReview('');
+    setRating(reviewProp.review);
+    setReview(reviewProp.rating);
     toggleShow();
   };
 
@@ -31,7 +27,7 @@ function EditReview({reviewId, toggleShow}) {
 
     let newReview;
     try {
-      newReview = await dispatch(editReview(data, reviewId));
+      newReview = await dispatch(editReview(data, reviewProp.id));
     }
     catch (error) {
       const err = await error.json();
@@ -43,31 +39,31 @@ function EditReview({reviewId, toggleShow}) {
       setReview('');
       setValidationErrors([]);
       toggleShow();
-      // history.push(`/digs/${dig.id}`);
     }
   }
 
   return (
-      <div>
-        <h2>Edit Review</h2>
+      <div className='edit-review-div'>
         {validationErrors && validationErrors.length > 0 && (
           validationErrors.map(error => {
-            return <div>{error}</div>
+            return <div className='edit-review-errors'>{error}</div>
           })
         )}
         <form
           onSubmit={handleSubmit}
         >
-          <label> Tell us about your stay
-          <input
+          <label className='edit-review-comment-label'> Tell us about your stay
+          <textarea
+            className='edit-review-comment-input'
             required
             value={review}
             onChange={(e) => setReview(e.target.value)}
           >
-          </input>
+          </textarea>
           </label>
-          <label> Rating
+          <label className='edit-review-rating-label'> Rating
           <input
+            className='edit-review-rating-input'
             type="number"
             required
             value={rating}
@@ -75,8 +71,8 @@ function EditReview({reviewId, toggleShow}) {
           >
           </input>
           </label>
-          <button type="submit">Submit</button>
-          <button type="button" onClick={handleCancel}>Cancel</button>
+          <button className='edit-review-submit-btn' type="submit">Submit</button>
+          <button className='edit-review-cancel-btn' type="button" onClick={handleCancel}>Cancel</button>
         </form>
       </div>
   );

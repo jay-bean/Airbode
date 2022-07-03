@@ -1,0 +1,163 @@
+.users-reviews-page {
+  margin: 4% 10%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+}
+
+.users-reviews-review-head {
+  grid-column: 1 / 2;
+  font-weight: 600;
+  margin: 3% 0;
+}
+
+
+.users-reviews-book-again-div {
+  margin-top: 3%;
+}
+
+.users-reviews-dig {
+  background-color: rgb(241, 241, 241);
+  padding: 3%;
+  border-radius: 30px;
+}
+
+.users-reviews-reviews {
+  background-color: rgb(255, 255, 255);
+  padding: 3%;
+}
+
+.users-reviews-book-again {
+  margin-right: .5%;
+  text-decoration: none;
+  color: #f63a40;
+}
+
+.users-reviews-book-again:hover {
+  color: #ff0008;
+}
+
+.users-reviews-dig-info {
+  font-size: 18px;
+}
+
+#users-reviews-country {
+  margin-bottom: 1%;
+  letter-spacing: 1px;
+}
+
+#users-reviews-city-state {
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+
+#users-reviews-title {
+  margin-bottom: 3%;
+}
+
+.users-reviews-comment {
+  margin-top: 3%;
+  width: 50%;
+}
+
+.users-reviews-rating {
+  margin-top: 3%;
+}
+
+.users-reviews-btn-div {
+  margin-top: 4%;
+}
+
+.users-reviews-delete-btn {
+  background-color: white;
+  padding: 6px;
+  width: 80px;
+  margin-right: 5%;
+  border-radius: 30px;
+  border: thin solid 	#484848;
+}
+
+.users-reviews-delete-btn:hover {
+  box-shadow: 1px 1px 4px #a1a1a1;
+}
+
+.users-reviews-edit-btn {
+  background-color: white;
+  padding: 6px;
+  width: 80px;
+  border-radius: 30px;
+  border: thin solid 	#484848;
+}
+
+.users-reviews-edit-btn:hover {
+  box-shadow: 1px 1px 4px #a1a1a1;
+}
+
+.edit-review-div {
+  background-color: rgb(255, 255, 255);
+  padding: 3%;
+}
+
+.edit-review-errors {
+  background-color: #FF5A5F;
+  padding: 1%;
+  border-radius: 30px;
+  width: 30%;
+  margin-bottom: 1%;
+}
+
+.edit-review-comment-label {
+  margin-right: 3%;
+}
+
+.edit-review-comment-input {
+  margin-left: 3%;
+  padding: 3%;
+  border-radius: 30px;
+}
+
+.edit-review-rating-label {
+  margin-right: 3%;
+}
+
+.edit-review-rating-input {
+  margin-left: 3%;
+  padding: .6%;
+  border-radius: 30px;
+  border: thin solid 	#484848;
+}
+
+.edit-review-submit-btn {
+  background-color: white;
+  padding: 6px;
+  width: 80px;
+  border-radius: 30px;
+  margin-right: 3%;
+  border: thin solid 	#484848;
+}
+
+.edit-review-submit-btn:hover {
+  box-shadow: 1px 1px 4px #a1a1a1;
+}
+
+.edit-review-cancel-btn {
+  background-color: white;
+  padding: 6px;
+  width: 80px;
+  border-radius: 30px;
+  border: thin solid 	#484848;
+}
+
+.edit-review-cancel-btn:hover {
+  box-shadow: 1px 1px 4px #a1a1a1;
+}
+
+.users-reviews-div {
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+  margin-top: 3%;
+}
+
+.users-reviews-div-div {
+  width: 100%;
+}

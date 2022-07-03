@@ -1,0 +1,24 @@
+.digs-home-page {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  max-width: 100%;
+  background-color: rgb(199, 138, 138);
+  justify-content: center;
+}
+
+.dig-home-page {
+  width: 330px;
+  height: 330px;
+  background-color: antiquewhite;
+  margin: 12px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 8fr 1fr;
+  align-items: end;
+}
+
+.dig-home-page-link {
+  list-style: none;
+  text-decoration: none;
+}

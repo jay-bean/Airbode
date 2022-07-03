@@ -3,9 +3,11 @@ import { removeReview } from '../../store/reviews';
 import { useDispatch, useSelector } from 'react-redux';
 import EditReview from './EditReview';
 
+
 function Review({review}) {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
+
   const [showEditForm, setShowEditForm] = useState(false);
 
   const editHandler = async (e) => {
@@ -28,7 +30,7 @@ function Review({review}) {
           </div>
         )}
       </div>}
-      {showEditForm && <EditReview reviewId={review.id} toggleShow={setShowEditForm}/>}
+      {showEditForm && <EditReview reviewProp={review} toggleShow={setShowEditForm}/>}
     </div>
   );
 

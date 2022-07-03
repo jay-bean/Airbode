@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import DigList from './DigList';
 import { getDigs } from '../../store/digs';
-
+import './dig-list.css';
 
 function AllDigsPage() {
   const dispatch = useDispatch();
@@ -12,12 +12,7 @@ function AllDigsPage() {
   }, [dispatch]);
 
   return (
-    <>
-      <div>
-        <h1>All Digs</h1>
-        <DigList/>
-      </div>
-    </>
+    <DigList />
   );
 }
 

@@ -1,0 +1,75 @@
+.users-bookings-page {
+  margin: 4% 11%;
+}
+
+.users-bookings-h1 {
+  font-weight: 600;
+}
+
+.users-bookings-h2 {
+  font-weight: 400;
+}
+
+.users-bookings-p1 {
+  margin-top: 5%;
+  width: 60%;
+}
+
+.users-bookings-p2 {
+  margin-bottom: 5%;
+  font-style: italic;
+}
+
+.booking-list-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 2%;
+
+}
+
+.booking-list-header {
+  background-color: rgb(255, 255, 255);
+  height: 60px;
+  border: thin solid #b6b6b6;  border-radius: 20px;
+}
+
+.booking-list-th {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.booking-list-body-row {
+  text-align: center;
+  height: 60px;
+  border: thin solid #b6b6b6;
+}
+
+.booking-list-dig {
+  text-decoration: none;
+  letter-spacing: 1px;
+  color: black;
+}
+
+.booking-list-dig:hover {
+  color: #FF5A5F;
+}
+
+.booking-list-res {
+  text-decoration: none;
+  letter-spacing: 1px;
+  color: black;
+}
+
+.booking-list-res:hover {
+  color: #FF5A5F;
+}
+
+.booking-list-book {
+  margin-left: 1%;
+}
+
+.click-here {
+  margin-left: .5%;
+  text-decoration: none;
+  color: #f63a40;
+}
