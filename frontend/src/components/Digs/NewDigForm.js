@@ -30,7 +30,7 @@ function NewDigForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(images, 'imAGES IN SUMBIT')
+
     const formData = new FormData();
     formData.append('title', title);
     formData.append('address', address);
@@ -47,7 +47,6 @@ function NewDigForm() {
     formData.append('userId', sessionUser.id);
 
     for(const image of Object.keys(images)) {
-      console.log(images[image]);
       formData.append('image', images[image]);
     }
 

@@ -3,7 +3,6 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import './carousel.css';
 
 function CarouselComponent({images}) {
-  console.log(typeof images, images, 'this is the images');
   return (
     <div className="carousel-wrapper">
       <Carousel>

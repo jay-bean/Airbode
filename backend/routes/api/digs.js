@@ -33,8 +33,6 @@ router.post('/',
       return res.status(400).json(errors);
     }
 
-    console.log(req.files, 'req.filesssssssssssssssssssss')
-
     const dig = Dig.build({
       address,
       city,
@@ -54,7 +52,6 @@ router.post('/',
 
     // multer trials
     const images = req.files;
-    console.log(images, 'images');
     const imageObjs = images.map(el => {
       const image = Image.build({
         url: el.path,
@@ -63,10 +60,8 @@ router.post('/',
       return image;
     })
 
-    console.log(imageObjs,'imagesObjs')
     const resImages = await Promise.all(imageObjs.map(async (image) => await image.save()))
 
-    console.log(resImages, 'resImages')
     const response = {
         ...result.dataValues,
         images: resImages
@@ -104,7 +99,6 @@ router.put(`/:digId(\\d+)`,
 
     // multer trials
     const images = req.files;
-    console.log(images, 'images');
     const imageObjs = images.map(el => {
       const image = Image.build({
         url: el.path,
@@ -113,7 +107,6 @@ router.put(`/:digId(\\d+)`,
       return image;
     })
 
-    console.log(imageObjs,'imagesObjs')
     const resImages = await Promise.all(imageObjs.map(async (image) => await image.save()))
     // multer^^^^
 

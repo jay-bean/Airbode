@@ -53,19 +53,16 @@ function EditDigForm() {
     formData.append('baths', baths);
     formData.append('pets', pets);
     formData.append('userId', sessionUser.id);
-    console.log(images)
+
     for(const image of Object.keys(images)) {
-      console.log(images[image], 'this is a string');
       formData.append('image', images[image]);
     }
 
-    console.log(images, 'second image')
     let newDig;
     try {
       newDig = await dispatch(editDig(formData, id));
     }
     catch (error) {
-      console.log(error, 'errrr');
       const err = await error.json();
       if (error.status === 500) setValidationErrors([err.message])
       else setValidationErrors(err);

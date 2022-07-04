@@ -11,7 +11,6 @@ function BookingList() {
   const sessionUser = useSelector((state) => state.session.user);
   const digs = useSelector((state) => state.digs)
   const usersBookings = Object.values(bookings).filter(booking => booking.userId === sessionUser.id).reverse();
-  console.log(digs, 'digs')
 
   useEffect(() => {
     dispatch(getDigs());
