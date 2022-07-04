@@ -43,7 +43,6 @@ function App() {
           </Route>
           <Route exact path="/digs/:digId">
             <Dig/>
-            <ReviewModal/>
           </Route>
           <Route exact path="/digs/:digId/edit">
             <EditDigForm />

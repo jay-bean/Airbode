@@ -65,8 +65,15 @@ function Calender({price}) {
     }
 
     const formattedDisabledDays = disabledDays.map(day => day.format("L"));
+
+
+    if(!startDate || !endDate) {
+      setValidationErrors(['Please select a start and end date!']);
+      return;
+    }
     const currentBooking = getBookingRange(startDate, endDate);
     const doubleBooked = currentBooking.some(day => formattedDisabledDays.includes(day));
+
     if (doubleBooked) {
       setValidationErrors(['These dates are not available']);
       return;
@@ -83,6 +90,7 @@ function Calender({price}) {
     }
     catch (error) {
       if (!sessionUser) return window.alert(error.message);
+      console.log(error, 'the error')
       const err = await error.json();
       setValidationErrors(err);
     }
@@ -95,12 +103,13 @@ function Calender({price}) {
     }
   }
   return (
-    <div>
+    <div className='booking-form-container'>
       {validationErrors.length > 0 && (
         validationErrors.map(error => {
           return <div key={error}>{error}</div>
         })
       )}
+      <h2 className='booking-form-h2'>Book a Trip</h2>
       <form
         onSubmit={handleSubmit}
       >
@@ -117,7 +126,7 @@ function Calender({price}) {
           focusedInput={focusedInput}
           onFocusChange={(focusedInput) => setFocusedInput(focusedInput)}
         />
-        <button type="submit">Reserve</button>
+        <button className='booking-form-submit-btn' type="submit">Reserve</button>
       </form>
       {nights ? nights > 1 ? (<div>{nights} nights</div>) : (<div>{nights} night</div>) : null}
       <div>

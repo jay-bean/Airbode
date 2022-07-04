@@ -1,15 +1,12 @@
-import { Carousel } from 'react-responsive-carousel';
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import './carousel.css';
+import Gallery from 'react-grid-gallery';
 
-function CarouselComponent({images, showThumbs = true, infiniteLoop = true, showStatus = false}) {
+function GridGallery({images}) {
+ const IMAGES = images.map(image =>  {
+   return {src: `/${image.url}`, thumbnail: `/${image.url}`, thumbnailWidth: 320, thumbnailHeight: 212}
+  });
   return (
-    <div className="carousel-wrapper">
-      <Carousel showThumbs={showThumbs} infiniteLoop={infiniteLoop} showStatus={showStatus}>
-        {images.map(image => <div key={image.id}><img src={`/${image.url}`}/></div>)}
-      </Carousel>
-    </div>
+    <Gallery images={IMAGES}/>
   );
 }
 
-export default CarouselComponent;
+export default GridGallery;

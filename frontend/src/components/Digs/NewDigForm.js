@@ -57,7 +57,8 @@ function NewDigForm() {
     }
     catch (error) {
       const err = await error.json();
-      setValidationErrors(err);
+      if (error.status === 500) setValidationErrors([err.message])
+      else setValidationErrors(err);
     }
 
     if (newDig) {
