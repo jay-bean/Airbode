@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { getDigs, removeDig } from '../../store/digs';
 import BookingForm from '../Bookings/BookingForm';
+import CarouselComponent from '../Carousel/CarouselComponent';
 
 function Dig() {
   const history = useHistory();
@@ -26,7 +27,7 @@ function Dig() {
       {dig && (
         <ul>
           <li>
-            {dig.images && dig.images.length ? <img src={`/${dig.images[0].url}`}/> : null}
+            {dig.images && dig.images.length ? <CarouselComponent images={dig.images}/> : null}
             <div>{dig.title}</div>
             <div>{dig.address}</div>
             <div>{dig.city}</div>

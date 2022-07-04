@@ -41,13 +41,16 @@ const fileFilter = (_req, file, cb) => {
       cb(null, true);
     } else {
       cb(null, false);
+      const err = new Error('Only .png, .jpg and .jpeg format allowed.')
+      err.statusCode = 500;
+      return cb(err);
     }
   };
   // ^^^^^
 
   // use multer
   app.use(
-    multer({ storage: fileStorage, fileFilter: fileFilter }).single('image')
+    multer({ storage: fileStorage, fileFilter: fileFilter }).array('image', 10)
   );
 
 app.use('/images', express.static(path.join(__dirname, 'images')));

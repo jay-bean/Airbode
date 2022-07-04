@@ -21,7 +21,7 @@ function NewDigForm() {
   const [beds, setBeds] = useState(0);
   const [baths, setBaths] = useState(0);
   const [pets, setPets] = useState('no');
-  const [image, setImage] = useState();
+  const [images, setImages] = useState();
 
   const handleCancel = () => {
     setValidationErrors([]);
@@ -30,24 +30,7 @@ function NewDigForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // const data = {
-    //   address,
-    //   city,
-    //   state,
-    //   country,
-    //   title,
-    //   price,
-    //   description,
-    //   guests,
-    //   bedrooms,
-    //   beds,
-    //   baths,
-    //   pets,
-    //   userId: sessionUser.id,
-    //   image
-    // };
-
+    console.log(images, 'imAGES IN SUMBIT')
     const formData = new FormData();
     formData.append('title', title);
     formData.append('address', address);
@@ -62,7 +45,11 @@ function NewDigForm() {
     formData.append('baths', baths);
     formData.append('pets', pets);
     formData.append('userId', sessionUser.id);
-    formData.append('image', image);
+
+    for(const image of Object.keys(images)) {
+      console.log(images[image]);
+      formData.append('image', images[image]);
+    }
 
     let newDig;
     try {
@@ -135,6 +122,7 @@ function NewDigForm() {
         <label> Price per night:
         <input
           type="number"
+          min='1'
           required
           value={price}
           onChange={(e) => setPrice(e.target.value)}
@@ -152,6 +140,7 @@ function NewDigForm() {
         <label> Guests:
         <input
           type="number"
+          min='1'
           required
           value={guests}
           onChange={(e) => setGuests(e.target.value)}
@@ -160,6 +149,7 @@ function NewDigForm() {
         <label> Bedrooms:
         <input
           type="number"
+          min='1'
           required
           value={bedrooms}
           onChange={(e) => setBedrooms(e.target.value)}
@@ -168,6 +158,7 @@ function NewDigForm() {
         <label> Beds:
         <input
           type="number"
+          min='1'
           required
           value={beds}
           onChange={(e) => setBeds(e.target.value)}
@@ -176,6 +167,7 @@ function NewDigForm() {
         <label> Bathrooms:
         <input
           type="number"
+          min='1'
           required
           value={baths}
           onChange={(e) => setBaths(e.target.value)}
@@ -197,11 +189,12 @@ function NewDigForm() {
             checked={pets === "no"}
         /> No
         </label>
-        <label> Upload Image
+        <label> Upload Images
         <input
           type="file"
+          multiple
           name="file"
-          onChange={(e) => setImage(e.target.files[0])}
+          onChange={(e) => setImages(e.target.files)}
         />
         </label>
         <button type="submit">Add Home</button>

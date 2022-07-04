@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { getDigs, editDig } from '../../store/digs';
+import '../../main.css';
 
 function EditDigForm() {
   const digIdObj = useParams();
@@ -23,8 +24,7 @@ function EditDigForm() {
   const [beds, setBeds] = useState(dig ? dig.beds : '');
   const [baths, setBaths] = useState(dig ? dig.baths : '');
   const [pets, setPets] = useState(dig && dig.pets ? 'yes' : 'no');
-  const [image, setImage] = useState();
-
+  const [images, setImages] = useState(dig && dig.images.length ? dig.images : '');
   const sessionUser = useSelector(state => state.session.user);
 
   useEffect(() => {
@@ -53,16 +53,22 @@ function EditDigForm() {
     formData.append('baths', baths);
     formData.append('pets', pets);
     formData.append('userId', sessionUser.id);
-    formData.append('image', image);
+    console.log(images)
+    for(const image of Object.keys(images)) {
+      console.log(images[image], 'this is a string');
+      formData.append('image', images[image]);
+    }
 
+    console.log(images, 'second image')
     let newDig;
     try {
       newDig = await dispatch(editDig(formData, id));
     }
     catch (error) {
+      console.log(error, 'errrr');
       const err = await error.json();
-      setValidationErrors(err);
-
+      if (error.status === 500) setValidationErrors([err.message])
+      else setValidationErrors(err);
     }
 
     if (newDig) {
@@ -126,6 +132,7 @@ function EditDigForm() {
         <label> Price per night:
         <input
           type="price"
+          min='1'
           required
           value={price}
           onChange={(e) => setPrice(e.target.value)}
@@ -141,7 +148,8 @@ function EditDigForm() {
         </label>
         <label> Guests:
         <input
-          type="guest"
+          type="number"
+          min='1'
           required
           value={guests}
           onChange={(e) => setGuests(e.target.value)}
@@ -149,7 +157,8 @@ function EditDigForm() {
         </label>
         <label> Bedrooms:
         <input
-          type="bedrooms"
+          type="number"
+          min='1'
           required
           value={bedrooms}
           onChange={(e) => setBedrooms(e.target.value)}
@@ -157,7 +166,8 @@ function EditDigForm() {
         </label>
         <label> Beds:
         <input
-          type="beds"
+          type="number"
+          min='1'
           required
           value={beds}
           onChange={(e) => setBeds(e.target.value)}
@@ -165,7 +175,8 @@ function EditDigForm() {
         </label>
         <label> Bathrooms:
         <input
-          type="baths"
+          type="number"
+          min='1'
           required
           value={baths}
           onChange={(e) => setBaths(e.target.value)}
@@ -187,11 +198,12 @@ function EditDigForm() {
             checked={pets === 'no'}
         /> No
         </label>
-        <label> Upload Image
+        <label> Upload Images
         <input
           type="file"
+          multiple
           name="file"
-          onChange={(e) => setImage(e.target.files[0])}
+          onChange={(e) => setImages(e.target.files)}
         />
         </label>
         <button type="submit">Submit</button>
