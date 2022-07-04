@@ -106,7 +106,6 @@ function Calender({price}) {
       >
         <DateRangePicker
           isDayBlocked={(day) => disabledDays.some(date => day.isSame(date, 'day'))}
-          // isOutsideRange={(day) => disabledDays.some(date => day.isSame(date, 'day'))}
           startDate={startDate}
           startDateId="start-date"
           endDate={endDate}
@@ -124,6 +123,9 @@ function Calender({price}) {
       <div>
         <p>Total Before Taxes</p>
         <p>${total ? total : 0}</p>
+      </div>
+      <div>
+        <p>One week cancelation policy</p>
       </div>
     </div>
   );

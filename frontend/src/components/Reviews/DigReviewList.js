@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { getReviews } from '../../store/reviews';
 import ReviewForm from './ReviewForm';
 import Review from './Review';
+import '../Digs/dig.css';
 
 function DigReviewList() {
   const dispatch = useDispatch();
@@ -21,15 +22,15 @@ function DigReviewList() {
 
 
   return (
-    <>
-    <div>
-      <ReviewForm />
+    <div className='modal'>
+      <div className='modal-2'>
+        <div className='modal-3'>
+          <ReviewForm />
+          <h1 className='dig-review-h1'>Lets see what others have to say</h1>
+          {digsReviews && digsReviews.length ? digsReviews.map(review => (<Review review={review} key={review.id}/>)) : <p>There are currently no reviews.</p>}
+        </div>
+      </div>
     </div>
-    <div>
-      <h1>Lets see what others have to say</h1>
-      {digsReviews && digsReviews.length ? digsReviews.map(review => (<Review review={review} key={review.id}/>)) : <p>There are currently no reviews.</p>}
-    </div>
-    </>
   );
 }
 

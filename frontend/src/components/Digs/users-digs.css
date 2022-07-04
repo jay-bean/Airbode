@@ -1,5 +1,5 @@
 .users-digs-page {
-  margin: 4% 10%;
+  margin: 4% 8%;
 }
 
 .users-digs-h1 {
@@ -12,7 +12,8 @@
   flex-direction: row;
   flex-wrap: wrap;
   max-width: 100%;
-  justify-content: flex-start;
+  justify-content: center;
+  padding: 0;
 }
 
 .users-digs-grid {

@@ -23,8 +23,5 @@
   background-color:white;
   width: 40%;
   height: 400px;
+  border-radius: 20px;
 }
-
-/* .login-form-errors {
-  background-color: #FF5A5F;
-} */

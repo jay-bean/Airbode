@@ -50,20 +50,21 @@ function EditReview({reviewProp, toggleShow}) {
           })
         )}
         <form
+          className='edit-review-form'
           onSubmit={handleSubmit}
         >
-          <label className='edit-review-comment-label'> Tell us about your stay
+          <label className='edit-review-label'> Tell us about your stay
           <textarea
-            className='edit-review-comment-input'
+            className='edit-review-input'
             required
             value={review}
             onChange={(e) => setReview(e.target.value)}
           >
           </textarea>
           </label>
-          <label className='edit-review-rating-label'> Rating
+          <label className='edit-review-label'> Rating
           <input
-            className='edit-review-rating-input'
+            className='edit-review-input'
             type="number"
             min='1'
             max='5'
@@ -73,8 +74,10 @@ function EditReview({reviewProp, toggleShow}) {
           >
           </input>
           </label>
-          <button className='edit-review-submit-btn' type="submit">Submit</button>
-          <button className='edit-review-cancel-btn' type="button" onClick={handleCancel}>Cancel</button>
+          <div className='edit-review-btns'>
+            <button className='edit-review-submit-btn' type="submit">Submit</button>
+            <button className='edit-review-cancel-btn' type="button" onClick={handleCancel}>Cancel</button>
+          </div>
         </form>
       </div>
   );

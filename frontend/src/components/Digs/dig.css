@@ -65,3 +65,150 @@
   color: #7a7979;
   border-bottom: thin solid #7a7979;
 }
+
+.dig-review-btn {
+  background-color: white;
+  padding: 10px;
+  width: 100px;
+  border-radius: 30px;
+  border: thin solid 	#484848;
+  margin: 20px auto;
+  margin-left: 30px;
+}
+
+.dig-review-btn:hover {
+  box-shadow: 1px 1px 4px #a1a1a1;
+}
+
+.dig-review-container {
+  overflow: hidden;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  width: 95%;
+  margin: auto;
+  border-bottom: thin solid black;
+}
+
+.dig-review-delete-btn {
+  background-color: white;
+  padding: 8px;
+  width: 80px;
+  border-radius: 30px;
+  border: thin solid 	#484848;
+  margin: 20px auto;
+  margin-left: 30px;
+}
+
+.dig-review-delete-btn:hover {
+  box-shadow: 1px 1px 4px #a1a1a1;
+}
+
+.dig-review-edit-btn {
+  background-color: white;
+  padding: 8px;
+  width: 80px;
+  border-radius: 30px;
+  border: thin solid 	#484848;
+  margin: 20px auto;
+  margin-left: 30px;
+}
+
+.dig-review-edit-btn:hover {
+  box-shadow: 1px 1px 4px #a1a1a1;
+}
+
+.modal {
+  display: block !important;
+  padding: 20px;
+}
+
+.modal-2 {
+  overflow-y: initial !important
+}
+
+.modal-3{
+  height: 380px;
+  overflow-y: auto;
+}
+
+.review-form {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  width: 95%;
+}
+
+.review-h2 {
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.review-form-label {
+  margin: 10px 0;
+  font-size: 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.review-form-input {
+  border-radius: 20px;
+  padding: 6px;
+  margin-left: 10px;
+  width: 200px;
+  font-size: 16px;
+  border: 1px solid #484848;
+  padding-left: 20px;
+}
+
+.review-form-input:focus {
+  outline: none;
+  border: 2px solid #FF5A5F;
+}
+
+.review-btns {
+  margin: 0 auto;
+}
+
+.review-submit-btn {
+  background-color: white;
+  padding: 8px;
+  width: 80px;
+  border-radius: 30px;
+  border: thin solid 	#484848;
+  margin: 20px auto;
+  margin-left: 30px;
+}
+
+.review-submit-btn:hover {
+  box-shadow: 1px 1px 4px #a1a1a1;
+}
+
+.review-cancel-btn {
+  background-color: white;
+  padding: 8px;
+  width: 80px;
+  border-radius: 30px;
+  border: thin solid 	#484848;
+  margin: 20px auto;
+  margin-left: 30px;
+}
+
+.review-cancel-btn:hover {
+  box-shadow: 1px 1px 4px #a1a1a1;
+}
+
+.dig-review-h1 {
+  font-weight: 600;
+  border-bottom: thin solid #484848;
+  border-width: 2px;
+  padding-bottom: 10px;
+}
+
+.review-comment-div {
+  /* display: block !important;
+  overflow: hidden !important;
+  overflow-y: scroll;
+  width: 400px; */
+  word-break: break-all;
+}
