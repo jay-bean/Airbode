@@ -36,3 +36,4 @@ Airbode is a AirBnB clone. Users can host their homes, book trips and leave revi
 * Create likes/wishlist 
 * Allow individual images to be added via dig page
 * Allow deletion of images
+* Star ratings with average rating
