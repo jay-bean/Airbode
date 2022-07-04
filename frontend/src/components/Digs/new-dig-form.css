@@ -1,0 +1,119 @@
+.new-dig-page {
+  margin: 4% 10%;
+  text-align: center;
+}
+
+.new-dig-h1 {
+  font-weight: 600;
+  margin: 100px auto;
+  margin-bottom: 60px;
+}
+
+.new-dig-form {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  width: 60%;
+  margin: 0 20%;
+}
+
+.new-dig-label {
+  margin: 10px 0;
+  font-size: 18px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.new-dig-input {
+  border-radius: 20px;
+  padding: 6px;
+  margin-left: 10px;
+  width: 200px;
+  font-size: 18px;
+  border: 1px solid #484848;
+}
+
+.new-dig-input:focus {
+  outline: none;
+  border: 2px solid #FF5A5F;
+}
+
+.new-dig-label-textarea {
+  margin: 10px 0;
+  font-size: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.new-dig-input-textarea {
+  border-radius: 20px;
+  padding: 6px;
+  margin-left: 10px;
+  font-size: 18px;
+  border: 1px solid #484848;
+}
+
+.new-dig-input-textarea:focus {
+  outline: none;
+  border: 2px solid #FF5A5F;
+}
+
+.new-dig-label-pets {
+  margin: 10px auto;
+  font-size: 20px;
+  display: block;
+  width: 98%;
+  background-color: rgb(255, 90, 95);
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.new-dig-input-pets {
+  border-radius: 20px;
+  padding: 6px;
+  margin-left: 10px;
+  font-size: 18px;
+  border: 1px solid #484848;
+}
+
+.new-dig-input-pet:focus {
+  outline: none;
+  border: 2px solid #FF5A5F;
+}
+
+.btn-div {
+  display: block;
+  width: 80%;
+  margin: auto;
+}
+
+.new-dig-submit-btn {
+  background-color: white;
+  padding: 10px;
+  width: 100px;
+  border-radius: 30px;
+  border: thin solid 	#484848;
+  margin: 20px auto;
+  margin-right: 30px;
+}
+
+.new-dig-submit-btn:hover {
+  box-shadow: 1px 1px 4px #a1a1a1;
+}
+
+.new-dig-cancel-btn {
+  background-color: white;
+  padding: 10px;
+  width: 100px;
+  border-radius: 30px;
+  border: thin solid 	#484848;
+  margin: 20px auto;
+  margin-left: 30px;
+}
+
+.new-dig-cancel-btn:hover {
+  box-shadow: 1px 1px 4px #a1a1a1;
+}

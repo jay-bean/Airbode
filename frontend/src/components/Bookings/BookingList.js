@@ -34,7 +34,7 @@ function BookingList() {
                 <td><Link className="booking-list-res" to={`/bookings/${booking.id}`}>{moment(booking.startDate).format('L')} - {moment(booking.endDate).format('L')}</Link></td>
               </tr>
             )
-          })) : null}
+          })) : <h3>You currently don't have any reservations.</h3>}
         </tbody>
       </table>
       <div className="booking-list-book">Ready for another trip?<Link className='click-here' to="/">Click Here</Link></div>

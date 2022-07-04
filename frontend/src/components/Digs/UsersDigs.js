@@ -18,7 +18,7 @@ function UsersDigs() {
     <>
       <h1>Your Humble Abodes</h1>
       <p>To manage your homes navigate to the individual pages by clicking one of them below.</p>
-      {usersDigs && (usersDigs.map(dig => {
+      {usersDigs && usersDigs.length ? (usersDigs.map(dig => {
         return (
           <Link key={dig.id} to={`/digs/${dig.id}`}>
             <div key={dig.id}>
@@ -27,7 +27,7 @@ function UsersDigs() {
             </div>
           </Link>
         )
-      }))}
+      })) : <h3>You currently aren't hosting with us.</h3> }
     </>
   );
 }

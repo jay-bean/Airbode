@@ -33,6 +33,10 @@ router.post('/',
       return res.status(400).json(errors);
     }
 
+    if (!req.files.length) {
+      return res.status(400).json(['You must provide at least one photo.']);
+    }
+
     const dig = Dig.build({
       address,
       city,
@@ -51,6 +55,7 @@ router.post('/',
     const result = await dig.save({raw: true});
 
     // multer trials
+
     const images = req.files;
     const imageObjs = images.map(el => {
       const image = Image.build({
