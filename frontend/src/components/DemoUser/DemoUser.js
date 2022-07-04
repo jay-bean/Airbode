@@ -22,7 +22,7 @@ function DemoUser() {
 
   return (
     <>
-      <button onClick={handleDemoLogin}>Demo User</button>
+      <button className='nav-demouser' onClick={handleDemoLogin}>Demo User</button>
       <ul className="login-form-errors">
       {errors.length ? errors.map((error, idx) => (
         <li key={idx}>{error}</li>

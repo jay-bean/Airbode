@@ -1,0 +1,67 @@
+.dig-edit-btn {
+  background-color: white;
+  padding: 10px;
+  width: 100px;
+  border-radius: 30px;
+  border: thin solid 	#484848;
+  margin: 20px auto;
+  margin-left: 30px;
+}
+
+.dig-edit-btn:hover {
+  box-shadow: 1px 1px 4px #a1a1a1;
+}
+
+.dig-delete-btn {
+  background-color: white;
+  padding: 10px;
+  width: 100px;
+  border-radius: 30px;
+  border: thin solid 	#484848;
+  margin: 20px auto;
+  margin-left: 30px;
+}
+
+.dig-delete-btn:hover {
+  box-shadow: 1px 1px 4px #a1a1a1;
+}
+
+.dig-reviews-btn {
+  background-color: white;
+  padding: 10px;
+  width: 100px;
+  border-radius: 30px;
+  border: thin solid 	#484848;
+  margin: 20px auto;
+  margin-left: 30px;
+}
+
+.dig-reviews-btn:hover {
+  box-shadow: 1px 1px 4px #a1a1a1;
+}
+
+.dig-homes-link {
+  border-bottom: thin solid black;
+  padding-bottom: 4px;
+  text-decoration: none;
+  color: black;
+  font-size: 18px;
+}
+
+.dig-homes-link:hover {
+  color: #7a7979;
+  border-bottom: thin solid #7a7979;
+}
+
+.dig-bookings-link {
+  text-decoration: none;
+  border-bottom: thin solid black;
+  padding-bottom: 4px;
+  color: black;
+  font-size: 18px;
+}
+
+.dig-bookings-link:hover {
+  color: #7a7979;
+  border-bottom: thin solid #7a7979;
+}

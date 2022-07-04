@@ -28,7 +28,7 @@ function UsersDigs() {
               </li>
             </Link>
           )
-        })) : <h3>You currently aren't hosting with us.</h3> }
+        })) : <h3>You currently aren't hosting with us. Get started now! <Link className='users-digs-host-link' to="/digs/new">Host Your Home</Link></h3> }
       </ul>
     </div>
   );

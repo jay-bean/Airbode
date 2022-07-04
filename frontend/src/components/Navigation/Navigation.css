@@ -27,7 +27,7 @@ hr {
 }
 
 .about-me:hover {
-  color: #484848;
+  color: #7a7979;
 }
 
 .host-home {
@@ -37,7 +37,7 @@ hr {
 }
 
 .host-home:hover {
-  color: #484848;
+  color: #7a7979;
 }
 
 .profile-btn {
@@ -57,4 +57,28 @@ hr {
 
 .profile-dropdown {
 z-index: 1;
+}
+
+.nav-signup {
+  text-decoration: none;
+  color: black;
+  font-size: 18px;
+}
+
+.nav-signup:hover {
+  color: #fd464c;
+}
+
+.nav-demouser {
+  background-color: white;
+  padding: 10px;
+  width: 100px;
+  border-radius: 30px;
+  border: thin solid 	#484848;
+  margin: 20px auto;
+  margin-right: 30px;
+}
+
+.nav-demouser:hover {
+  box-shadow: 1px 1px 4px #a1a1a1;
 }

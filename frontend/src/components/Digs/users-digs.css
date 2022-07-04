@@ -36,3 +36,15 @@
   margin-bottom: 20px;
   border-radius: 20px;
 }
+
+.users-digs-host-link {
+  text-decoration: none;
+  border-bottom: thin solid black;
+  color: black;
+  font-size: 18px;
+}
+
+.users-digs-host-link:hover {
+  color: #FF5A5F;
+  border-bottom: thin solid #FF5A5F;
+}
