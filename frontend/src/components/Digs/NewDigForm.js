@@ -21,7 +21,7 @@ function NewDigForm() {
   const [beds, setBeds] = useState(0);
   const [baths, setBaths] = useState(0);
   const [pets, setPets] = useState('no');
-  const [images, setImages] = useState();
+  const [images, setImages] = useState({});
 
   const handleCancel = () => {
     setValidationErrors([]);
