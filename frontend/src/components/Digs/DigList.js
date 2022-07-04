@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import CarouselComponent from "../Carousel/CarouselComponent";
 
 function DigList() {
   const digs = useSelector((state) => state.digs);
@@ -13,8 +14,8 @@ function DigList() {
               <div className="dig-home-page-image-div">
               {dig.images && dig.images.length ? <img className="dig-home-page-image" src={`/${dig.images[0].url}`}/> : null}
               </div>
-              <div>{dig.city}, {dig.state}</div>
-              <div>{dig.country}</div>
+              <div className="dig-home-text">{dig.city}, {dig.state}</div>
+              <div className="dig-home-text">{dig.country}</div>
             </li>
           </Link>
         );

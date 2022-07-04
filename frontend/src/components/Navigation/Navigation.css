@@ -22,22 +22,22 @@ hr {
 
 .about-me {
   text-decoration: none;
-  color: #484848;
+  color: black;
   font-size: 18px;
 }
 
 .about-me:hover {
-  color: #909090;
+  color: #484848;
 }
 
 .host-home {
   text-decoration: none;
-  color: #484848;
+  color: black;
   font-size: 18px;
 }
 
 .host-home:hover {
-  color: #909090;
+  color: #484848;
 }
 
 .profile-btn {

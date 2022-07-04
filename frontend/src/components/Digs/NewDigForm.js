@@ -192,9 +192,10 @@ function NewDigForm() {
           checked={pets === "no"}
         /> No
         </label>
-        <label className='new-dig-label'> Upload Images
+        <label className='new-dig-label-imgs'>
+        <i class="fa-solid fa-images"></i> Upload Images
         <input
-          className='new-dig-input'
+          className='new-dig-input-imgs'
           type="file"
           multiple
           name="file"
