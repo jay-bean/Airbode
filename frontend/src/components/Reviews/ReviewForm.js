@@ -72,6 +72,8 @@ function ReviewForm() {
           <label> Rating
           <input
             type="number"
+            min='1'
+            max='5'
             required
             value={rating}
             onChange={(e) => setRating(e.target.value)}

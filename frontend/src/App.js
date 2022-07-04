@@ -15,6 +15,7 @@ import HostsBookings from "./components/Bookings/HostsBookings";
 import UsersReviews from "./components/Reviews/UsersReviews";
 import ReviewModal from "./components/Reviews/ReviewModal";
 import AboutMe from "./components/AboutMe/AboutMe";
+import './main.css';
 
 function App() {
   const dispatch = useDispatch();

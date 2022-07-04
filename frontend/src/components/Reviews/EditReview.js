@@ -65,6 +65,8 @@ function EditReview({reviewProp, toggleShow}) {
           <input
             className='edit-review-rating-input'
             type="number"
+            min='1'
+            max='5'
             required
             value={rating}
             onChange={(e) => setRating(e.target.value)}

@@ -2,7 +2,7 @@ const express = require('express');
 const asyncHandler = require('express-async-handler');
 const { validationResult } = require('express-validator');
 const { Dig, Image } = require('../../db/models');
-const { digValidators } = require('../../validations');
+const { digValidators, editDigValidators } = require('../../validations');
 
 const router = express.Router();
 
@@ -33,6 +33,8 @@ router.post('/',
       return res.status(400).json(errors);
     }
 
+    console.log(req.files, 'req.filesssssssssssssssssssss')
+
     const dig = Dig.build({
       address,
       city,
@@ -51,20 +53,23 @@ router.post('/',
     const result = await dig.save({raw: true});
 
     // multer trials
-    const img = req.file;
-    const imageUrl = img.path;
+    const images = req.files;
+    console.log(images, 'images');
+    const imageObjs = images.map(el => {
+      const image = Image.build({
+        url: el.path,
+        digId: result.id
+      });
+      return image;
+    })
 
-    const image = Image.build({
-      url: imageUrl,
-      digId: result.id
-    });
+    console.log(imageObjs,'imagesObjs')
+    const resImages = await Promise.all(imageObjs.map(async (image) => await image.save()))
 
-    const imageResult = await image.save();
-    // multer^^^^
-
+    console.log(resImages, 'resImages')
     const response = {
         ...result.dataValues,
-        images: imageResult.dataValues
+        images: resImages
     }
 
     return res.status(200).json(response);
@@ -72,8 +77,16 @@ router.post('/',
 )
 
 router.put(`/:digId(\\d+)`,
-  digValidators,
+  editDigValidators,
   asyncHandler(async (req, res) => {
+
+    const validationErrors = validationResult(req);
+
+    if (!validationErrors.isEmpty()) {
+      const errors = validationErrors.array().map(error => error.msg);
+      return res.status(400).json(errors);
+    }
+
     const dig = await Dig.findByPk(req.params.digId);
     dig.address = req.body.address;
     dig.city = req.body.city;
@@ -90,20 +103,23 @@ router.put(`/:digId(\\d+)`,
     const result = await dig.save();
 
     // multer trials
-    const img = req.file;
-    const imageUrl = img.path;
+    const images = req.files;
+    console.log(images, 'images');
+    const imageObjs = images.map(el => {
+      const image = Image.build({
+        url: el.path,
+        digId: result.id
+      });
+      return image;
+    })
 
-    const image = Image.build({
-      url: imageUrl,
-      digId: result.id
-    });
-
-    const imageResult = await image.save();
+    console.log(imageObjs,'imagesObjs')
+    const resImages = await Promise.all(imageObjs.map(async (image) => await image.save()))
     // multer^^^^
 
     const response = {
       ...result.dataValues,
-      images: imageResult.dataValues
+      images: resImages
   }
     return res.status(200).json(response);
   })
