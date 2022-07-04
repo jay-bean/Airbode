@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { addDig } from '../../store/digs';
-import './new-dig-form.css';
+import './dig-form.css';
 
 function NewDigForm() {
   const history = useHistory();
@@ -192,8 +192,9 @@ function NewDigForm() {
           checked={pets === "no"}
         /> No
         </label>
+        <div className='new-dig-img-div'>
         <label className='new-dig-label-imgs'>
-        <i class="fa-solid fa-images"></i> Upload Images
+        <i className="fa-solid fa-images"></i> Upload Images
         <input
           className='new-dig-input-imgs'
           type="file"
@@ -202,6 +203,7 @@ function NewDigForm() {
           onChange={(e) => setImages(e.target.files)}
         />
         </label>
+        </div>
         <label className='new-dig-label-textarea'> Description:
         <textarea
           className='new-dig-input-textarea'

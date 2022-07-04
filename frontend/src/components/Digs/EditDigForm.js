@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { getDigs, editDig } from '../../store/digs';
 import '../../main.css';
-
+import './dig-form.css'
 function EditDigForm() {
   const digIdObj = useParams();
   const id = digIdObj.digId;
@@ -75,59 +75,66 @@ function EditDigForm() {
   }
 
   return (
-    <>
-      <h1>Edit Home</h1>
+    <div className='new-dig-page'>
+      <h1 className='new-dig-h1'>Edit Home</h1>
       {validationErrors.length > 0 && (
         validationErrors.map(error => {
           return <div>{error}</div>
         })
       )}
       <form
+        className='new-dig-form'
         onSubmit={handleSubmit}
         encType="multipart/form-data"
       >
-        <label> Address:
+        <label className='new-dig-label'> Address:
         <input
+          className='new-dig-input'
           type="address"
           required
           value={address}
           onChange={(e) => setAddress(e.target.value)}
         />
         </label>
-        <label> City:
+        <label className='new-dig-label'> City:
         <input
+          className='new-dig-input'
           type="city"
           required
           value={city}
           onChange={(e) => setCity(e.target.value)}
         />
         </label>
-        <label> State/Province:
+        <label className='new-dig-label'> State/Province:
         <input
+          className='new-dig-input'
           type="state"
           required
           value={state}
           onChange={(e) => setState(e.target.value)}
         />
         </label>
-        <label> Country:
+        <label className='new-dig-label'> Country:
         <input
+          className='new-dig-input'
           type="country"
           required
           value={country}
           onChange={(e) => setCountry(e.target.value)}
         />
         </label>
-        <label> Title:
+        <label className='new-dig-label'> Title:
         <input
+          className='new-dig-input'
           type="title"
           required
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
         </label>
-        <label> Price per night:
+        <label className='new-dig-label'> Price per night:
         <input
+          className='new-dig-input'
           type="price"
           min='1'
           required
@@ -135,16 +142,9 @@ function EditDigForm() {
           onChange={(e) => setPrice(e.target.value)}
         />
         </label>
-        <label> Description:
-        <textarea
-          type="description"
-          required
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
-        </label>
-        <label> Guests:
+        <label className='new-dig-label'> Guests:
         <input
+          className='new-dig-input'
           type="number"
           min='1'
           required
@@ -152,8 +152,9 @@ function EditDigForm() {
           onChange={(e) => setGuests(e.target.value)}
         />
         </label>
-        <label> Bedrooms:
+        <label className='new-dig-label'> Bedrooms:
         <input
+          className='new-dig-input'
           type="number"
           min='1'
           required
@@ -161,8 +162,9 @@ function EditDigForm() {
           onChange={(e) => setBedrooms(e.target.value)}
         />
         </label>
-        <label> Beds:
+        <label className='new-dig-label'> Beds:
         <input
+          className='new-dig-input'
           type="number"
           min='1'
           required
@@ -170,8 +172,9 @@ function EditDigForm() {
           onChange={(e) => setBeds(e.target.value)}
         />
         </label>
-        <label> Bathrooms:
+        <label className='new-dig-label'> Bathrooms:
         <input
+          className='new-dig-input'
           type="number"
           min='1'
           required
@@ -179,8 +182,9 @@ function EditDigForm() {
           onChange={(e) => setBaths(e.target.value)}
         />
         </label>
-        <label> Pets Okay?
+        <label className='new-dig-label-pets'> Pets Okay?
         <input
+          className='new-dig-input-pets'
           type="radio"
           value="yes"
           name="pets"
@@ -188,25 +192,44 @@ function EditDigForm() {
           checked={pets === 'yes'}
         /> Yes
         <input
-            type="radio"
-            value="no"
-            name="pets"
-            onChange={(e) => setPets(e.target.value)}
-            checked={pets === 'no'}
+          className='new-dig-input-pets'
+          type="radio"
+          value="no"
+          name="pets"
+          onChange={(e) => setPets(e.target.value)}
+          checked={pets === 'no'}
         /> No
         </label>
-        <label> Upload Images
+        <div className='new-dig-img-div'>
+        <label className='new-dig-label-imgs'>
+        <i className="fa-solid fa-images"></i> Upload Images
         <input
+          className='new-dig-input-imgs'
           type="file"
           multiple
           name="file"
           onChange={(e) => setImages(e.target.files)}
         />
         </label>
-        <button type="submit">Submit</button>
-        <button type="button" onClick={handleCancel}>Cancel</button>
+        </div>
+        <label className='new-dig-label-textarea'> Description:
+        <textarea
+          className='new-dig-input-textarea'
+          rows="4"
+          cols="30"
+          type="description"
+          placeholder="Tell us about your home..."
+          required
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        />
+        </label>
+        <div className='btn-div'>
+          <button className='new-dig-submit-btn' type="submit">Submit</button>
+          <button className='new-dig-cancel-btn' type="button" onClick={handleCancel}>Cancel</button>
+        </div>
       </form>
-    </>
+    </div>
   );
 }
 

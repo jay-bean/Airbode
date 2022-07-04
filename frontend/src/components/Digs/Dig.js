@@ -5,6 +5,7 @@ import { getDigs, removeDig } from '../../store/digs';
 import BookingForm from '../Bookings/BookingForm';
 import CarouselComponent from '../Carousel/CarouselComponent';
 
+
 function Dig() {
   const history = useHistory();
   const { digId } = useParams();
