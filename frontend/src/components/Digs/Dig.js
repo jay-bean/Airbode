@@ -5,7 +5,8 @@ import { getDigs, removeDig } from '../../store/digs';
 import BookingForm from '../Bookings/BookingForm';
 import ReviewModal from '../Reviews/ReviewModal';
 import './dig.css';
-import GridGallery from '../Carousel/CarouselComponent';
+import GridGallery from '../GridGallery/GridGallery';
+
 function Dig() {
   const history = useHistory();
   const { digId } = useParams();

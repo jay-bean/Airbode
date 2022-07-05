@@ -36,7 +36,6 @@ function Navigation({ isLoaded }){
         {isLoaded && sessionLinks}
       </li>
     </ul>
-    <hr/>
     </>
   );
 }

@@ -1,12 +1,16 @@
 .signup-page {
-  margin: 4% 10%;
+  margin: 4% 25%;
   text-align: center;
+  background-color: #ffc6c6;
+  padding: 20px;
+  border-radius: 30px;
 }
 
 .signup-h1 {
   font-weight: 600;
-  margin: 100px auto;
+  margin: 10px auto;
   margin-bottom: 60px;
+  letter-spacing: 1px;
 }
 
 .signup-form {
@@ -60,7 +64,6 @@
   width: 100px;
   border-radius: 30px;
   border: thin solid 	#484848;
-  margin: 20px auto;
   margin-right: 30px;
 }
 

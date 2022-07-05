@@ -79,7 +79,7 @@ function EditDigForm() {
       <h1 className='new-dig-h1'>Edit Home</h1>
       {validationErrors.length > 0 && (
         validationErrors.map(error => {
-          return <div>{error}</div>
+          return <div className='errors'>{error}</div>
         })
       )}
       <form

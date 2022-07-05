@@ -1,5 +1,9 @@
 .profile-dropdown {
   list-style: none;
+  background-color: #ffffff;
+  padding: 4px;
+  border-radius: 10px;
+  border: 1px solid black;
 }
 
 .profile-li {
@@ -9,6 +13,8 @@
 .profile-li-name {
   border-bottom: thin solid #484848;
   border-bottom-width: 100%;
+  padding-bottom: 4px;
+  text-align: center;
 }
 
 .profile-link {
@@ -28,8 +34,7 @@
   border: thin solid 	#484848;
   margin: auto;
   margin-right: 30px;
-  border-right: none;
-  border-left: none;
+  border-radius: 20px;
 }
 
 .profile-logout-btn:hover {

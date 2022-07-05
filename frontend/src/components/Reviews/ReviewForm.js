@@ -55,7 +55,7 @@ function ReviewForm() {
         <h2 className='review-h2'>Leave a review</h2>
         {validationErrors && validationErrors.length > 0 && (
           validationErrors.map(error => {
-            return <div>{error}</div>
+            return <div className='errors'>{error}</div>
           })
         )}
         <form

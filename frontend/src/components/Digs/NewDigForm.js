@@ -69,10 +69,10 @@ function NewDigForm() {
 
   return (
     <div className='new-dig-page'>
-      <h1 className='new-dig-h1'>New House Form</h1>
+      <h1 className='new-dig-h1'>Host Form</h1>
       {validationErrors.length > 0 && (
         validationErrors.map(error => {
-          return <div key={error}>{error}</div>
+          return <div className='errors' key={error}>{error}</div>
         })
       )}
       <form

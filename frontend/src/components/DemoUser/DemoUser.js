@@ -10,6 +10,7 @@ function DemoUser() {
   const [errors, setErrors] = useState([]);
   const [credential, _setCredential] = useState(demoUser.username);
   const [password, _setPassword] = useState(demoUser.password);
+
   const handleDemoLogin = () => {
     setErrors([]);
     return dispatch(sessionActions.login({ credential, password })).catch(

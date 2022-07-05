@@ -1,0 +1,32 @@
+.host-bookings-page {
+  margin: 4% 10%;
+}
+
+.host-bookings-link-to-prop {
+  text-decoration: none;
+  color: #f63a40;
+}
+
+.host-bookings-p1 {
+  margin-bottom: 80px;
+}
+
+.host-bookings-dates {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 300px;
+  margin-bottom: 30px;
+}
+
+.host-bookings-start {
+
+}
+
+.host-bookings-p2 {
+  margin: 0;
+}
+
+.host-bookings-end {
+
+}

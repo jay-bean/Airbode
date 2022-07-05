@@ -2,3 +2,6 @@ body {
   font-family: 'Inter', sans-serif;
 }
 
+.errors {
+  list-style: none;
+}

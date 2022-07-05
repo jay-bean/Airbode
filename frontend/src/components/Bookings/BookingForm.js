@@ -106,7 +106,7 @@ function Calender({price}) {
     <div className='booking-form-container'>
       {validationErrors.length > 0 && (
         validationErrors.map(error => {
-          return <div key={error}>{error}</div>
+          return <div className='errors' key={error}>{error}</div>
         })
       )}
       <h2 className='booking-form-h2'>Book a Trip</h2>
