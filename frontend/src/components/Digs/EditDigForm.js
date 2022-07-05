@@ -64,7 +64,7 @@ function EditDigForm() {
     }
     catch (error) {
       const err = await error.json();
-      if (error.status === 500) setValidationErrors([err.message])
+      if (error.status >= 500) setValidationErrors([err.message])
       else setValidationErrors(err);
     }
 
