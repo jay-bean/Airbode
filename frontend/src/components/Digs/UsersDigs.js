@@ -23,7 +23,7 @@ function UsersDigs() {
           return (
             <Link className='users-digs-page-link' key={dig.id} to={`/digs/${dig.id}`}>
               <li className='users-digs-grid'>
-                {dig.images && dig.images.length ? <img className="users-digs-image" src={`/${dig.images[0].url}`}/> : null}
+                {dig.images && dig.images.length ? <img className="users-digs-image" src={`${dig.images[0].url}`}/> : null}
                 <div>{dig.title}</div>
               </li>
             </Link>

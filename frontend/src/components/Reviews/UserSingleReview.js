@@ -29,7 +29,7 @@ function UserSingleReview({review}) {
       <div className='users-reviews-dig'>
         {dig && (
           <div>
-            {dig.images && dig.images.length ? <img className="dig-home-page-image" src={`/${dig.images[0].url}`}/> : null}
+            {dig.images && dig.images.length ? <img className="dig-home-page-image" src={`${dig.images[0].url}`}/> : null}
             <div className='users-reviews-dig-info' id="users-reviews-title">{dig.title}</div>
             <div className='users-reviews-dig-info' id="users-reviews-city-state">{dig.city}, {dig.state}</div>
             <div className='users-reviews-dig-info' id="users-reviews-country">{dig.country}</div>

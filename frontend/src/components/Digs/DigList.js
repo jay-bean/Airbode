@@ -11,7 +11,7 @@ function DigList() {
           <Link className="dig-home-page-link"key={dig.id} to={`/digs/${dig.id}`}>
             <li className="dig-home-page" dig={dig}>
               <div className="dig-home-page-image-div">
-              {dig.images && dig.images.length ? <img className="dig-home-page-image" src={`/${dig.images[0].url}`}/> : null}
+              {dig.images && dig.images.length ? <img className="dig-home-page-image" src={`${dig.images[0].url}`}/> : null}
               </div>
               <div className="dig-home-flex">
                 <div className="dig-home-text-div">

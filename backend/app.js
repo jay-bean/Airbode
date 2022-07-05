@@ -6,6 +6,13 @@ const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
 const path = require('path');
 const { ValidationError } = require('sequelize');
+const aws = require('aws-sdk');
+const multerS3 = require('multer-s3');
+const s3 = new aws.S3({
+  accessKeyId: process.env.S3_ACCESS_KEY,
+  secretAccessKey: process.env.S3_ACCESS_SECRET,
+  region: "us-west-1"
+});
 
 // image trial
 const multer = require('multer');
@@ -23,14 +30,25 @@ app.use(cookieParser());
 app.use(express.json({ limit: "50mb" }));
 
 // multer middleware
-const fileStorage = multer.diskStorage({
-  destination: (_req, _file, cb) => {
-    cb(null, 'images');
+// const fileStorage = multer.diskStorage({
+//   destination: (_req, _file, cb) => {
+//     cb(null, 'images');
+//   },
+//   filename: (_req, file, cb) => {
+//     cb(null, new Date().toISOString() + '-' + file.originalname);
+//   }
+// });
+
+const fileStorage = multerS3({
+  s3,
+  bucket: process.env.BUCKET_NAME,
+  metadata: function (req, file, cb) {
+    cb(null, { fieldName: "TESTING_METADATA" });
   },
-  filename: (_req, file, cb) => {
+  key: function (req, file, cb) {
     cb(null, new Date().toISOString() + '-' + file.originalname);
-  }
-});
+  },
+})
 
 const fileFilter = (_req, file, cb) => {
   if (
