@@ -10,12 +10,14 @@ function BookingList() {
   const bookings = useSelector((state) => state.bookings);
   const sessionUser = useSelector((state) => state.session.user);
   const digs = useSelector((state) => state.digs);
-
+  console.log(bookings, 'line13')
   let usersBookings;
   if (bookings) {
+   console.log(bookings, 'line16')
    usersBookings = Object.values(bookings).filter(booking => booking.userId === sessionUser.id).reverse();
+   console.log(usersBookings, 'usersBookings18')
   }
-  
+
   useEffect(() => {
     dispatch(getDigs());
     dispatch(getBookings());
