@@ -7,6 +7,7 @@
 * [Technologies Used](#technologies-used)
 * [Take a peek](#take-a-peek)
 * [Index](#index)
+* [Installation Instructions](#installation-instructions)
 * [Future Features](#future-features)
 
 
@@ -29,9 +30,18 @@ Airbode is a AirBnB clone. Users can host their homes, book trips and leave revi
   *photos on photos on photos
   
 ### Index
-* [Feature List](https://github.com/jay-bean/Airbode/wiki/feature-list)
+* [API Routes](https://github.com/jay-bean/Airbode/wiki/API-Routes)
+* [Components](https://github.com/jay-bean/Airbode/wiki/Component-List)
 * [Database Schema](https://github.com/jay-bean/Airbode/wiki/Database-Schema)
+* [Feature List](https://github.com/jay-bean/Airbode/wiki/feature-list)
+* [Frontend Routes](https://github.com/jay-bean/Airbode/wiki/Frontend-Routes)
 * [Redux Store State Shape](https://github.com/jay-bean/Airbode/wiki/State-Shape)
+
+### Installation Instructions
+* ``` git clone git@github.com:jay-bean/Airbode.git ```
+* ``` npm install ``` in ``` ./backend```
+* ``` npm install ``` in ``` ./frontend```
+* ``` npm start ``` in both back and frontend
 
 ### Future Features
 * Require user to have stayed at location to leave review
