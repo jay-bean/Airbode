@@ -59,7 +59,7 @@ router.post('/',
     const images = req.files;
     const imageObjs = images.map(el => {
       const image = Image.build({
-        url: el.path,
+        url: el.location,
         digId: result.id
       });
       return image;
@@ -106,7 +106,7 @@ router.put(`/:digId(\\d+)`,
     const images = req.files;
     const imageObjs = images.map(el => {
       const image = Image.build({
-        url: el.path,
+        url: el.location,
         digId: result.id
       });
       return image;
