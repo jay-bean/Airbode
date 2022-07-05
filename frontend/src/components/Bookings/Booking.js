@@ -61,7 +61,7 @@ function Booking() {
               </ul>
               <div>
                   <p className='booking-page-p'>Where are you going?</p>
-                  <Link to={`/digs/${dig.id}`}>{dig.images && dig.images.length ? <img className="dig-home-page-image" src={`/${dig.images[0].url}`}/> : null}</Link>
+                  <Link to={`/digs/${dig.id}`}>{dig.images && dig.images.length ? <img className="dig-home-page-image" src={`${dig.images[0].url}`}/> : null}</Link>
                   <Link className='booking-page-link-1' to={`/digs/${dig.id}`}><div className='booking-page-div'>{dig.title}</div></Link>
                   <div className='booking-page-csc-1'>{dig.city}, {dig.state}</div>
                   <div className='booking-page-csc-2'>{dig.country}</div>
