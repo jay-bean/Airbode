@@ -14,7 +14,7 @@ function BookingList() {
   let usersBookings;
   if (bookings) {
    console.log(bookings, 'line16')
-   usersBookings = Object.values(bookings).filter(booking => booking.userId === sessionUser.id).reverse();
+   usersBookings = Object.values(bookings).filter(booking => (booking.userId === sessionUser.id)).reverse()
    console.log(usersBookings, 'usersBookings18')
   }
 
