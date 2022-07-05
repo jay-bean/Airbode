@@ -90,7 +90,6 @@ function Calender({price}) {
     }
     catch (error) {
       if (!sessionUser) return window.alert(error.message);
-      console.log(error, 'the error')
       const err = await error.json();
       setValidationErrors(err);
     }
