@@ -27,7 +27,7 @@ function BookingList() {
           </tr>
         </thead>
         <tbody className="booking-list-body">
-          {digs && Object.keys(digs).length !== 0 && usersBookings && usersBookings.length ? (usersBookings.map(booking => {
+          {bookings && Object.keys(bookings).length !== 0 && sessionUser && digs && Object.keys(digs).length !== 0 && usersBookings && usersBookings.length ? (usersBookings.map(booking => {
             return (
               <tr className="booking-list-body-row" key={booking.id}>
                 <td><Link className="booking-list-dig" to={`/digs/${digs[booking.digId].id}`}>{digs[booking.digId].title}</Link></td>
