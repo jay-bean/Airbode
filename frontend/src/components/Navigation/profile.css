@@ -1,0 +1,44 @@
+.profile-dropdown {
+  list-style: none;
+  background-color: #ffffff;
+  padding: 4px;
+  border-radius: 10px;
+  border: 1px solid black;
+}
+
+.profile-li {
+  margin: 4px;
+}
+
+.profile-li-name {
+  border-bottom: thin solid #484848;
+  border-bottom-width: 100%;
+  padding-bottom: 4px;
+  text-align: center;
+}
+
+.profile-link {
+  text-decoration: none;
+  color: black;
+  ;
+}
+
+.profile-link:hover {
+  color: #7a7979;
+}
+
+.profile-logout-btn {
+  background-color: white;
+  padding: 5px;
+  width: 100%;
+  border: thin solid 	#484848;
+  margin: auto;
+  margin-right: 30px;
+  border-radius: 20px;
+}
+
+.profile-logout-btn:hover {
+  /* box-shadow: 1px 1px 4px #a1a1a1; */
+  color: white;
+  background-color: #FF5A5F;
+}

@@ -52,25 +52,27 @@ function ReviewForm() {
   return (
     <>
       <div hidden={formDisplay ? true : false}>
-        <h2>Leave a review</h2>
+        <h2 className='review-h2'>Leave a review</h2>
         {validationErrors && validationErrors.length > 0 && (
           validationErrors.map(error => {
-            return <div>{error}</div>
+            return <div className='errors'>{error}</div>
           })
         )}
         <form
+          className='review-form'
           onSubmit={handleSubmit}
         >
-          <label> Tell us about your stay
-          <input
+          <label className='review-form-label'> Tell us about your stay
+          <textarea
+            className='review-form-input'
             required
             value={review}
             onChange={(e) => setReview(e.target.value)}
-          >
-          </input>
+          />
           </label>
-          <label> Rating
+          <label className='review-form-label'> Rating
           <input
+            className='review-form-input'
             type="number"
             min='1'
             max='5'
@@ -80,11 +82,13 @@ function ReviewForm() {
           >
           </input>
           </label>
-          <button type="submit">Submit</button>
-          <button type="button" onClick={handleCancel}>Cancel</button>
+          <div className='review-btns'>
+            <button className='review-submit-btn' type="submit">Submit</button>
+            <button className='review-cancel-btn' type="button" onClick={handleCancel}>Cancel</button>
+          </div>
         </form>
       </div>
-      {formDisplay && (<h2>Thank you for leaving a review!</h2>)}
+      {formDisplay && (<h2 className='review-h2'>Thank you for leaving a review!</h2>)}
     </>
   );
 }

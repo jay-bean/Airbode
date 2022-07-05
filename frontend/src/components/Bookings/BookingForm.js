@@ -65,8 +65,15 @@ function Calender({price}) {
     }
 
     const formattedDisabledDays = disabledDays.map(day => day.format("L"));
+
+
+    if(!startDate || !endDate) {
+      setValidationErrors(['Please select a start and end date!']);
+      return;
+    }
     const currentBooking = getBookingRange(startDate, endDate);
     const doubleBooked = currentBooking.some(day => formattedDisabledDays.includes(day));
+
     if (doubleBooked) {
       setValidationErrors(['These dates are not available']);
       return;
@@ -83,6 +90,7 @@ function Calender({price}) {
     }
     catch (error) {
       if (!sessionUser) return window.alert(error.message);
+      console.log(error, 'the error')
       const err = await error.json();
       setValidationErrors(err);
     }
@@ -95,18 +103,18 @@ function Calender({price}) {
     }
   }
   return (
-    <div>
+    <div className='booking-form-container'>
       {validationErrors.length > 0 && (
         validationErrors.map(error => {
-          return <div key={error}>{error}</div>
+          return <div className='errors' key={error}>{error}</div>
         })
       )}
+      <h2 className='booking-form-h2'>Book a Trip</h2>
       <form
         onSubmit={handleSubmit}
       >
         <DateRangePicker
           isDayBlocked={(day) => disabledDays.some(date => day.isSame(date, 'day'))}
-          // isOutsideRange={(day) => disabledDays.some(date => day.isSame(date, 'day'))}
           startDate={startDate}
           startDateId="start-date"
           endDate={endDate}
@@ -118,12 +126,15 @@ function Calender({price}) {
           focusedInput={focusedInput}
           onFocusChange={(focusedInput) => setFocusedInput(focusedInput)}
         />
-        <button type="submit">Reserve</button>
+        <button className='booking-form-submit-btn' type="submit">Reserve</button>
       </form>
       {nights ? nights > 1 ? (<div>{nights} nights</div>) : (<div>{nights} night</div>) : null}
       <div>
         <p>Total Before Taxes</p>
         <p>${total ? total : 0}</p>
+      </div>
+      <div>
+        <p>One week cancelation policy</p>
       </div>
     </div>
   );

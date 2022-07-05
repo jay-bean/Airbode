@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { addDig } from '../../store/digs';
+import './dig-form.css';
 
 function NewDigForm() {
   const history = useHistory();
@@ -21,7 +22,7 @@ function NewDigForm() {
   const [beds, setBeds] = useState(0);
   const [baths, setBaths] = useState(0);
   const [pets, setPets] = useState('no');
-  const [images, setImages] = useState();
+  const [images, setImages] = useState({});
 
   const handleCancel = () => {
     setValidationErrors([]);
@@ -56,7 +57,8 @@ function NewDigForm() {
     }
     catch (error) {
       const err = await error.json();
-      setValidationErrors(err);
+      if (error.status === 500) setValidationErrors([err.message])
+      else setValidationErrors(err);
     }
 
     if (newDig) {
@@ -66,60 +68,66 @@ function NewDigForm() {
   }
 
   return (
-    <>
-      <h1>New House Form</h1>
+    <div className='new-dig-page'>
+      <h1 className='new-dig-h1'>Host Form</h1>
       {validationErrors.length > 0 && (
         validationErrors.map(error => {
-          return <div>{error}</div>
+          return <div className='errors' key={error}>{error}</div>
         })
       )}
       <form
+        className='new-dig-form'
         onSubmit={handleSubmit}
         encType="multipart/form-data"
       >
-        <label> Address:
+        <label className='new-dig-label'> Address:
         <input
+          className='new-dig-input'
           type="address"
           required
           value={address}
           onChange={(e) => setAddress(e.target.value)}
         />
         </label>
-        <label> City:
+        <label className='new-dig-label'> City:
         <input
+          className='new-dig-input'
           type="city"
           required
           value={city}
           onChange={(e) => setCity(e.target.value)}
         />
         </label>
-        <label> State/Province:
+        <label className='new-dig-label'> State/Province:
         <input
+          className='new-dig-input'
           type="state"
           required
           value={state}
           onChange={(e) => setState(e.target.value)}
         />
         </label>
-        <label> Country:
+        <label className='new-dig-label'> Country:
         <input
+          className='new-dig-input'
           type="country"
           required
           value={country}
           onChange={(e) => setCountry(e.target.value)}
         />
         </label>
-        <label> Title:
+        <label className='new-dig-label'> Title:
         <input
+          className='new-dig-input'
           type="title"
-          placeholder="Cottage in the mountain"
           required
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
         </label>
-        <label> Price per night:
+        <label className='new-dig-label'> Price per night:
         <input
+          className='new-dig-input'
           type="number"
           min='1'
           required
@@ -127,17 +135,9 @@ function NewDigForm() {
           onChange={(e) => setPrice(e.target.value)}
         />
         </label>
-        <label> Description:
-        <textarea
-          type="description"
-          placeholder="Tell us about your home..."
-          required
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
-        </label>
-        <label> Guests:
+        <label className='new-dig-label'> Guests:
         <input
+          className='new-dig-input'
           type="number"
           min='1'
           required
@@ -145,8 +145,9 @@ function NewDigForm() {
           onChange={(e) => setGuests(e.target.value)}
         />
         </label>
-        <label> Bedrooms:
+        <label className='new-dig-label'> Bedrooms:
         <input
+          className='new-dig-input'
           type="number"
           min='1'
           required
@@ -154,8 +155,9 @@ function NewDigForm() {
           onChange={(e) => setBedrooms(e.target.value)}
         />
         </label>
-        <label> Beds:
+        <label className='new-dig-label'> Beds:
         <input
+          className='new-dig-input'
           type="number"
           min='1'
           required
@@ -163,8 +165,9 @@ function NewDigForm() {
           onChange={(e) => setBeds(e.target.value)}
         />
         </label>
-        <label> Bathrooms:
+        <label className='new-dig-label'> Bathrooms:
         <input
+          className='new-dig-input'
           type="number"
           min='1'
           required
@@ -172,8 +175,9 @@ function NewDigForm() {
           onChange={(e) => setBaths(e.target.value)}
         />
         </label>
-        <label> Pets Okay?
+        <label className='new-dig-label-pets'> Pets Okay?
         <input
+          className='new-dig-input-pets'
           type="radio"
           value="yes"
           name="pets"
@@ -181,25 +185,44 @@ function NewDigForm() {
           checked={pets === 'yes'}
         /> Yes
         <input
-            type="radio"
-            value="no"
-            name="pets"
-            onChange={(e) => setPets(e.target.value)}
-            checked={pets === "no"}
+          className='new-dig-input-pets'
+          type="radio"
+          value="no"
+          name="pets"
+          onChange={(e) => setPets(e.target.value)}
+          checked={pets === "no"}
         /> No
         </label>
-        <label> Upload Images
+        <div className='new-dig-img-div'>
+        <label className='new-dig-label-imgs'>
+        <i className="fa-solid fa-images"></i> Upload Images
         <input
+          className='new-dig-input-imgs'
           type="file"
           multiple
           name="file"
           onChange={(e) => setImages(e.target.files)}
         />
         </label>
-        <button type="submit">Add Home</button>
-        <button type="button" onClick={handleCancel}>Cancel</button>
+        </div>
+        <label className='new-dig-label-textarea'> Description:
+        <textarea
+          className='new-dig-input-textarea'
+          rows="4"
+          cols="30"
+          type="description"
+          placeholder="Tell us about your home..."
+          required
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        />
+        </label>
+        <div className='btn-div'>
+          <button className='new-dig-submit-btn' type="submit">Add Home</button>
+          <button className='new-dig-cancel-btn' type="button" onClick={handleCancel}>Cancel</button>
+        </div>
       </form>
-    </>
+    </div>
   );
 }
 

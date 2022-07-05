@@ -14,13 +14,6 @@ router.get('/',
   })
 );
 
-// router.get('/:reviewId(\\d+)',
-//   asyncHandler(async (req, res) => {
-//     const review = await Review.findOne(req.params.id);
-//     return res.json(review);
-//   })
-// );
-
 router.post('/',
   reviewValidators,
   asyncHandler(async (req, res) => {
@@ -54,7 +47,7 @@ router.put('/:reviewId(\\d+)',
       const errors = validationErrors.array().map(error => error.msg);
       return res.status(400).json(errors);
     }
-    
+
     const editReview = await Review.findByPk(req.params.reviewId);
     editReview.review = review;
     editReview.rating = rating;

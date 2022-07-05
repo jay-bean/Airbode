@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getBookings, removeBooking } from '../../store/bookings';
 import { getDigs } from '../../store/digs';
 import moment from 'moment';
+import './booking.css';
 
 function Booking() {
   const history = useHistory();
@@ -46,24 +47,31 @@ function Booking() {
 
   return (
     <>
-      {booking && dig && (
-        <div>
-          <ul>
-            <li>
-              <div>Your trip starts {moment(booking.startDate).format('L')}</div>
-              <div>Your trip ends {moment(booking.endDate).format('L')}</div>
-              <div>You reserved this on {moment(booking.createdAt).format('')}</div>
-            </li>
-          </ul>
-          <div> Where are you going?
-              <Link to={`/digs/${dig.id}`}><div>{dig.title}</div></Link>
-              <div>{dig.city}, {dig.state}</div>
-              <div>{dig.country}</div>
-           </div>
+      <div className='booking-page'>
+        <div className='booking-page-container'>
+          {booking && dig && (
+            <div>
+              <h1>Trip Information</h1>
+              <ul className='booking-page-ul'>
+                <li className='booking-page-li'>
+                  <div>Check-in: {moment(booking.startDate).format('L')}</div>
+                  <div>Check-out: {moment(booking.endDate).format('L')}</div>
+                  <div>You reserved this on {moment(booking.createdAt).format('L')}</div>
+                </li>
+              </ul>
+              <div>
+                  <p className='booking-page-p'>Where are you going?</p>
+                  <Link to={`/digs/${dig.id}`}>{dig.images && dig.images.length ? <img className="dig-home-page-image" src={`/${dig.images[0].url}`}/> : null}</Link>
+                  <Link className='booking-page-link-1' to={`/digs/${dig.id}`}><div className='booking-page-div'>{dig.title}</div></Link>
+                  <div className='booking-page-csc-1'>{dig.city}, {dig.state}</div>
+                  <div className='booking-page-csc-2'>{dig.country}</div>
+              </div>
+            </div>
+          )}
+          <button className='booking-page-delete-btn' onClick={deleteHandler}>Delete</button>
+          <Link className='booking-page-link-2' to="/bookings">Back to Reservations</Link>
         </div>
-      )}
-      <button onClick={deleteHandler}>Delete</button>
-      <Link to="/bookings">Back to Reservations</Link>
+      </div>
     </>
   );
 }

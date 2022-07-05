@@ -10,6 +10,7 @@ function DemoUser() {
   const [errors, setErrors] = useState([]);
   const [credential, _setCredential] = useState(demoUser.username);
   const [password, _setPassword] = useState(demoUser.password);
+
   const handleDemoLogin = () => {
     setErrors([]);
     return dispatch(sessionActions.login({ credential, password })).catch(
@@ -22,7 +23,7 @@ function DemoUser() {
 
   return (
     <>
-      <button onClick={handleDemoLogin}>Demo User</button>
+      <button className='nav-demouser' onClick={handleDemoLogin}>Demo User</button>
       <ul className="login-form-errors">
       {errors.length ? errors.map((error, idx) => (
         <li key={idx}>{error}</li>

@@ -1,8 +1,10 @@
 .users-reviews-page {
-  margin: 4% 10%;
+  margin: 4% 8%;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto;
+  width: 90%;
+  overflow: hidden;
 }
 
 .users-reviews-review-head {
@@ -11,26 +13,39 @@
   margin: 3% 0;
 }
 
-
-.users-reviews-book-again-div {
-  margin-top: 3%;
+.users-reviews-container {
+  margin: 20px 20px;
+  font-size: 18px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
 }
 
 .users-reviews-dig {
   background-color: rgb(241, 241, 241);
-  padding: 3%;
+  padding: 30px;
   border-radius: 30px;
+  width: 230px;
+}
+
+.users-reviews-book-again-div {
+  margin-top: 5%;
+  margin-right: .5%;
+  font-size: 16px;
 }
 
 .users-reviews-reviews {
   background-color: rgb(255, 255, 255);
-  padding: 3%;
+  width: 200px;
 }
 
 .users-reviews-book-again {
   margin-right: .5%;
   text-decoration: none;
   color: #f63a40;
+  font-size: 16px;
 }
 
 .users-reviews-book-again:hover {
@@ -55,9 +70,19 @@
   margin-bottom: 3%;
 }
 
+.users-reviews-comment-container {
+  margin-left: 30px;
+  width: 80%;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
 .users-reviews-comment {
   margin-top: 3%;
   width: 50%;
+  overflow-x: scroll;
+  line-height: 30px;
+  word-break: break-all;
 }
 
 .users-reviews-rating {
@@ -106,25 +131,41 @@
   margin-bottom: 1%;
 }
 
-.edit-review-comment-label {
-  margin-right: 3%;
+.edit-review-form {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  width: 80%;
+  margin: auto;
 }
 
-.edit-review-comment-input {
-  margin-left: 3%;
-  padding: 3%;
-  border-radius: 30px;
+.edit-review-label {
+  margin: 10px 0;
+  font-size: 18px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
-.edit-review-rating-label {
-  margin-right: 3%;
+.edit-review-input {
+  border-radius: 20px;
+  padding: 6px;
+  margin-left: 10px;
+  width: 200px;
+  font-size: 18px;
+  border: 1px solid #484848;
+  padding-left: 20px;
 }
 
-.edit-review-rating-input {
-  margin-left: 3%;
-  padding: .6%;
-  border-radius: 30px;
-  border: thin solid 	#484848;
+.edit-review-input:focus {
+  outline: none;
+  border: 2px solid #FF5A5F;
+}
+
+.edit-review-btns {
+  margin-top: 16px;
+ display: block;
+ text-align: center;
 }
 
 .edit-review-submit-btn {
@@ -150,14 +191,4 @@
 
 .edit-review-cancel-btn:hover {
   box-shadow: 1px 1px 4px #a1a1a1;
-}
-
-.users-reviews-div {
-  background-color: rgb(255, 255, 255);
-  width: 100%;
-  margin-top: 3%;
-}
-
-.users-reviews-div-div {
-  width: 100%;
 }

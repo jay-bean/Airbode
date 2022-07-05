@@ -1,0 +1,51 @@
+.users-digs-page {
+  margin: 4% 8%;
+}
+
+.users-digs-h1 {
+  font-weight: 600;
+}
+
+.users-digs-wrapper {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  max-width: 100%;
+  justify-content: center;
+  padding: 0;
+}
+
+.users-digs-grid {
+  width: 300px;
+  height: 300px;
+  margin: 12px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 8fr 1fr;
+  align-items: end;
+}
+
+.users-digs-page-link {
+  list-style: none;
+  text-decoration: none;
+}
+
+.users-digs-image {
+  width: 100%;
+  height: 100%;
+  margin-bottom: 20px;
+  border-radius: 20px;
+}
+
+.users-digs-host-link {
+  text-decoration: none;
+  border-bottom: thin solid black;
+  color: black;
+  font-size: 18px;
+}
+
+.users-digs-host-link:hover {
+  color: #FF5A5F;
+  border-bottom: thin solid #FF5A5F;
+}

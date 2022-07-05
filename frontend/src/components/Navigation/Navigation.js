@@ -22,7 +22,7 @@ function Navigation({ isLoaded }){
       <>
         <DemoUser/>
         <LoginFormModal />
-        <NavLink to="/signup">Sign Up</NavLink>
+        <NavLink className='nav-signup' to="/signup">Sign Up</NavLink>
       </>
     );
   }
@@ -36,7 +36,6 @@ function Navigation({ isLoaded }){
         {isLoaded && sessionLinks}
       </li>
     </ul>
-    <hr/>
     </>
   );
 }

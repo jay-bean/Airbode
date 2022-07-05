@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { removeReview } from '../../store/reviews';
 import { useDispatch, useSelector } from 'react-redux';
 import EditReview from './EditReview';
-
+import '../Digs/dig.css'
 
 function Review({review}) {
   const dispatch = useDispatch();
@@ -19,14 +19,14 @@ function Review({review}) {
   }
 
   return (
-    <div>
+    <div className='dig-review-container'>
       {!showEditForm && <div key={review.id}>
-        <div>{review.review}</div>
-        <div>{review.rating}</div>
+        <p className='review-comment-div'>{review.review}</p>
+        <p className='review-rating-p' >{review.rating} / 5</p>
         {sessionUser && sessionUser.id === review.userId && (
           <div>
-            <button onClick={deleteHandler}>Delete</button>
-            <button onClick={editHandler}>Edit</button>
+            <button className='dig-review-delete-btn' onClick={deleteHandler}>Delete</button>
+            <button className='dig-review-edit-btn' onClick={editHandler}>Edit</button>
           </div>
         )}
       </div>}

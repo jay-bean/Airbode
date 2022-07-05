@@ -197,7 +197,7 @@ const reviewValidators = [
   check('review')
   .exists({ checkFalsy: true })
   .withMessage('Please provide a comment.')
-  .isLength({ max: 300 })
+  .isLength({ max: 255 })
   .withMessage('Review must not exceed 300 characters.'),
   check('rating')
   .exists({ checkFalsy: true })

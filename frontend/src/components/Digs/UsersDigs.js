@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDigs } from '../../store/digs';
 import { Link } from "react-router-dom";
-// import moment from 'moment';
+import './users-digs.css';
 
 function UsersDigs() {
   const dispatch = useDispatch();
@@ -15,20 +15,22 @@ function UsersDigs() {
   }, [dispatch])
 
   return(
-    <>
-      <h1>Your Humble Abodes</h1>
+    <div className='users-digs-page'>
+      <h1 className='users-digs-h1'>Your Humble Abodes</h1>
       <p>To manage your homes navigate to the individual pages by clicking one of them below.</p>
-      {usersDigs && (usersDigs.map(dig => {
-        return (
-          <Link key={dig.id} to={`/digs/${dig.id}`}>
-            <div key={dig.id}>
-              <div>IMAGE GOES HERE</div>
-              <div>{dig.title}</div>
-            </div>
-          </Link>
-        )
-      }))}
-    </>
+      <ul className='users-digs-wrapper'>
+        {usersDigs && usersDigs.length ? (usersDigs.map(dig => {
+          return (
+            <Link className='users-digs-page-link' key={dig.id} to={`/digs/${dig.id}`}>
+              <li className='users-digs-grid'>
+                {dig.images && dig.images.length ? <img className="users-digs-image" src={`/${dig.images[0].url}`}/> : null}
+                <div>{dig.title}</div>
+              </li>
+            </Link>
+          )
+        })) : <h3>You currently aren't hosting with us. Get started now! <Link className='users-digs-host-link' to="/digs/new">Host Your Home</Link></h3> }
+      </ul>
+    </div>
   );
 }
 

@@ -1,0 +1,38 @@
+.footer {
+  position: fixed;
+  height: 50px;
+  background-color: red;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  margin-bottom: 0px;
+  color: white;
+  text-align: center;
+  border-top: 1px solid black;
+  background-color: #FF5A5F;
+}
+
+.footer-inner {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.footer-git {
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+}
+
+.footer-name {
+  font-size: 20px;
+  margin-top: 0;
+}
+
+.footer-linkedin {
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+}

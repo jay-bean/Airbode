@@ -13,9 +13,9 @@ import Booking from "./components/Bookings/Booking";
 import UsersDigs from "./components/Digs/UsersDigs";
 import HostsBookings from "./components/Bookings/HostsBookings";
 import UsersReviews from "./components/Reviews/UsersReviews";
-import ReviewModal from "./components/Reviews/ReviewModal";
 import AboutMe from "./components/AboutMe/AboutMe";
 import './main.css';
+import Footer from "./components/Footer/Footer";
 
 function App() {
   const dispatch = useDispatch();
@@ -43,7 +43,6 @@ function App() {
           </Route>
           <Route exact path="/digs/:digId">
             <Dig/>
-            <ReviewModal/>
           </Route>
           <Route exact path="/digs/:digId/edit">
             <EditDigForm />
@@ -65,6 +64,7 @@ function App() {
           </Route>
         </Switch>
       )}
+      <Footer isLoaded={isLoaded}/>
     </>
   );
 }
