@@ -16,6 +16,8 @@
 
 Airbode is a AirBnB clone. Users can host their homes, book trips and leave reviews on places. This is my first solo project and I had a lot of fun making it. Hope you enjoy!
 
+![image](https://user-images.githubusercontent.com/46910262/189009200-78adb917-b13c-4283-8a82-79eca9aa2374.png)
+
 #### Technologies Used
 * Javascript
 * React
