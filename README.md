@@ -29,7 +29,9 @@ Airbode is a AirBnB clone. Users can host their homes, book trips and leave revi
 * Grid-Gallery
   
 ### Take A Peek
-  *photos on photos on photos
+![image](https://user-images.githubusercontent.com/46910262/189009200-78adb917-b13c-4283-8a82-79eca9aa2374.png)
+![image](https://user-images.githubusercontent.com/46910262/189009469-ab04444a-98f3-4552-9557-65f4cafbb3d5.png)
+
   
 ### Index
 * [API Routes](https://github.com/jay-bean/Airbode/wiki/API-Routes)
