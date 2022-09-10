@@ -13,26 +13,36 @@ function Navigation({ isLoaded }){
   if (sessionUser) {
     sessionLinks = (
       <>
-        <NavLink className="host-home" to='/digs/new'>Host your Home</NavLink>
+        <NavLink className="host-home" to='/digs/new'>Become a Host</NavLink>
         <ProfileButton user={sessionUser} />
       </>
     );
   } else {
     sessionLinks = (
-      <>
+      <div className='profile-signup-li'>
         <DemoUser/>
         <LoginFormModal />
         <NavLink className='nav-signup' to="/signup">Sign Up</NavLink>
-      </>
+      </div>
     );
   }
 
   return (
     <>
     <ul className="nav">
-      <li className="nav-bar">
+      <li className='home-li'>
         <NavLink className="home" exact to="/">Airbode</NavLink>
-        <NavLink className="about-me" exact to="/about-me">About Me</NavLink>
+      </li>
+      <li className='about-me-li'>
+        <div className='about-me-div'>
+          <NavLink className='about-me' exact to="/about">About</NavLink>
+          <p className='about-me-line'>|</p>
+          <a className='about-me' href='https://github.com/jay-bean'>GitHub</a>
+          <p className='about-me-line'>|</p>
+          <a className='about-me' href=''>LinkedIn</a>
+        </div>
+      </li>
+      <li className='profile-host-li'>
         {isLoaded && sessionLinks}
       </li>
     </ul>

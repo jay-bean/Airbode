@@ -5,6 +5,7 @@
   grid-template-rows: auto;
   width: 90%;
   overflow: hidden;
+  height: calc(100vh - 40px);
 }
 
 .users-reviews-review-head {

@@ -35,7 +35,7 @@ function EditDigForm() {
     setValidationErrors([]);
     history.push("/")
   };
-
+// how can I make sure that only 10 photos are uploaded? can I delete the photos somehow??
   const handleSubmit = async (e) => {
     e.preventDefault();
 

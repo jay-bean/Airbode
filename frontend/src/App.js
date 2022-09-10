@@ -16,6 +16,7 @@ import UsersReviews from "./components/Reviews/UsersReviews";
 import AboutMe from "./components/AboutMe/AboutMe";
 import './main.css';
 import Footer from "./components/Footer/Footer";
+import './index.css';
 
 function App() {
   const dispatch = useDispatch();
@@ -59,7 +60,7 @@ function App() {
           <Route exact path="/reviews">
             <UsersReviews/>
           </Route>
-          <Route exact path="/about-me">
+          <Route exact path="/about">
             <AboutMe/>
           </Route>
         </Switch>

@@ -1,5 +1,7 @@
 .dig-ind-page {
   margin: 4% 10%;
+  margin-bottom: 0;
+  height: calc(100vh - 40px);
 }
 
 .dig-grid {
