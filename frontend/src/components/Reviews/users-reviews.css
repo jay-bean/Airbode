@@ -171,25 +171,44 @@
 
 .edit-review-submit-btn {
   background-color: white;
-  padding: 6px;
+  padding: 8px;
   width: 80px;
-  border-radius: 30px;
-  margin-right: 3%;
-  border: thin solid 	#484848;
+  border-radius: 8px;
+  border: 1px solid rgb(27, 27, 27);  margin: 20px auto;
+  margin-left: 30px;
+  margin-bottom: 0;
 }
 
 .edit-review-submit-btn:hover {
-  box-shadow: 1px 1px 4px #a1a1a1;
+  background-color: #f7f7f7;
 }
 
 .edit-review-cancel-btn {
   background-color: white;
-  padding: 6px;
+  padding: 8px;
   width: 80px;
-  border-radius: 30px;
-  border: thin solid 	#484848;
+  border-radius: 8px;
+  border: 1px solid rgb(27, 27, 27);  margin: 20px auto;
+  margin-left: 30px;
+  margin-bottom: 0;
 }
 
 .edit-review-cancel-btn:hover {
-  box-shadow: 1px 1px 4px #a1a1a1;
+  background-color: #f7f7f7;
+}
+
+.edit-review-one {
+  right: 190px;
+}
+
+.edit-review-one-active {
+  right: 190px;
+}
+
+.edit-review-two {
+  right: 136px;
+}
+
+.edit-review-two-active {
+  right: 146px;
 }

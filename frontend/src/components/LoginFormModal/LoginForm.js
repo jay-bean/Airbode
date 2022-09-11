@@ -24,9 +24,9 @@ function LoginForm({ setShowModalLogin }) {
 
   return (
     <div className="login-modal">
-      <p onClick={() => setShowModalLogin(false)} className="cancel"></p>
       <div className="login-title">
-      <p className="login-title-p">Log in or sign up</p>
+        <p onClick={() => setShowModalLogin(false)} className="cancel"></p>
+        <p className="login-title-p">Log in or sign up</p>
       </div>
       <h1 className="login-h1">Welcome to Airbode</h1>
       <form className="login-form" onSubmit={handleSubmit}>

@@ -6,7 +6,7 @@ import ReviewForm from './ReviewForm';
 import Review from './Review';
 import '../Digs/dig.css';
 
-function DigReviewList() {
+function DigReviewList({ setShowModal }) {
   const dispatch = useDispatch();
   const { digId } = useParams();
   const dig = useSelector(state => state.digs[digId]);
@@ -23,7 +23,7 @@ function DigReviewList() {
 
   return (
     <div className="login-modal dig-modal">
-      <ReviewForm />
+      <ReviewForm setShowModal={setShowModal} />
       <h1 className="or review-or">Lets see what others have to say</h1>
       <p className="line-thru-or"></p>
       <div className='all-reviews-container'>

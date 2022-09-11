@@ -32,8 +32,8 @@ function SignupFormPage({ setShowModal }) {
 
   return (
     <div className="login-modal">
-      <p onClick={() => setShowModal(false)} className="cancel"></p>
       <div className="login-title">
+        <p onClick={() => setShowModal(false)} className="cancel"></p>
         <p className="login-title-p">Log in or sign up</p>
       </div>
       <h1 className="login-h1">Welcome to Airbode</h1>

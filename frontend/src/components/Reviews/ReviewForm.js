@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { addReview } from '../../store/reviews';
 
-function ReviewForm() {
+function ReviewForm({ setShowModal }) {
   const history = useHistory();
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
@@ -13,14 +13,8 @@ function ReviewForm() {
   const [validationErrors, setValidationErrors] = useState();
   const [review, setReview] = useState('');
   const [rating, setRating] = useState('');
-  // const [formDisplay, setFormDisplay] = useState(false);
   const [labelActive, setLabelActive] = useState([]);
 
-  // const handleCancel = () => {
-  //   setValidationErrors([]);
-  //   setRating('');
-  //   setReview('');
-  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -46,15 +40,15 @@ function ReviewForm() {
       setReview('');
       setValidationErrors([]);
       setLabelActive([]);
-      // setFormDisplay(true);
       history.push(`/digs/${dig.id}`);
     }
   }
-  // hidden={formDisplay ? true : false}
+
   return (
     <div>
       <div className="login-title">
-       <h2 className="login-title-p">Leave a review</h2>
+        <p onClick={() => setShowModal(false)} className="cancel"></p>
+        <h2 className="login-title-p">Leave a review</h2>
       </div>
       <form
         className='login-form'
@@ -83,11 +77,6 @@ function ReviewForm() {
             />
           </div>
         </div>
-        {/* {validationErrors && validationErrors.length > 0 && (
-          validationErrors.map(error => {
-            return <div className='errors'>{error}</div>
-          })
-        )} */}
         <ul className="login-form-errors">
           {validationErrors && validationErrors.length ? validationErrors.map((error, idx) => (
             <li className="login-form-errors-li" key={idx}>{error}</li>
