@@ -56,9 +56,12 @@ function NewDigForm() {
       newDig = await dispatch(addDig(formData));
     }
     catch (error) {
+      if (error.status === 503) return setValidationErrors(['Only .png, .jpg and .jpeg format allowed.']);
       const err = await error.json();
-      if (error.status >= 500) setValidationErrors([err.message])
-      else setValidationErrors(err);
+      if (error.status >= 500) return setValidationErrors([err.message])
+      // else setValidationErrors(err.errors);{
+      if (err.errors && err.errors.length > 0) return setValidationErrors(err.errors);
+      if (err.message && err.wrongFormat) return setValidationErrors([err.message]);
     }
 
     if (newDig) {
@@ -66,6 +69,17 @@ function NewDigForm() {
       history.push(`/digs/${newDig.id}`);
     }
   }
+
+  let imagesArr;
+  if (images && images.length) {
+    imagesArr = Object.values(images);
+  }
+
+  const removeSelectedImage = (e, index) => {
+    e.preventDefault();
+    imagesArr.splice(index, 1);
+    setImages(imagesArr)
+  };
 
   return (
     <div className='new-dig-page'>
@@ -217,6 +231,24 @@ function NewDigForm() {
           onChange={(e) => setDescription(e.target.value)}
         />
         </label>
+        {images && images.length ? (
+                  <div className="thumbnail-container">
+                  {imagesArr.map((image, index) => {
+                    return (
+                      <div className='thumbnail-divs'>
+                        <button type='button' className='thumbnail-remove-btn' onClick={(e) => removeSelectedImage(e, index)}>
+                          X
+                        </button>
+                        <img
+                          style={{maxWidth: "100%", maxHeight: '320px' }}
+                          src={URL.createObjectURL(image)}
+                          alt='thumbnail'
+                        />
+                      </div>
+                    );
+                  })}
+                </div>
+            ) : null}
         <div className='btn-div'>
           <button className='new-dig-submit-btn' type="submit">Add Home</button>
           <button className='new-dig-cancel-btn' type="button" onClick={handleCancel}>Cancel</button>

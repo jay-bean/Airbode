@@ -24,7 +24,9 @@ function EditDigForm() {
   const [beds, setBeds] = useState(dig ? dig.beds : '');
   const [baths, setBaths] = useState(dig ? dig.baths : '');
   const [pets, setPets] = useState(dig && dig.pets ? 'yes' : 'no');
-  const [images, setImages] = useState(dig && dig.images.length ? dig.images : '');
+  const [oldImages, setOldImages] = useState(dig && dig.images.length ? dig.images : []);
+  const [images, setImages] = useState({});
+  // const [images, setImages] = useState(dig && dig.images.length ? dig.images : '');
   const sessionUser = useSelector(state => state.session.user);
 
   useEffect(() => {
@@ -38,6 +40,9 @@ function EditDigForm() {
 // how can I make sure that only 10 photos are uploaded? can I delete the photos somehow??
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (oldImages.length > 10 || images.length > 10 || oldImages.length + images.length > 10) return setValidationErrors(['Only ten photos allowed.']);
+    if (oldImages.length === 0 && Object.values(images).length === 0) return setValidationErrors(['Please upload at least one photo.']);
 
     const formData = new FormData();
     formData.append('title', title);
@@ -54,7 +59,11 @@ function EditDigForm() {
     formData.append('pets', pets);
     formData.append('userId', sessionUser.id);
 
-    for(const image of Object.keys(images)) {
+    for (const oldImage of oldImages) {
+      formData.append('oldImage', oldImage.id)
+    }
+
+    for (const image of Object.keys(images)) {
       formData.append('image', images[image]);
     }
 
@@ -63,9 +72,11 @@ function EditDigForm() {
       newDig = await dispatch(editDig(formData, id));
     }
     catch (error) {
+      if (error.status === 503) return setValidationErrors(['Only .png, .jpg and .jpeg format allowed.']);
       const err = await error.json();
-      if (error.status >= 500) setValidationErrors([err.message])
-      else setValidationErrors(err);
+      if (error.status >= 500) return setValidationErrors([err.message])
+      if (err.message && err.wrongFormat) return setValidationErrors([err.message]);
+      if (err.errors && err.errors.length > 0) return setValidationErrors(err.errors);
     }
 
     if (newDig) {
@@ -73,6 +84,28 @@ function EditDigForm() {
       history.push(`/digs/${newDig.id}`);
     }
   }
+
+  let imagesArr;
+  if (images && images.length) {
+    imagesArr = Object.values(images);
+  }
+
+  const removeNewSelectedImage = (e, index) => {
+    e.preventDefault();
+    imagesArr.splice(index, 1);
+    setImages(imagesArr)
+  };
+
+  let oldImagesArr;
+  if (oldImages && oldImages.length) {
+    oldImagesArr = Object.values(oldImages);
+  }
+
+  const removeOldSelectedImage = (e, index) => {
+    e.preventDefault();
+    oldImagesArr.splice(index, 1);
+    setOldImages(oldImagesArr);
+  };
 
   return (
     <div className='new-dig-page'>
@@ -224,6 +257,42 @@ function EditDigForm() {
           onChange={(e) => setDescription(e.target.value)}
         />
         </label>
+        {images && images.length ? (
+                <div className="thumbnail-container">
+                  {imagesArr.map((image, index) => {
+                    return (
+                      <div key={index} className='thumbnail-divs'>
+                        <button type='button' className='thumbnail-remove-btn' onClick={(e) => removeNewSelectedImage(e, index)}>
+                          X
+                        </button>
+                        <img
+                          style={{maxWidth: "100%", maxHeight: '320px' }}
+                          src={URL.createObjectURL(image)}
+                          alt='thumbnail'
+                        />
+                      </div>
+                    );
+                  })}
+                </div>
+              ) : null}
+              {oldImages && oldImages.length ? (
+                <div className="thumbnail-container">
+                  {oldImagesArr.map((image, index) => {
+                    return (
+                      <div key={index} className='thumbnail-divs'>
+                        <button className='thumbnail-remove-btn' onClick={(e) => removeOldSelectedImage(e, index)}>
+                          X
+                        </button>
+                        <img
+                          style={{maxWidth: "100%", maxHeight: '320px' }}
+                          src={image.url}
+                          alt='thumbnail'
+                        />
+                      </div>
+                    );
+                  })}
+                </div>
+              ) : null}
         <div className='btn-div'>
           <button className='new-dig-submit-btn' type="submit">Submit</button>
           <button className='new-dig-cancel-btn' type="button" onClick={handleCancel}>Cancel</button>
