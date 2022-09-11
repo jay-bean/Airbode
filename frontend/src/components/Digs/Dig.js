@@ -19,9 +19,11 @@ function Dig() {
   }, [digId, dispatch]);
 
   const deleteHandler = async () => {
+    if (window.confirm("Are you sure you want to delete this listing?")) {
       await dispatch(removeDig(dig));
       const redirect = await history.push("/");
       return redirect;
+    }
   }
 
   return (

@@ -128,38 +128,38 @@
   overflow: hidden;
   overflow-y: scroll;
   overflow-x: hidden;
-  width: 95%;
-  margin: auto;
-  border-bottom: thin solid black;
+  width: 92%;
+  margin: 10px auto;
+}
+
+.dig-review-container:first-child {
+  margin-top: 40px;
 }
 
 .dig-review-delete-btn {
   background-color: white;
   padding: 8px;
   width: 80px;
-  border-radius: 30px;
-  border: thin solid 	#484848;
-  margin: 20px auto;
+  border-radius: 8px;
+  border: 1px solid rgb(27, 27, 27);  margin: 20px auto;
   margin-left: 30px;
 }
 
 .dig-review-delete-btn:hover {
-  box-shadow: 1px 1px 4px #a1a1a1;
+  background-color: #f7f7f7;
 }
 
 .dig-review-edit-btn {
   background-color: white;
   padding: 8px;
   width: 80px;
-  border-radius: 30px;
-  border: thin solid 	#484848;
-  margin: 20px auto;
+  border-radius: 8px;
+  border: 1px solid rgb(27, 27, 27);  margin: 20px auto;
   margin-left: 30px;
 }
 
 .dig-review-edit-btn:hover {
-  box-shadow: 1px 1px 4px #a1a1a1;
-}
+  background-color: #f7f7f7;}
 
 .modal {
   display: block !important;
@@ -242,15 +242,11 @@
   box-shadow: 1px 1px 4px #a1a1a1;
 }
 
-.dig-review-h1 {
-  font-weight: 600;
-  border-bottom: thin solid #484848;
-  border-width: 2px;
-  padding-bottom: 10px;
-}
-
-.review-comment-div {
+.review-comment {
   word-break: break-all;
+  height: fit-content;
+  line-height: 1.8;
+  font-size: 14px;
 }
 
 .booking-form-container {
@@ -288,4 +284,30 @@
 
 .booking-form-submit-btn:hover {
   box-shadow: 1px 1px 4px #a1a1a1;
+}
+
+
+/* review */
+.review-or {
+  font-size: 18px !important;
+}
+
+.dig-modal {
+  overflow-y: scroll;
+}
+.dig-modal::-webkit-scrollbar { width: 0 !important }
+
+.review-username {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.review-username p {
+  margin-bottom: 2px;
+}
+
+.review-date {
+  font-size: 14px;
+  margin: 0;
+  color: #8a8a8a;
 }

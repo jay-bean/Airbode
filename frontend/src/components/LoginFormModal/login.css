@@ -1,15 +1,5 @@
-.modal {
-  display: block !important;
-  padding: 0 !important;
-}
-
-.modal-2 {
-  overflow-y: initial !important;
-}
-
-.modal-3{
-  height: 380px;
-  overflow-y: auto;
+.login-modal {
+  height: 100%;
 }
 
 .login-title {
@@ -20,6 +10,11 @@
   align-items: center;
   padding: 0 20px;
   height: 60px;
+}
+
+.login-title-p {
+  font-size: 16px;
+  font-weight: 600;
 }
 
 .login-h1 {
@@ -35,16 +30,21 @@
   z-index: 11;
   padding: 6px;
   border-radius: 50%;
-  width: 20px;
-  height: 20px;
+  width: 4px;
+  height: 4px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin-left: 18px;
+  margin-top: 23px;
+  cursor: pointer;
+  background-image: url(https://airbodes-bucket.s3.us-west-1.amazonaws.com/51A165D4-6105-4710-BEAE-08A7E9DE3B24_4_5005_c.jpeg);
+  background-size: contain;
 }
 
 .cancel:hover {
-  background-color: #f7f7f7;
+  background-image: url(https://airbodes-bucket.s3.us-west-1.amazonaws.com/209B0D43-13B7-470F-8842-FAA34FE49E8C_4_5005_c.jpeg);
 }
 
 .login-form {
@@ -60,7 +60,7 @@
   width: 92%;
   margin-left: 4%;
   margin-right: 4%;
-  border-radius: 10px;
+  border-radius: 8px;
 }
 
 .login-divs {
@@ -69,21 +69,89 @@
   width: 100%;
   align-items: center;
   height: 54px;
+  border-top: 1px solid rgb(182, 182, 182);
 }
 
 .login-divs:first-child {
-  border-bottom: 1px solid rgb(182, 182, 182);
-  ;
+  border-top: 1px solid transparent;
 }
 
-.login-label {
-  right: 146px;
-  top: 2px;
-  width: 180px;
+.login-label-one,
+.login-label-two,
+.login-label-three,
+.login-label-four,
+.login-label-five,
+.login-label-six,
+.login-label-seven,
+.login-label-eight {
+  right: 186px;
+  top: 20px;
+  width: fit-content;
   position: relative;
-  font-size: 13px;
+  font-size: 14px;
   z-index: 9;
   height: 40px;
+  cursor: pointer;
+  padding: 4px;
+  color: #7c7c7c;
+}
+
+.login-label-two {
+  right: 213px;
+}
+
+.login-label-three {
+  right: 225px;
+}
+.login-label-four {
+  right: 210px;
+}
+.login-label-five {
+  right: 211px;
+}
+.login-label-six {
+  right: 185px;
+}
+.login-label-seven {
+  right: 220px
+}
+.login-label-eight {
+  top: 66px;
+  right: 172px;
+}
+
+.textarea-div {
+  height: 100px;
+}
+.textarea {
+  height: 100px;
+  resize: none;
+  overflow-y: scroll;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.login-label-active-one,
+.login-label-active-two,
+.login-label-active-three,
+.login-label-active-four,
+.login-label-active-five,
+.login-label-active-six,
+.login-label-active-seven,
+.login-label-active-eight {
+  background-color: white;
+  top: -12px;
+  font-size: 12px;
+  color: #7c7c7c;
+}
+
+.login-label-active-two {
+  right: 210px;
+}
+.login-label-active-six {
+  right: 190px;
+}
+.login-label-active-eight {
+  right: 175px;
 }
 
 .login-input {
@@ -91,11 +159,12 @@
   width: 200px;
   font-size: 16px;
   border: 1px solid transparent;
-  width: 96%;
-  margin-left: 3%;
-  margin-right: 1%;
-  height: 40px;
+  width: 92%;
+  padding: 2% 4%;
+  padding-bottom: 0;
   position: relative;
+  top: -10px;
+  background: transparent;
 }
 
 .login-input:focus {
@@ -107,10 +176,11 @@
   background: linear-gradient(to right, rgb(230, 30, 77) 0%, rgb(227, 28, 95) 50%, rgb(215, 4, 102) 100%) !important;  color: white;
   padding: 8px;
   width: 92%;
-  border-radius: 10px;
+  border-radius: 8px;
   border: 1px solid rgb(182, 182, 182);
   margin: 20px 4%;
   height: 44px;
+  cursor: pointer;
 }
 
 .login-btn-modal:hover {
@@ -118,7 +188,7 @@
 }
 
 .login-form-errors {
-  height: 20px;
+  height: fit-content;
   margin: 0;
   margin-top: 10px;
 }
@@ -126,4 +196,84 @@
 .login-form-errors-li {
   list-style: none;
   color: red;
+  font-style: italic;
+  font-size: 14px;
+}
+.or {
+  font-size: 12px;
+  width: fit-content;
+  margin: 0 auto;
+  position: relative;
+  top: 7px;
+  background-color: white;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+.line-thru-or {
+  border-bottom: 1px solid rgb(202, 202, 202);
+  margin: 0;
+}
+
+.below-btns-div {
+  width: 92%;
+  margin: auto 4%;
+  margin-top: 20px;
+}
+
+.below-btns-div .nav-signup {
+  text-decoration: none;
+  color: rgb(67, 67, 67);
+  font-size: 14px;
+  width: 100%;
+  margin: 10px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 44px;
+  border-radius: 0;
+  border: none;
+}
+
+.below-btns-div .nav-signup-btn {
+  background-color: white;
+  padding: 8px;
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid rgb(27, 27, 27);
+  height: 44px;
+  cursor: pointer;
+}
+
+.below-btns-div .nav-signup-btn:hover {
+  border: 1px solid rgb(27, 27, 27);
+}
+
+.below-btns {
+  background-color: white;
+  padding: 8px;
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid rgb(27, 27, 27);
+  margin: 10px 0;
+  height: 44px;
+  cursor: pointer;
+}
+
+.below-btns:hover {
+  background-color: #f7f7f7;
+}
+
+.below-btns-links {
+  text-decoration: none;
+  color: #222222;
+  display: block;
+  padding: 8px;
+  width: 490.55px !important;
+}
+
+.email-p {
+  font-size: 11px;
+  width: 90%;
+  margin: 8px 5%;
 }
