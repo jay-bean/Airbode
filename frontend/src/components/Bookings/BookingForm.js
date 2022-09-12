@@ -157,11 +157,11 @@ function Calender({ price }) {
           onFocusChange={(focusedInput) => setFocusedInput(focusedInput)}
         />
         {startDate && endDate ? <button className='login-btn-modal' type="submit">Reserve</button> : <button className='login-btn-modal' type="button" onClick={() => handleClick}>Check Availability</button>}
-        <p className='booking-form-p'>Your vacation awaits</p>
       </form>
       {startDate && endDate ?
 
       <div>
+        <p className='booking-form-p'>You won't be charged yet</p>
         <div className='total-nights-div'>
           <div className='nights-div underline'>
             {<p>${price}</p>} x

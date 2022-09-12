@@ -27,7 +27,7 @@ function DigReviewList({ setShowModal }) {
       <h1 className="or review-or">Lets see what others have to say</h1>
       <p className="line-thru-or"></p>
       <div className='all-reviews-container'>
-        {digsReviews && digsReviews.length ? digsReviews.map(review => (<Review review={review} key={review.id}/>)) : <p>There are currently no reviews.</p>}
+        {digsReviews && digsReviews.length ? digsReviews.map(review => (<Review review={review} key={review.id}/>)) : <p className='no-reviews-p'>There are currently no reviews.</p>}
       </div>
     </div>
   );

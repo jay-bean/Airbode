@@ -23,7 +23,6 @@
   top: 136px !important;
 }
 
-
 .CalendarMonth_caption {
   bottom: 0 !important;
   padding: 0 !important;
@@ -99,15 +98,10 @@
   border-radius: 30px; */
 }
 
-
 .CalendarDay__default {
   border: transparent !important;
   border-radius: 50% !important;
 }
-.CalendarDay__default:first-child {
-
-}
-
 
 .DayPickerNavigation_button__default {
   border: transparent !important;

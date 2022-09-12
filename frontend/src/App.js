@@ -17,6 +17,7 @@ import AboutMe from "./components/AboutMe/AboutMe";
 import './main.css';
 import Footer from "./components/Footer/Footer";
 import './index.css';
+import GridGallery from "./components/GridGallery/GridGallery";
 
 function App() {
   const dispatch = useDispatch();
@@ -62,6 +63,9 @@ function App() {
           </Route>
           <Route exact path="/about">
             <AboutMe/>
+          </Route>
+          <Route exact path="/digs/:digId/images">
+            <GridGallery/>
           </Route>
         </Switch>
       )}
