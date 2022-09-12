@@ -87,9 +87,9 @@ function Dig() {
             <li className='dig-flex-box'>
 
               <div className='dig-flex-left'>
-                <li className='dig-li'>
+                {/* <li className='dig-li'>
                   <div>${dig.price}/night</div>
-                </li>
+                </li> */}
                 <li className='dig-li'>
                   <div>{dig.pets ? 'Pets are welcomed.' : 'Pets are not allowed at this time.'}</div>
                 </li>
@@ -99,6 +99,7 @@ function Dig() {
               </div>
               <div className='dig-flex-right'>
                   {dig && !sessionUser && (<BookingForm price={dig.price}/>)}
+                  {dig && sessionUser && dig.userId !== sessionUser.id ? <BookingForm price={dig.price}/> : null}
               </div>
             </li>
                 <div className='grid-dig-btns'>
@@ -108,7 +109,6 @@ function Dig() {
                 <div className='grid-dig-links'>
                   {/* {dig && sessionUser && dig.userId === sessionUser.id ? <Link className='dig-homes-link' to="/digs">View Your Homes</Link> : null} */}
                   {dig && sessionUser && dig.userId === sessionUser.id ? <Link className='dig-bookings-link' to={`/digs/${dig.id}/bookings`}>View Bookings</Link> : null}
-                  {dig && sessionUser && dig.userId !== sessionUser.id ? <BookingForm price={dig.price}/> : null}
                 </div>
                 <ReviewModal/>
           </ul>

@@ -101,6 +101,36 @@ function Calender({ price }) {
       history.push(`/digs/${digId}`);
     }
   }
+
+  // // check availability onClick
+  // const inputRef = useRef(null);
+
+  // const handleClick = () => {
+  //   // 👇️ open file input box on click of other element
+  //   inputRef.current.click();
+  // };
+  // const handleFileChange = event => {
+  //   const fileObj = event.target.files && event.target.files[0];
+  //   if (!fileObj) {
+  //     return;
+  //   }
+
+  //   console.log('fileObj is', fileObj);
+
+  //   // 👇️ reset file input
+  //   event.target.value = null;
+
+  //   // 👇️ is now empty
+  //   console.log(event.target.files);
+
+  //   // 👇️ can still access file object here
+  //   console.log(fileObj);
+  //   console.log(fileObj.name);
+  // };
+  const handleClick = () => {
+
+  }
+
   return (
     <div className='booking-form-container'>
       {validationErrors.length > 0 && (
@@ -114,8 +144,6 @@ function Calender({ price }) {
         onSubmit={handleSubmit}
       >
         <DateRangePicker
-          id='date-range-containerz'
-          startDatePlaceholder={'check-in'}
           isDayBlocked={(day) => disabledDays.some(date => day.isSame(date, 'day'))}
           startDate={startDate}
           startDateId="start-date"
@@ -128,18 +156,32 @@ function Calender({ price }) {
           focusedInput={focusedInput}
           onFocusChange={(focusedInput) => setFocusedInput(focusedInput)}
         />
-        <span>check-in</span>
-        <span>checkout</span>
-        <button className='booking-form-submit-btn' type="submit">Reserve</button>
+        {startDate && endDate ? <button className='login-btn-modal' type="submit">Reserve</button> : <button className='login-btn-modal' type="button" onClick={() => handleClick}>Check Availability</button>}
+        <p className='booking-form-p'>Your vacation awaits</p>
       </form>
-      {nights ? nights > 1 ? (<div>{nights} nights</div>) : (<div>{nights} night</div>) : null}
+      {startDate && endDate ?
+
       <div>
-        <p>Total Before Taxes</p>
-        <p>${total ? total : 0}</p>
+        <div className='total-nights-div'>
+          <div className='nights-div underline'>
+            {<p>${price}</p>} x
+            {nights ? nights > 1 ? (<div>{nights} nights</div>) : (<div>{nights} night</div>) : null}
+          </div>
+          {total ? <p className='nights-div'>${total}</p> : null}
+        </div>
+        <div className='cleaning-div'>
+          <p className='nights-div underline'>Cleaning Fee</p>
+          <p className='nights-div'>$100</p>
+        </div>
+        <div>
+          <p id='cancelation' className='nights-div'>* One week cancelation policy</p>
+        </div>
+        <div className='total-div'>
+          <p className='nights-div'>Total Before Taxes</p>
+          {total ? <p className='nights-div'>${total + 100}</p> : null}
+        </div>
       </div>
-      <div>
-        <p>One week cancelation policy</p>
-      </div>
+      : null}
     </div>
   );
 }

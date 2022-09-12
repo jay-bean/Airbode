@@ -138,6 +138,8 @@
   display: flex;
   flex-direction: column;
   width: 40%;
+  margin-top: -100px;
+  margin-right: 20px;
 }
 
 .dig-title {
@@ -383,11 +385,26 @@
   float: right;
   margin-right: 18%;
   border: 1px solid rgb(221, 221, 221);
-    border-radius: 12px;
-    padding: 24px;
-    box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
-    width: 330px;
-    height: 480px;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
+  width: 330px;
+  height: 480px;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.booking-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.booking-form .login-btn-modal {
+  height: 52px;
 }
 
 .booking-form .DateRangePickerInput__withBorder {
@@ -399,6 +416,14 @@
 .booking-form-h2 {
   font-weight: 400;
   font-size: 16px;
+  margin-bottom: 26px;
+}
+
+.booking-form-p {
+  font-size: 14px;
+  letter-spacing: 1px;
+  margin: 0;
+  margin-bottom: 30px;
 }
 
 .booking-form-span {
@@ -434,6 +459,36 @@
   box-shadow: 1px 1px 4px #a1a1a1;
 }
 
+.cleaning-div,
+.total-div,
+.total-nights-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 16px;
+  margin-bottom: 30px;
+}
+.nights-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 5px;
+  margin: 0;
+}
+#cancelation {
+  font-size: 12px;
+  margin: 10px 0;
+  margin-top: 50px;
+}
+.total-div {
+  padding-top: 20px;
+  font-weight: 600;
+  border-top: 1px solid rgb(211, 211, 211);
+}
+.underline {
+  border-bottom: 1px solid #222222;
+}
 
 /* review */
 .review-or {
