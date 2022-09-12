@@ -49,7 +49,7 @@ function Dig() {
   }
 
   const [scrollPosition, setScrollPosition] = useState(0);
-  console.log(scrollPosition);
+
   const handleScroll = () => {
       const position = window.pageYOffset;
       setScrollPosition(position);

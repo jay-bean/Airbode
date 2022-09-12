@@ -5,7 +5,7 @@ import '../SignupFormPage/SignupForm.css';
 
 function LoginFormModal() {
   const [showModalLogin, setShowModalLogin] = useState(false);
-  console.log(showModalLogin, 'modalloginnnnn')
+
   return (
     <div className='login-btn-div'>
       <button className='login-btn' onClick={() => setShowModalLogin(true)}>Log In</button>

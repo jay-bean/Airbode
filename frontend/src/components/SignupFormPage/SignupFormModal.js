@@ -5,23 +5,6 @@ import '../SignupFormPage/SignupForm.css';
 
 function SignupFormModal({ setShowModalLogin }) {
   const [showModal, setShowModal] = useState(false);
-  // const [signupActive, setSignupActive] = useState(false);
-
-  // console.log(showModal, 'showmodalsungup')
-
-  // const signupHandler = () => {
-  //   setSignupActive(true);
-  //   setShowModalLogin(false);
-  // }
-
-  // useEffect(() => {
-  //   const timer = setTimeout(() => {
-  //     setShowModal(true);
-  //   });
-  //   return () => {
-  //     clearTimeout(timer);
-  //   }
-  // }, [signupActive]);
 
   return (
     <div className='nav-signup'>

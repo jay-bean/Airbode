@@ -623,11 +623,3 @@
 .login-btn-modal:hover {
   background: linear-gradient(to left, rgb(230, 30, 77) 0%, rgb(227, 28, 95) 50%, rgb(215, 4, 102) 100%) !important;  color: white;
 }
-
-@media only screen and (max-width: 1300px) {
-  .dig-flex-right,
-  .dig-flex-right-active,
-  .dig-flex-right-bottom {
-    margin-right: 30px;
-  }
-}

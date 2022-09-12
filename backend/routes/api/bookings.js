@@ -47,7 +47,6 @@ router.post('/',
 
 router.delete('/:bookingId(\\d+)',
   asyncHandler(async (req, res) => {
-    console.log(req.params.bookingId, 'this is the booking id backend')
     const booking = await Booking.findOne({ where: { id: req.params.bookingId }});
     await booking.destroy();
     return res.json(req.params.bookingId);

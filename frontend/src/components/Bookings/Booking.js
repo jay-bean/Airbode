@@ -48,28 +48,39 @@ function Booking() {
   return (
     <>
       <div className='booking-page'>
+      <Link className='booking-page-link-2' to="/bookings">Back to Reservations</Link>
         <div className='booking-page-container'>
           {booking && dig && (
             <div>
-              <h1>Trip Information</h1>
+              <div className='booking-dig-container'>
+                  <Link to={`/digs/${dig.id}`}>{dig.images && dig.images.length ? <img className="dig-home-page-image" src={`${dig.images[0].url}`}/> : null}</Link>
+                  <div className='booking-dig-title'>
+                    <Link className='booking-page-link-1' to={`/digs/${dig.id}`}><div className='booking-page-div'>{dig.title}</div></Link>
+                    <div className='booking-page-csc-1'>{dig.city}, {dig.state} {dig.country}</div>
+                  </div>
+                  {/* <div className='booking-page-csc-2'>{dig.country}</div> */}
+              </div>
               <ul className='booking-page-ul'>
                 <li className='booking-page-li'>
-                  <div>Check-in: {moment(booking.startDate).format('L')}</div>
-                  <div>Check-out: {moment(booking.endDate).format('L')}</div>
-                  <div>You reserved this on {moment(booking.createdAt).format('L')}</div>
+                  <div className='res-times-container'>
+                    <div className='res-times-div'>
+                      <p className='res-times-p-check'>Check-in</p>
+                      <p className='res-times-p'>{moment(booking.startDate).format('L')}</p>
+                    </div>
+                    <div className='res-times-div'>
+                      <p className='res-times-p-check'>Checkout</p>
+                      <p className='res-times-p'>{moment(booking.endDate).format('L')}</p>
+                    </div>
+                  </div>
+                  <p className='reserved-at'>You reserved this on {moment(booking.createdAt).format('L')}</p>
+                  <div className='booking-cancel'>
+                    <p id='cancelation' className='nights-div'>* One week cancelation policy</p>
+                  </div>
                 </li>
               </ul>
-              <div>
-                  <p className='booking-page-p'>Where are you going?</p>
-                  <Link to={`/digs/${dig.id}`}>{dig.images && dig.images.length ? <img className="dig-home-page-image" src={`${dig.images[0].url}`}/> : null}</Link>
-                  <Link className='booking-page-link-1' to={`/digs/${dig.id}`}><div className='booking-page-div'>{dig.title}</div></Link>
-                  <div className='booking-page-csc-1'>{dig.city}, {dig.state}</div>
-                  <div className='booking-page-csc-2'>{dig.country}</div>
-              </div>
             </div>
           )}
-          <button className='booking-page-delete-btn' onClick={deleteHandler}>Delete</button>
-          <Link className='booking-page-link-2' to="/bookings">Back to Reservations</Link>
+          <button className='login-btn-modal' onClick={deleteHandler}>Cancel Reservation</button>
         </div>
       </div>
     </>
