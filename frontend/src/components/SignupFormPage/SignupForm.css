@@ -58,15 +58,58 @@
   box-shadow: 1px 1px 4px #a1a1a1;
 }
 
+.login-btn-div {
+  width: 26%;
+  height: 40px;
+}
+
 .login-btn {
   background-color: white;
-  padding: 10px;
-  width: 100px;
-  border-radius: 30px;
-  border: thin solid 	#484848;
-  margin-right: 30px;
+  padding: 2px 10px;
+  width: 100%;
+  height: 100%;
+  border: 1px solid #dddddd;
+  border-radius: 40px;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 5%);
+  cursor: pointer;
 }
 
 .login-btn:hover {
-  box-shadow: 1px 1px 4px #a1a1a1;
+  box-shadow: 2px 4px 3px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 5%);
+}
+
+.login-div {
+  width: 92%;
+  margin: auto 4%;
+  margin-top: 20px;
+}
+
+.login-div .login-btn-div {
+  text-decoration: none;
+  color: hsl(0, 0%, 26%);
+  font-size: 14px;
+  width: 100%;
+  margin: 10px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 44px;
+  border-radius: 0;
+  border: none;
+  margin-top: 50px;
+}
+.login-div .login-btn {
+  background-color: white;
+  padding: 8px;
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid rgb(27, 27, 27);
+  height: 44px;
+  cursor: pointer;
+}
+
+.login-div .login-btn:hover {
+  box-shadow: none;
+  background-color: #f7f7f7;
 }

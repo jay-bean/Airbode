@@ -2,16 +2,26 @@
   list-style: none;
   background-color: #ffffff;
   padding: 4px;
-  border-radius: 10px;
-  border: 1px solid black;
+  border-radius: 12px;
+  border: 1px solid rgba(243, 243, 243, 0.706);
+  position: absolute;
+  top: 50px;
+  right: 0px;
+  box-shadow: 0 2px 16px rgb(0 0 0 / 12%);
+  padding: 8px 0;
+  width: 220px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  font-size: 14px;
 }
 
 .profile-li {
-  margin: 4px;
+  color: rgb(34, 34, 34);
 }
 
 .profile-li-name {
-  border-bottom: thin solid #484848;
   border-bottom-width: 100%;
   padding-bottom: 4px;
   text-align: center;
@@ -19,26 +29,31 @@
 
 .profile-link {
   text-decoration: none;
-  color: black;
-  ;
+  color: rgb(34, 34, 34);
+  height: 40px;
+  padding: 0 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .profile-link:hover {
-  color: #7a7979;
+  background-color: #ececec;
 }
 
-.profile-logout-btn {
+#logout-btn {
   background-color: white;
-  padding: 5px;
+  padding: 0px 10px;
   width: 100%;
-  border: thin solid 	#484848;
+  border: none;
   margin: auto;
-  margin-right: 30px;
-  border-radius: 20px;
+  cursor: pointer;
+}
+
+#logout-btn:hover {
+  background-color: #ececec;
 }
 
 .profile-logout-btn:hover {
-  /* box-shadow: 1px 1px 4px #a1a1a1; */
-  color: white;
-  background-color: #FF5A5F;
+
 }

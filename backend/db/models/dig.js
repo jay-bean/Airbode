@@ -57,9 +57,14 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Dig.associate = function(models) {
     Dig.belongsTo(models.User, { foreignKey: 'userId' });
-    Dig.hasMany(models.Review, { foreignKey: 'digId' });
-    Dig.hasMany(models.Booking, { foreignKey: 'digId' });
-    Dig.hasMany(models.Image, { as: 'images', foreignKey: 'digId' });
+    Dig.hasMany(models.Review, { foreignKey: 'digId', onDelete: 'CASCADE', hooks: true  });
+    Dig.hasMany(models.Booking, { foreignKey: 'digId', onDelete: 'CASCADE', hooks: true  });
+    Dig.hasMany(models.Image, { as: 'images', foreignKey: 'digId', onDelete: 'CASCADE', hooks: true  });
+    Dig.belongsToMany(models.User, {
+      through: 'Booking',
+      foreignKey: 'digId',
+      otherKey: 'userId',
+    });
   };
   return Dig;
 };

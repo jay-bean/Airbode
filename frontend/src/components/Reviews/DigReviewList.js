@@ -6,7 +6,7 @@ import ReviewForm from './ReviewForm';
 import Review from './Review';
 import '../Digs/dig.css';
 
-function DigReviewList() {
+function DigReviewList({ setShowModal }) {
   const dispatch = useDispatch();
   const { digId } = useParams();
   const dig = useSelector(state => state.digs[digId]);
@@ -22,13 +22,12 @@ function DigReviewList() {
 
 
   return (
-    <div className='modal'>
-      <div className='modal-2'>
-        <div className='modal-3'>
-          <ReviewForm />
-          <h1 className='dig-review-h1'>Lets see what others have to say</h1>
-          {digsReviews && digsReviews.length ? digsReviews.map(review => (<Review review={review} key={review.id}/>)) : <p>There are currently no reviews.</p>}
-        </div>
+    <div className="login-modal dig-modal">
+      <ReviewForm setShowModal={setShowModal} />
+      <h1 className="or review-or">Lets see what others have to say</h1>
+      <p className="line-thru-or"></p>
+      <div className='all-reviews-container'>
+        {digsReviews && digsReviews.length ? digsReviews.map(review => (<Review review={review} key={review.id}/>)) : <p>There are currently no reviews.</p>}
       </div>
     </div>
   );

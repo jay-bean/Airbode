@@ -1,5 +1,6 @@
 .users-digs-page {
   margin: 4% 8%;
+  height: calc(100vh - 40px);
 }
 
 .users-digs-h1 {

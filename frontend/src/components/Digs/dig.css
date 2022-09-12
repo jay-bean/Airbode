@@ -1,13 +1,111 @@
 .dig-ind-page {
-  margin: 4% 10%;
+  margin: 2% 10%;
+  margin-bottom: 0;
+  height: 100%;
 }
 
 .dig-grid {
-  display: grid;
-  grid-template-columns: repeat(2 1frf);
-  grid-template-rows: repeat(2 1frf);
+  display: flex;
+  flex-direction: column;
+  /* grid-template-columns: repeat(4 1fr);
+  grid-template-rows: repeat(2 1fr); */
   width: auto;
   padding: 0;
+}
+
+.leading-photo-container {
+  display: flex;
+  flex-direction: row;
+  height: 500px;
+  width: 100%;
+}
+
+.leading-photo-div-one {
+  margin: 0;
+  width: 50%;
+  min-height: 100%;
+}
+
+.leading-photo-div-two {
+  width: 24%;
+  height: 100%;
+  margin-right: .4%;
+}
+.leading-photo-div-three {
+  width: 24%;
+  height: 100%;
+  margin-left: .4%;
+}
+
+.leading-photo-img-one {
+  width: 98.5%;
+  height: 100%;
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+  margin-right: 1.5%;
+  object-fit: cover;
+}
+.leading-photo-img-two,
+.leading-photo-img-three,
+.leading-photo-img-four,
+.leading-photo-img-five {
+  height: 49.5%;
+  width: 100%;
+  object-fit: cover;
+}
+.leading-photo-img-two,
+.leading-photo-img-four {
+  margin-bottom: .5%;
+}
+.leading-photo-img-three,
+.leading-photo-img-five {
+  margin-top: .5%;
+}
+
+
+.leading-photo-img-four {
+  border-top-right-radius: 10px;
+}
+.leading-photo-img-five {
+  border-bottom-right-radius: 10px;
+}
+
+.leading-btn-div {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.leading-photo-btn {
+  position: relative;
+  width: 160px;
+  padding: 7px 15px;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 5%;
+  align-items: center;
+  border: 1px solid #222222;
+  border-radius: 8px;
+  z-index: 2;
+  top: -50px;
+  left: -40px;
+  cursor: pointer;
+  font-size: 14px;
+}
+.square-dots {
+  background-image: url(https://airbodes-bucket.s3.us-west-1.amazonaws.com/B83B3161-C279-4BF3-91AE-5799183FA227_4_5005_c.jpeg);
+  background-position: center;
+  background-size: contain;
+  width: 16px;
+  height: 16px;
+}
+.leading-photo-btn:hover {
+  background-color: #fafafa;
+}
+.leading-photo-btn:hover .square-dots {
+  background-image: url(https://airbodes-bucket.s3.us-west-1.amazonaws.com/04A0F7A3-AF78-4C75-843E-FDF97142E44A_4_5005_c.jpeg);
 }
 
 .dig-li {
@@ -24,19 +122,52 @@
   z-index:-1
 }
 
-.grid-dig-left {
-  grid-column: 1 / 2;
-  grid-row: inherit;
+.dig-flex-box {
+  display: flex;
+  flex-direction: row;
+
 }
 
-.grid-dig-right {
-  grid-column: 2 / 3;
-  grid-row: 2;
+.dig-flex-left {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+}
+
+.dig-flex-right {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
 }
 
 .dig-title {
-  font-size: 30px;
-  margin-bottom: 30px;
+  font-size: 26px;
+  font-weight: 600;
+  color: #222222;
+}
+
+.dig-address {
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.hosted-by-div {
+  width: 50%;
+}
+
+.hosted-by {
+  font-size: 20px;
+  font-weight: 600;
+  color: #222222;
+  margin-bottom: 10px;
+}
+
+.hosted-by-p {
+  font-size: 16px;
+  width: 100%;
+  margin: 0;
+  padding-bottom: 32px;
+  border-bottom: 1px solid rgb(219, 219, 219);
 }
 
 .dig-edit-btn {
@@ -126,37 +257,38 @@
   overflow: hidden;
   overflow-y: scroll;
   overflow-x: hidden;
-  width: 95%;
-  margin: auto;
-  border-bottom: thin solid black;
+  width: 92%;
+  margin: 10px auto;
+}
+
+.dig-review-container:first-child {
+  margin-top: 40px;
 }
 
 .dig-review-delete-btn {
   background-color: white;
   padding: 8px;
   width: 80px;
-  border-radius: 30px;
-  border: thin solid 	#484848;
-  margin: 20px auto;
+  border-radius: 8px;
+  border: 1px solid rgb(27, 27, 27);  margin: 20px auto;
   margin-left: 30px;
 }
 
 .dig-review-delete-btn:hover {
-  box-shadow: 1px 1px 4px #a1a1a1;
+  background-color: #f7f7f7;
 }
 
 .dig-review-edit-btn {
   background-color: white;
   padding: 8px;
   width: 80px;
-  border-radius: 30px;
-  border: thin solid 	#484848;
-  margin: 20px auto;
+  border-radius: 8px;
+  border: 1px solid rgb(27, 27, 27);  margin: 20px auto;
   margin-left: 30px;
 }
 
 .dig-review-edit-btn:hover {
-  box-shadow: 1px 1px 4px #a1a1a1;
+  background-color: #f7f7f7;
 }
 
 .modal {
@@ -240,24 +372,38 @@
   box-shadow: 1px 1px 4px #a1a1a1;
 }
 
-.dig-review-h1 {
-  font-weight: 600;
-  border-bottom: thin solid #484848;
-  border-width: 2px;
-  padding-bottom: 10px;
-}
-
-.review-comment-div {
+.review-comment {
   word-break: break-all;
+  height: fit-content;
+  line-height: 1.8;
+  font-size: 14px;
 }
 
 .booking-form-container {
   float: right;
   margin-right: 18%;
+  border: 1px solid rgb(221, 221, 221);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
+    width: 330px;
+    height: 480px;
+}
+
+.booking-form .DateRangePickerInput__withBorder {
+  border: 1px solid #9b9b9b;
+  border-radius: 8px;
+  padding: 10px;
 }
 
 .booking-form-h2 {
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.booking-form-span {
   font-weight: 600;
+  font-size: 22px;
 }
 
 .grid-dig-btns {
@@ -286,4 +432,30 @@
 
 .booking-form-submit-btn:hover {
   box-shadow: 1px 1px 4px #a1a1a1;
+}
+
+
+/* review */
+.review-or {
+  font-size: 18px !important;
+}
+
+.dig-modal {
+  overflow-y: scroll;
+}
+.dig-modal::-webkit-scrollbar { width: 0 !important }
+
+.review-username {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.review-username p {
+  margin-bottom: 2px;
+}
+
+.review-date {
+  font-size: 14px;
+  margin: 0;
+  color: #8a8a8a;
 }

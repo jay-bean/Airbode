@@ -1,13 +1,19 @@
 .about-me-page {
-  margin: 4% 10%;
+  margin: 0 10%;
+  margin-bottom: 0;
+  height: calc(100vh - 40px);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .about-me-h1 {
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid rgb(185, 185, 185);
   width: 200px;
   padding-bottom: 12px;
   letter-spacing: 1px;
   font-size: 36px;
+  margin: 0;
 }
 
 .about-me-links {

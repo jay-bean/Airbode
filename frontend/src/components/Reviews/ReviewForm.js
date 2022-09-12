@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { addReview } from '../../store/reviews';
 
-function ReviewForm() {
+function ReviewForm({ setShowModal }) {
   const history = useHistory();
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
@@ -13,13 +13,8 @@ function ReviewForm() {
   const [validationErrors, setValidationErrors] = useState();
   const [review, setReview] = useState('');
   const [rating, setRating] = useState('');
-  const [formDisplay, setFormDisplay] = useState(false);
+  const [labelActive, setLabelActive] = useState([]);
 
-  const handleCancel = () => {
-    setValidationErrors([]);
-    setRating('');
-    setReview('');
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -44,52 +39,52 @@ function ReviewForm() {
       setRating('');
       setReview('');
       setValidationErrors([]);
-      setFormDisplay(true);
+      setLabelActive([]);
       history.push(`/digs/${dig.id}`);
     }
   }
 
   return (
-    <>
-      <div hidden={formDisplay ? true : false}>
-        <h2 className='review-h2'>Leave a review</h2>
-        {validationErrors && validationErrors.length > 0 && (
-          validationErrors.map(error => {
-            return <div className='errors'>{error}</div>
-          })
-        )}
-        <form
-          className='review-form'
-          onSubmit={handleSubmit}
-        >
-          <label className='review-form-label'> Tell us about your stay
-          <textarea
-            className='review-form-input'
-            required
-            value={review}
-            onChange={(e) => setReview(e.target.value)}
-          />
-          </label>
-          <label className='review-form-label'> Rating
-          <input
-            className='review-form-input'
-            type="number"
-            min='1'
-            max='5'
-            required
-            value={rating}
-            onChange={(e) => setRating(e.target.value)}
-          >
-          </input>
-          </label>
-          <div className='review-btns'>
-            <button className='review-submit-btn' type="submit">Submit</button>
-            <button className='review-cancel-btn' type="button" onClick={handleCancel}>Cancel</button>
-          </div>
-        </form>
+    <div>
+      <div className="login-title">
+        <p onClick={() => setShowModal(false)} className="cancel"></p>
+        <h2 className="login-title-p">Leave a review</h2>
       </div>
-      {formDisplay && (<h2 className='review-h2'>Thank you for leaving a review!</h2>)}
-    </>
+      <form
+        className='login-form'
+        onSubmit={handleSubmit}
+      >
+        <div className='login-container'>
+          <div onClick={() => setLabelActive([1])} className="login-divs">
+            <label className={labelActive.includes(1) || rating ? "login-label-seven login-label-active-seven" : 'login-label-seven'}>Rating</label>
+            <input
+              className='login-input'
+              type="number"
+              min='1'
+              max='5'
+              required
+              value={rating}
+              onChange={(e) => setRating(e.target.value)}
+            />
+          </div>
+          <div onClick={() => setLabelActive([0])} className="login-divs textarea-div">
+            <label className={labelActive.includes(0) || review ? "login-label-eight login-label-active-eight" : 'login-label-eight'}>Tell us about your stay</label>
+            <textarea
+              className='login-input textarea'
+              required
+              value={review}
+              onChange={(e) => setReview(e.target.value)}
+            />
+          </div>
+        </div>
+        <ul className="login-form-errors">
+          {validationErrors && validationErrors.length ? validationErrors.map((error, idx) => (
+            <li className="login-form-errors-li" key={idx}>{error}</li>
+        )) : null}
+        </ul>
+        <button className="login-btn-modal" type="submit">Submit</button>
+      </form>
+    </div>
   );
 }
 

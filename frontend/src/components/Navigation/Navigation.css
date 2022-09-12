@@ -1,13 +1,21 @@
 .nav {
   position: sticky;
   background-color: white;
-  width: 100%;
-  height: 60px;
-  border-bottom: 1px solid black;
-  top: 0px;
-  padding: 0;
+  width: 95%;
   margin: 0;
-  padding-bottom: 20px;
+  padding: 5px 0;
+  padding-bottom: 10px;
+  padding-left: 2.5%;
+  padding-right: 2.5%;
+  height: 68px;
+  border-bottom: 1px solid #e7e7e7;
+  top: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  z-index: 9;
 }
 
 .nav-bar {
@@ -19,67 +27,152 @@
   margin-bottom: 20px;
 }
 
+.home-li {
+  width: 30%;
+}
+
 .home {
   text-decoration: none;
-  color: #FF5A5F;
+  color: #ff385c;
   font-size: 26px;
   font-weight: 600;
 }
 
-.about-me {
-  text-decoration: none;
-  color: black;
-  font-size: 18px;
+.about-me-li {
+  width: 40%;
 }
 
-.about-me:hover {
-  color: #7a7979;
+.about-me-div {
+  color: rgb(67, 67, 67);
+  font-size: 14px;
+  border: 1px solid #dddddd;
+  border-radius: 40px;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 5%);
+  padding: 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 60%;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+.about-me-div:hover {
+  box-shadow: 2px 4px 3px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 5%);
+}
+
+.about-me {
+  color: rgb(67, 67, 67);
+  text-decoration: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-weight: 600;
+}
+
+.profile-signup-li {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 3%;
+}
+
+.profile-host-li {
+  width: 30%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .host-home {
   text-decoration: none;
-  color: black;
-  font-size: 18px;
+  color: rgb(67, 67, 67);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 12px 2px;
+  border: 1px solid rgba(0, 0, 0, 0);
+  width: 35%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 .host-home:hover {
-  color: #7a7979;
+  border-radius: 30px;
+  background-color: #f5f5f5;
+  border: 1px solid #f5f5f5;
+}
+
+.profile-container {
+  position: relative;
+  display: inline-block;
+  width: 26%;
 }
 
 .profile-btn {
   z-index: 1;
-  padding: 10px;
-  width: 6%;
-  border-radius: 30px;
-  border: thin solid #484848;
+  padding: 12px 10px;
+  width: 80%;
+  margin-left: 20%;
   background-color: white;
   position:relative;
   display: inline-block;
+  border: 1px solid #dddddd;
+  border-radius: 40px;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 5%);
 }
 
 .profile-btn:hover {
-  box-shadow: 1px 1px 4px #7a7a7a;
+  box-shadow: 2px 4px 3px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 5%);
 }
 
 .nav-signup {
   text-decoration: none;
-  color: black;
-  font-size: 18px;
+  color: rgb(67, 67, 67);
+  font-size: 14px;
+  width: 23%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  border-radius: 40px;
+  border: 1px solid #f5f5f500;
 }
 
-.nav-signup:hover {
-  color: #fd464c;
+.nav-signup-btn {
+  background-color: transparent;
+  width: 100%;
+  border: none;
+  height: 40px;
+  border-radius: 40px;
+  padding: 0 10px;
+  border: 1px solid transparent;
+}
+
+.nav-signup-btn:hover {
+  background-color: #f5f5f5;
+  border: 1px solid #f5f5f5;
 }
 
 .nav-demouser {
   background-color: white;
-  padding: 10px;
-  width: 100px;
-  border-radius: 30px;
-  border: thin solid 	#484848;
-  margin-right: 30px;
+  padding: 2px 10px;
+  width: 26%;
+  height: 40px;
+  font-size: 14px;
+  color: rgb(67, 67, 67);
+  border: 1px solid #dddddd;
+  border-radius: 40px;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 5%);
+  cursor: pointer;
 }
 
 .nav-demouser:hover {
-  box-shadow: 1px 1px 4px #a1a1a1;
+  box-shadow: 2px 4px 3px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 5%);
+
 }

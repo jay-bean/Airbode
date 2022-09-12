@@ -89,6 +89,11 @@ module.exports = (sequelize, DataTypes) => {
     User.hasMany(models.Review, { foreignKey: 'userId' });
     User.hasMany(models.Booking, { foreignKey: 'userId' });
     User.hasMany(models.Dig, { foreignKey: 'userId' });
+    User.belongsToMany(models.Dig, {
+      through: 'Booking',
+      foreignKey: 'userId',
+      otherKey: 'digId',
+    });
   };
 
   return User;

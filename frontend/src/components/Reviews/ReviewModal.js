@@ -11,7 +11,7 @@ function ReviewModal() {
       <button className='dig-review-btn' onClick={() => setShowModal(true)}>Reviews</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <DigReviewList/>
+          <DigReviewList setShowModal={setShowModal}/>
         </Modal>
       )}
     </>

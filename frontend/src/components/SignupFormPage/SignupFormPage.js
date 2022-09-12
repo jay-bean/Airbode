@@ -5,7 +5,7 @@ import * as sessionActions from "../../store/session";
 import LoginFormModal from "../LoginFormModal/LoginFormModal";
 import './SignupForm.css';
 
-function SignupFormPage() {
+function SignupFormPage({ setShowModal }) {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const [email, setEmail] = useState("");
@@ -13,6 +13,7 @@ function SignupFormPage() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
+  const [labelActive, setLabelActive] = useState([]);
 
   if (sessionUser) return <Redirect to="/" />;
 
@@ -26,62 +27,81 @@ function SignupFormPage() {
           if (data && data.errors) setErrors(data.errors);
         });
     }
-    return setErrors(['Confirm Password field must be the same as the Password field']);
+    return setErrors(['Passwords must match.']);
   };
 
   return (
-    <div className="signup-page">
-      <h1 className="signup-h1">Sign Up</h1>
+    <div className="login-modal">
+      <div className="login-title">
+        <p onClick={() => setShowModal(false)} className="cancel"></p>
+        <p className="login-title-p">Log in or sign up</p>
+      </div>
+      <h1 className="login-h1">Welcome to Airbode</h1>
       <form
-        className="signup-form"
+        className="login-form"
         onSubmit={handleSubmit}
       >
-        <ul>
-          {errors.map((error, idx) => <li className='errors' key={idx}>{error}</li>)}
+        <div className="login-container">
+          <div onClick={() => setLabelActive([0])} className="login-divs">
+            <label className={labelActive.includes(0) || email ? "login-label-three login-label-active-three" : 'login-label-three'}>
+              Email
+            </label>
+            <input
+              className="login-input"
+              type="text"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+          <div onClick={() => setLabelActive([1])} className="login-divs">
+            <label className={labelActive.includes(1) || username ? "login-label-four login-label-active-four" : 'login-label-four'}>
+              Username
+            </label>
+            <input
+              className="login-input"
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+            />
+          </div>
+          <div onClick={() => setLabelActive([2])} className="login-divs">
+            <label className={labelActive.includes(2) || password ? "login-label-five login-label-active-five" : 'login-label-five'}>
+              Password
+            </label>
+            <input
+              className="login-input"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+          <div onClick={() => setLabelActive([3])} className="login-divs">
+            <label className={labelActive.includes(3) || confirmPassword ? "login-label-six login-label-active-six" : 'login-label-six'}>
+              Confirm Password
+            </label>
+            <input
+              className="login-input"
+              type="password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              required
+            />
+          </div>
+        </div>
+        <p className="email-p">We won't email you at all. This website was made for fun and doesn't actually do anything.</p>
+        <ul className="login-form-errors">
+          {errors.map((error, idx) => <li className="login-form-errors-li" key={idx}>{error}</li>)}
         </ul>
-        <label className="signup-label">
-          Email
-          <input
-            className="signup-input"
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </label>
-        <label className="signup-label">
-          Username
-          <input
-            className="signup-input"
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-        </label>
-        <label className="signup-label">
-          Password
-          <input
-            className="signup-input"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </label>
-        <label className="signup-label">
-          Confirm Password
-          <input
-            className="signup-input"
-            type="password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            required
-          />
-        </label>
-        <button className="signup-submit-btn" type="submit">Sign Up</button>
+        <button className="login-btn-modal" type="submit">Sign Up</button>
       </form>
-      <p>Already have an account with us? <LoginFormModal/></p>
+      <div className="login-div">
+        <p className="or">Already have an account with us?</p>
+        <p className="line-thru-or"></p>
+        <LoginFormModal/>
+      </div>
     </div>
   );
 }

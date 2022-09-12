@@ -1,5 +1,6 @@
 .users-bookings-page {
   margin: 4% 10%;
+  height: calc(100vh - 40px);
 }
 
 .users-bookings-h1 {

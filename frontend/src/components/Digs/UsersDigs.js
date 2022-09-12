@@ -9,7 +9,7 @@ function UsersDigs() {
   const digs = useSelector((state) => state.digs);
   const sessionUser = useSelector((state) => state.session.user);
   const usersDigs = Object.values(digs).filter((dig) => dig.userId === sessionUser.id).reverse();
-
+  console.log(usersDigs, 'usersdigs')
   useEffect(() => {
     dispatch(getDigs());
   }, [dispatch])
