@@ -10,6 +10,7 @@ function BookingList() {
   const bookings = useSelector((state) => state.bookings);
   const sessionUser = useSelector((state) => state.session.user);
   const digs = useSelector((state) => state.digs);
+  console.log(bookings, 'this is bookings woooo')
   let usersBookings;
   if (bookings) {
    usersBookings = Object.values(bookings).filter(booking => (booking.userId === sessionUser.id)).reverse()

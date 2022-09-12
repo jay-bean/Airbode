@@ -8,7 +8,9 @@ const router = express.Router();
 
 router.get('/',
   asyncHandler(async (_req, res) => {
-    const bookings = await Booking.findAll();
+    const bookings = await Booking.findAll({
+      attributes: { include: ['id'] },
+    });
     return res.status(200).json(bookings);
   })
 );
@@ -45,9 +47,10 @@ router.post('/',
 
 router.delete('/:bookingId(\\d+)',
   asyncHandler(async (req, res) => {
-    const booking = await Booking.findByPk(req.params.bookingId);
+    console.log(req.params.bookingId, 'this is the booking id backend')
+    const booking = await Booking.findOne({ where: { id: req.params.bookingId }});
     await booking.destroy();
-    return res.json({id: booking.id});
+    return res.json(req.params.bookingId);
   })
 );
 

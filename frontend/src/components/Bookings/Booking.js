@@ -32,7 +32,7 @@ function Booking() {
       let b = moment(startDate);
       let difference = b.diff(a, 'days');
       if (difference >= 7 && window.confirm('Are you sure you want to cancel your reservation?')) {
-        await dispatch(removeBooking(booking));
+        await dispatch(removeBooking(booking.id));
         const redirect = history.push("/bookings");
         return redirect;
       }

@@ -20,9 +20,9 @@ const update = booking => ({
   booking
 });
 
-const remove = booking => ({
+const remove = bookingId => ({
   type: REMOVE,
-  booking
+  bookingId
 })
 
 export const getBookings = () => async dispatch => {
@@ -69,14 +69,18 @@ export const editBooking = (data, id) => async dispatch => {
   }
 };
 
-export const removeBooking = data => async dispatch => {
-  const response = await csrfFetch(`/api/bookings/${data.id}`, {
-    method: 'DELETE',
-  });
-  if (response.ok) {
-    const booking = await response.json();
-    dispatch(remove(booking));
-    return booking;
+export const removeBooking = id => async dispatch => {
+  try {
+    const response = await csrfFetch(`/api/bookings/${id}`, {
+      method: 'DELETE',
+    });
+
+    const bookingId = await response.json();
+    dispatch(remove(bookingId));
+    return bookingId;
+  }
+  catch (error) {
+    throw error
   }
 }
 
@@ -97,7 +101,8 @@ const bookingReducer = (state = initialState, action) => {
       newState[action.booking.id] = action.booking
       return newState;
     case REMOVE:
-      delete newState[action.booking.id]
+      console.log(action.bookingId, 'this is the delete in reducer')
+      delete newState[action.bookingId]
       return newState;
     default:
       return state;

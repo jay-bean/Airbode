@@ -41,8 +41,8 @@ function EditDigForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (oldImages.length > 10 || images.length > 10 || oldImages.length + images.length > 10) return setValidationErrors(['Only ten photos allowed.']);
-    if (oldImages.length === 0 && Object.values(images).length === 0) return setValidationErrors(['Please upload at least one photo.']);
+    if (oldImages.length > 20 || images.length > 20 || oldImages.length + images.length > 20) return setValidationErrors(['Only twenty photos max are allowed.']);
+    if (oldImages.length < 5 && Object.values(images).length < 5) return setValidationErrors(['Please upload at least five photos of your property.']);
 
     const formData = new FormData();
     formData.append('title', title);

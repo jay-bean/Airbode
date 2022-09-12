@@ -26,14 +26,35 @@ function Dig() {
     }
   }
 
+  let leadingPhotos;
+  if (dig && dig.images && dig.images.length) {
+    leadingPhotos = dig.images.slice(0, 5);
+    console.log(leadingPhotos)
+  }
+
   return (
     <div className='dig-ind-page'>
       <div>
         {dig && (
           <ul className='dig-grid'>
-            <li className='dig-li' id='dig-gallery'>
+              {leadingPhotos && leadingPhotos.length ?
+                <div className='leading-photo-container'>
+                  <div className='leading-photo-div-one'>
+                    <img className='leading-photo-img-one' src={leadingPhotos[0].url}/>
+                  </div>
+                  <div className='leading-photo-div-two'>
+                    <img className='leading-photo-img-two' src={leadingPhotos[1].url}/>
+                    <img className='leading-photo-img-three' src={leadingPhotos[2].url}/>
+                  </div>
+                  <div className='leading-photo-div-three'>
+                    <img className='leading-photo-img-four' src={leadingPhotos[3].url}/>
+                    <img className='leading-photo-img-five' src={leadingPhotos[4].url}/>
+                  </div>
+                </div>
+              : null}
+            {/* <li className='dig-li' id='dig-gallery'>
               {dig.images && dig.images.length ? <GridGallery images={dig.images}/> : null}
-            </li>
+            </li> */}
 
             <div className='dig-grid-left'>
               <li className='dig-li'>

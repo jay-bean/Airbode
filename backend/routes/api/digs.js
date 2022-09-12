@@ -34,8 +34,8 @@ router.post('/',
       return res.status(400).json(errors);
     }
 
-    if (!req.files.length) {
-      return res.status(400).json(['You must provide at least one photo.']);
+    if (!req.files.length || req.files.length < 5) {
+      return res.status(400).json(['You must provide at least five photos of your property.']);
     }
 
     const dig = Dig.build({
@@ -105,20 +105,6 @@ router.put(`/:digId(\\d+)`,
     dig.pets = req.body.pets;
     const result = await dig.save();
 
-    // // multer trials
-    // const images = req.files;
-    // const imageObjs = images.map(el => {
-    //   const image = Image.build({
-    //     url: el.location,
-    //     digId: result.id
-    //   });
-    //   return image;
-    // })
-
-    // const resImages = await Promise.all(imageObjs.map(async (image) => await image.save()))
-    // // multer^^^^
-
-    // aws
     const images = req.files;
     const imageObjs = images.map(el => {
       const image = Image.build({
@@ -171,7 +157,7 @@ router.delete('/:digId(\\d+)',
   asyncHandler(async (req, res) => {
     const dig = await Dig.findByPk(req.params.digId);
     await dig.destroy();
-    return res.json({id: dig.id});
+    return res.json({id: req.params.digId});
   })
 
 );
