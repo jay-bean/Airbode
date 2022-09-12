@@ -1,7 +1,7 @@
 .dig-ind-page {
-  margin: 4% 10%;
+  margin: 2% 10%;
   margin-bottom: 0;
-  height: calc(100vh - 40px);
+  height: 100%;
 }
 
 .dig-grid {
@@ -84,19 +84,48 @@
   z-index:-1
 }
 
-.grid-dig-left {
-  grid-column: 1 / 2;
-  grid-row: inherit;
+.dig-flex-box {
+  display: flex;
+  flex-direction: row;
+
 }
 
-.grid-dig-right {
-  grid-column: 2 / 3;
-  grid-row: 2;
+.dig-flex-left {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+}
+
+.dig-flex-right {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
 }
 
 .dig-title {
-  font-size: 30px;
-  margin-bottom: 30px;
+  font-size: 26px;
+  font-weight: 600;
+  color: #222222;
+}
+
+.dig-address {
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.hosted-by {
+  font-size: 20px;
+  font-weight: 600;
+  color: #222222;
+  margin-bottom: 10px;
+}
+
+.hosted-by-p {
+  font-size: 16px;
+  width: 60%;
+  margin: 0;
+  padding-bottom: 32px;
+  border-bottom: 1px solid rgb(219, 219, 219);
 }
 
 .dig-edit-btn {
