@@ -1,18 +1,120 @@
 .CalendarDay__selected_span {
-  background: #FF5A5F;
-  color: #ffffff;
+  background: #e7e7e7;
+  color: #000000;
   border: 1px solid #ffffff;
 }
 .CalendarDay__selected {
-  background: 	#00A699;
+  background: 	#000000;
   color: #ffffff;
+  border-color: white;
 }
 .CalendarDay__selected:hover {
-  background: 	#00A699;
+  background: 	#000000;
   color: #ffffff;
 }
 .CalendarDay__hovered_span:hover,
 .CalendarDay__hovered_span {
-  background: #FF5A5F;
-  color: #ffffff;
+  background: #e7e7e7;
+  color: #000000;
+  border-color: white;
+}
+
+.DayPicker_weekHeader_1 {
+  top: 136px !important;
+}
+
+
+.CalendarMonth_caption {
+  bottom: 0 !important;
+  padding: 0 !important;
+  margin-bottom: 10px !important;
+  height: 100px !important;
+}
+
+.booking-form .DateRangePickerInput__withBorder {
+  border: 1px solid #222222;
+  border-radius: 8px;
+}
+
+.DateInput_fangStroke {
+  top: 40px !important;
+}
+.CalenderMonth_table {
+  height: 300px !important;
+}
+
+#start-date,
+#end-date {
+  padding: 2px !important;
+  font-size: 14px !important;
+  width: 100px !important;
+  margin: 0 10px;
+  letter-spacing: 1px;
+}
+
+.DateInput_input__focused {
+  border-bottom: transparent !important;
+}
+
+.DateRangePicker_picker_1{
+  top: 0px !important;
+  left: -350px !important;
+}
+
+.DayPicker {
+  background-color: transparent !important;
+  width: 627px !important;
+  border-radius: 16px;
+  border: 1px solid rgb(221, 221, 221) !important;
+  border-radius: 12px !important;
+  padding: 24px !important;
+  box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px !important;
+}
+
+.CalendarMonth {
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.CalendarMonthGrid {
+  background-color: transparent !important;
+  /* max-width: 500px !important; */
+  /* height: 900px !important;
+  border-radius: 30px; */
+}
+
+.CalendarDay__default {
+  border: transparent !important;
+  border-radius: 50% !important;
+}
+
+.DayPickerNavigation_button__default {
+  border: transparent !important;
+  border-radius: 50%;
+  padding: 8px !important;
+}
+
+.DateInput_fangStroke {
+  display: none;
+}
+
+.DayPicker_transitionContainer {
+  height: 400px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center;
+}
+
+.booking-form .DateRangePicker_arrow_svg_1 {
+  display: none !important;
+}
+
+#date-range-containerz {
+  background-color: red !important;
+}
+
+.DayPickerKeyboardShortcuts_show__bottomRight {
+  display: none !important;
 }

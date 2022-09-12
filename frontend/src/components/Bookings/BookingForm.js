@@ -9,7 +9,7 @@ import moment from 'moment';
 import { addBooking, getBookings } from '../../store/bookings';
 import "./booking-calender.css";
 
-function Calender({price}) {
+function Calender({ price }) {
   const history = useHistory();
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
@@ -108,11 +108,14 @@ function Calender({price}) {
           return <div className='errors' key={error}>{error}</div>
         })
       )}
-      <h2 className='booking-form-h2'>Book a Trip</h2>
+      <div className='booking-form-h2'><span className='booking-form-span'>${price}</span> night</div>
       <form
+        className='booking-form'
         onSubmit={handleSubmit}
       >
         <DateRangePicker
+          id='date-range-containerz'
+          startDatePlaceholder={'check-in'}
           isDayBlocked={(day) => disabledDays.some(date => day.isSame(date, 'day'))}
           startDate={startDate}
           startDateId="start-date"
@@ -125,6 +128,8 @@ function Calender({price}) {
           focusedInput={focusedInput}
           onFocusChange={(focusedInput) => setFocusedInput(focusedInput)}
         />
+        <span>check-in</span>
+        <span>checkout</span>
         <button className='booking-form-submit-btn' type="submit">Reserve</button>
       </form>
       {nights ? nights > 1 ? (<div>{nights} nights</div>) : (<div>{nights} night</div>) : null}

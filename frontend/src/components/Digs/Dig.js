@@ -74,9 +74,12 @@ function Dig() {
                   </div>
                 </div>
               : null}
-              <div>
-              {owner && <h2 className='hosted-by'>Entire home hosted by {owner.username}</h2>}
-              <p className='hosted-by-p'>{dig.guests === 1 ? <span>{dig.guests} guest</span> : <span>{dig.guests} guests</span>}﹒{dig.bedrooms === 1 ? <span>{dig.bedrooms} bedroom</span> : <span>{dig.bedrooms} bedrooms</span>}﹒{dig.beds === 1 ? <span>{dig.beds} bed</span> : <span>{dig.beds} beds</span>}﹒{dig.baths === 1 ? <span>{dig.baths} bath</span> : <span>{dig.baths} baths</span>}</p>
+              <div className='leading-btn-div'>
+                <button className='leading-photo-btn'><span className='square-dots'></span> Show all photos</button>
+              </div>
+              <div className='hosted-by-div'>
+                {owner && <h2 className='hosted-by'>Entire home hosted by {owner.username}</h2>}
+                <p className='hosted-by-p'>{dig.guests === 1 ? <span>{dig.guests} guest</span> : <span>{dig.guests} guests</span>}﹒{dig.bedrooms === 1 ? <span>{dig.bedrooms} bedroom</span> : <span>{dig.bedrooms} bedrooms</span>}﹒{dig.beds === 1 ? <span>{dig.beds} bed</span> : <span>{dig.beds} beds</span>}﹒{dig.baths === 1 ? <span>{dig.baths} bath</span> : <span>{dig.baths} baths</span>}</p>
               </div>
             {/* <li className='dig-li' id='dig-gallery'>
               {dig.images && dig.images.length ? <GridGallery images={dig.images}/> : null}
@@ -88,18 +91,6 @@ function Dig() {
                   <div>${dig.price}/night</div>
                 </li>
                 <li className='dig-li'>
-                  <div>Guests: {dig.guests}</div>
-                </li>
-                <li className='dig-li'>
-                  <div>Bedrooms: {dig.bedrooms}</div>
-                </li>
-                <li className='dig-li'>
-                  <div>Beds: {dig.beds}</div>
-                </li>
-                <li className='dig-li'>
-                  <div>Baths: {dig.baths}</div>
-                </li>
-                <li className='dig-li'>
                   <div>{dig.pets ? 'Pets are welcomed.' : 'Pets are not allowed at this time.'}</div>
                 </li>
                 <li className='dig-li' id='dig-description'>
@@ -107,19 +98,19 @@ function Dig() {
                 </li>
               </div>
               <div className='dig-flex-right'>
+                  {dig && !sessionUser && (<BookingForm price={dig.price}/>)}
+              </div>
+            </li>
                 <div className='grid-dig-btns'>
-                  <ReviewModal/>
                   {dig && sessionUser && dig.userId === sessionUser.id ? <Link to={`/digs/${dig.id}/edit`}><button className='dig-edit-btn'>Edit</button></Link> : null}
                   {dig && sessionUser && dig.userId === sessionUser.id ? <button className='dig-delete-btn' onClick={deleteHandler}>Delete</button> : null}
                 </div>
                 <div className='grid-dig-links'>
-                  {dig && sessionUser && dig.userId === sessionUser.id ? <Link className='dig-homes-link' to="/digs">View Your Homes</Link> : null}
+                  {/* {dig && sessionUser && dig.userId === sessionUser.id ? <Link className='dig-homes-link' to="/digs">View Your Homes</Link> : null} */}
                   {dig && sessionUser && dig.userId === sessionUser.id ? <Link className='dig-bookings-link' to={`/digs/${dig.id}/bookings`}>View Bookings</Link> : null}
                   {dig && sessionUser && dig.userId !== sessionUser.id ? <BookingForm price={dig.price}/> : null}
-                  {dig && !sessionUser && (<BookingForm price={dig.price}/>)}
                 </div>
-              </div>
-            </li>
+                <ReviewModal/>
           </ul>
         )}
         </div>
