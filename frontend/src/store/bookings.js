@@ -101,7 +101,6 @@ const bookingReducer = (state = initialState, action) => {
       newState[action.booking.id] = action.booking
       return newState;
     case REMOVE:
-      console.log(action.bookingId, 'this is the delete in reducer')
       delete newState[action.bookingId]
       return newState;
     default:

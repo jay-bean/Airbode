@@ -118,7 +118,6 @@ router.put(`/:digId(\\d+)`,
       where: { digId: req.params.digId},
       raw: true
     })
-    console.log(currentImages, 'this is current images hopefully')
 
     if (req.body.oldImage && req.body.oldImage.length && currentImages.length) {
       for (let i = 0; i < req.body.oldImage.length; i++)  {
@@ -137,7 +136,6 @@ router.put(`/:digId(\\d+)`,
     await Promise.all(imageObjs.map(async (image) => await image.save()));
 
     // updated info to return
-    console.log(dig.id, 'this is reqparaaamss bbbbbbbyyyyy')
     const updatedDig = await Dig.findByPk(req.params.digId);
     const updatedImages = await Image.findAll({
       where: { digId: req.params.digId},

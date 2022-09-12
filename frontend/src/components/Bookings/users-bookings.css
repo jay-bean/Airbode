@@ -13,7 +13,7 @@
 
 .users-bookings-p1 {
   margin-top: 5%;
-  width: 60%;
+  width: 80%;
 }
 
 .users-bookings-p2 {
@@ -31,28 +31,39 @@
 .booking-list-header {
   background-color: rgb(255, 255, 255);
   height: 60px;
-  border: thin solid #b6b6b6;  border-radius: 20px;
+  border-bottom: thin solid #b6b6b6;  border-radius: 20px;
 }
 
 .booking-list-th {
   font-size: 18px;
   font-weight: 600;
+  width: 50%;
+}
+
+.no-bookings {
+  padding-top: 20px;
 }
 
 .booking-list-body-row {
   text-align: center;
   height: 60px;
-  border: thin solid #b6b6b6;
+  border: none;
 }
 
 .booking-list-dig {
   text-decoration: none;
   letter-spacing: 1px;
   color: black;
+  /* width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center; */
 }
 
 .booking-list-dig:hover {
-  color: #FF5A5F;
+  color: #ff385c;
 }
 
 .booking-list-res {
@@ -62,15 +73,16 @@
 }
 
 .booking-list-res:hover {
-  color: #FF5A5F;
+  color: #ff385c;
 }
 
 .booking-list-book {
-  margin-left: 1%;
+  font-size: 14px;
+  margin-top: 40px;
 }
 
 .click-here {
   margin-left: .5%;
   text-decoration: none;
-  color: #f63a40;
+  color: #ff385c;
 }

@@ -48,6 +48,21 @@ function Dig() {
     leadingPhotos = dig.images.slice(0, 5);
   }
 
+  const [scrollPosition, setScrollPosition] = useState(0);
+
+  const handleScroll = () => {
+      const position = window.pageYOffset;
+      setScrollPosition(position);
+  };
+
+  useEffect(() => {
+      window.addEventListener('scroll', handleScroll, { passive: true });
+
+      return () => {
+          window.removeEventListener('scroll', handleScroll);
+      };
+  }, []);
+
   return (
     <div className='dig-ind-page'>
       <div>
@@ -75,30 +90,31 @@ function Dig() {
                 </div>
               : null}
               <div className='leading-btn-div'>
-                <button className='leading-photo-btn'><span className='square-dots'></span> Show all photos</button>
+                {dig && dig.images && dig.images.length && <GridGallery images={dig.images}/>}
               </div>
               <div className='hosted-by-div'>
                 {owner && <h2 className='hosted-by'>Entire home hosted by {owner.username}</h2>}
                 <p className='hosted-by-p'>{dig.guests === 1 ? <span>{dig.guests} guest</span> : <span>{dig.guests} guests</span>}﹒{dig.bedrooms === 1 ? <span>{dig.bedrooms} bedroom</span> : <span>{dig.bedrooms} bedrooms</span>}﹒{dig.beds === 1 ? <span>{dig.beds} bed</span> : <span>{dig.beds} beds</span>}﹒{dig.baths === 1 ? <span>{dig.baths} bath</span> : <span>{dig.baths} baths</span>}</p>
               </div>
-            {/* <li className='dig-li' id='dig-gallery'>
-              {dig.images && dig.images.length ? <GridGallery images={dig.images}/> : null}
-            </li> */}
             <li className='dig-flex-box'>
 
               <div className='dig-flex-left'>
-                <li className='dig-li'>
-                  <div>${dig.price}/night</div>
-                </li>
-                <li className='dig-li'>
-                  <div>{dig.pets ? 'Pets are welcomed.' : 'Pets are not allowed at this time.'}</div>
-                </li>
-                <li className='dig-li' id='dig-description'>
-                  <div>{dig.description}</div>
-                </li>
+                {dig.pets ? <div className='pets-div'><img className='pets-img' src='https://airbodes-bucket.s3.us-west-1.amazonaws.com/708C36F6-DE10-4AD0-9CCA-6475FC62538F_4_5005_c.jpeg'/>Pets are welcomed</div> : <div className='pets-div'><img className='pets-img' src='https://airbodes-bucket.s3.us-west-1.amazonaws.com/5ED411DD-F0BB-438D-9877-6FFE8516D6D4_4_5005_c.jpeg'/>Pets are not allowed at this time</div>}
+                <div className='dig-description'>
+                  <p className='dig-description-p'>{dig.description}</p>
+                </div>
+                <div className='dig-sleep'>
+                  <h3 className='sleep-h3'>Where you'll sleep</h3>
+                  <div className='dig-sleep-div'>
+                    <img className='bed-img' src='https://airbodes-bucket.s3.us-west-1.amazonaws.com/708C36F6-DE10-4AD0-9CCA-6475FC62538F_4_5005_c.jpeg'/>
+                    {dig.bedrooms === 1 ? <p className='sleep-p'>{dig.bedrooms} bedroom</p> : <p className='sleep-p'>{dig.bedrooms} bedrooms</p>}
+                    {dig.beds === 1 ? <p className='sleep-p beds'>{dig.beds} bed</p> : <p className='sleep-p'>{dig.beds} beds</p>}
+                  </div>
+                </div>
               </div>
-              <div className='dig-flex-right'>
+              <div className={scrollPosition >= 1000 ? 'dig-flex-right-bottom' : scrollPosition <= 650 ? 'dig-flex-right' : 'dig-flex-right-active'}>
                   {dig && !sessionUser && (<BookingForm price={dig.price}/>)}
+                  {dig && sessionUser && dig.userId !== sessionUser.id ? <BookingForm price={dig.price}/> : null}
               </div>
             </li>
                 <div className='grid-dig-btns'>
@@ -108,9 +124,10 @@ function Dig() {
                 <div className='grid-dig-links'>
                   {/* {dig && sessionUser && dig.userId === sessionUser.id ? <Link className='dig-homes-link' to="/digs">View Your Homes</Link> : null} */}
                   {dig && sessionUser && dig.userId === sessionUser.id ? <Link className='dig-bookings-link' to={`/digs/${dig.id}/bookings`}>View Bookings</Link> : null}
-                  {dig && sessionUser && dig.userId !== sessionUser.id ? <BookingForm price={dig.price}/> : null}
                 </div>
-                <ReviewModal/>
+                <div className='review-btn-div'>
+                  <ReviewModal/>
+                </div>
           </ul>
         )}
         </div>

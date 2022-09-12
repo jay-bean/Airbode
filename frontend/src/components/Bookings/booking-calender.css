@@ -23,7 +23,6 @@
   top: 136px !important;
 }
 
-
 .CalendarMonth_caption {
   bottom: 0 !important;
   padding: 0 !important;
@@ -34,6 +33,7 @@
 .booking-form .DateRangePickerInput__withBorder {
   border: 1px solid #222222;
   border-radius: 8px;
+  padding: 0 !important;
 }
 
 .DateInput_fangStroke {
@@ -42,20 +42,33 @@
 .CalenderMonth_table {
   height: 300px !important;
 }
-
+.DateInput {
+  width: 150px !important;
+  background: transparent !important;
+}
 #start-date,
 #end-date {
-  padding: 2px !important;
+  padding: 10px !important;
   font-size: 14px !important;
-  width: 100px !important;
-  margin: 0 10px;
+  width: 100% !important;
+  margin: 0px !important;
   letter-spacing: 1px;
+  background-color: transparent !important;
+  cursor: pointer !important;
 }
+#end-date {
+  border-left: 1px solid #9b9b9b;
+}
+
 
 .DateInput_input__focused {
   border-bottom: transparent !important;
 }
-
+.DateRangePicker_input {
+  display: flex !important;
+  flex-direction: row !important;
+  padding: 0 !important;
+}
 .DateRangePicker_picker_1{
   top: 0px !important;
   left: -350px !important;
@@ -107,7 +120,7 @@
   justify-content: center;
 }
 
-.booking-form .DateRangePicker_arrow_svg_1 {
+.DateRangePickerInput_arrow_svg  {
   display: none !important;
 }
 

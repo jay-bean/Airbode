@@ -10,7 +10,6 @@ function Review({review}) {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const user = useSelector(state => state.users[review.userId]);
-  console.log(user)
   const [showEditForm, setShowEditForm] = useState(false);
 
   const editHandler = async (e) => {

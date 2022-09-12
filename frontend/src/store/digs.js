@@ -71,7 +71,6 @@ export const removeDig = data => async dispatch => {
   });
   if (response.ok) {
     const dig = await response.json();
-    console.log(dig, 'thunk')
     dispatch(remove(dig));
     return dig;
   }

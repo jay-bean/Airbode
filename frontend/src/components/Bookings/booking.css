@@ -1,13 +1,16 @@
 .booking-page {
   text-align: center;
+  height: 100vh;
+  margin-top: 2%;
 }
 
 .booking-page-container {
   margin: 4% 25%;
   text-align: center;
-  background-color: #ffc6c6;
+  background-color: #ffffff;
   padding: 20px;
-  border-radius: 30px;
+  border-radius: 6px !important;
+    box-shadow: rgb(0 0 0 / 20%) 0px 2px 16px 0px !important;
 }
 
 .booking-page-ul {
@@ -26,11 +29,11 @@
 .booking-page-link-1 {
   text-decoration: none;
   color: black;
-  font-size: 26px;
+  font-size: 22px;
 }
 
 .booking-page-link-1:hover {
-  color: #fa0000;
+  color: #222222;
 }
 
 .booking-page-div {
@@ -38,23 +41,12 @@
 }
 
 .booking-page-csc-1 {
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .booking-page-csc-2 {
   font-size: 18px;
   margin-bottom: 10px;
-}
-
-.booking-page-link-2 {
-  text-decoration: none;
-  color: black;
-  font-size: 16px;
-  margin-left: 10px;
-}
-
-.booking-page-link-2:hover {
-  color: #fb0000;
 }
 
 .booking-page-delete-btn {
@@ -69,4 +61,70 @@
 
 .booking-page-delete-btn:hover {
   box-shadow: 1px 1px 4px #a1a1a1;
+}
+
+.booking-dig-container .dig-home-page-image {
+  border-radius: 4px;
+}
+
+.booking-dig-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 95%;
+  margin: 22px auto;
+}
+
+.res-times-container {
+  display: flex;
+  flex-direction: row;
+  width: 95%;
+  margin: 10px auto;
+  justify-content: space-evenly;
+  border-top: 1px solid rgb(219, 219, 219);
+  border-bottom: 1px solid rgb(219, 219, 219);
+}
+.res-times-div {
+  width: 50%;
+  height: 90px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+}
+.res-times-div:first-child {
+  border-right: 1px solid rgb(219, 219, 219);
+}
+.res-times-p-check {
+  font-weight: 600;
+  margin: 0;
+  font-size: 16px;
+}
+.res-times-p {
+  margin: 0;
+  font-size: 16px;
+}
+.booking-cancel {
+  margin-left: 16px;
+}
+
+.booking-page-link-2 {
+  text-decoration: none;
+  color: black;
+  font-size: 16px;
+  margin-left: 10px;
+  top: -300px;
+  height: 100px;
+}
+
+.booking-page-link-2:hover {
+  text-decoration: underline;
+}
+
+.reserved-at {
+  font-size: 16px;
+  margin-top: 30px;
 }
