@@ -6,7 +6,7 @@
 
 .users-bookings-h1 {
   font-weight: 600;
-  font-size: 26px;
+  font-size: 32px;
   margin: 40px 0;
   width: 92%;
 }
@@ -17,13 +17,16 @@
 }
 
 .users-bookings-p1 {
-  margin-top: 5%;
-  width: 80%;
+  width: 100%;
+  font-size: 16px;
+  color: #222222;
 }
 
 .users-bookings-p2 {
-  margin-bottom: 5%;
+  margin-top: 30px;
   font-style: italic;
+  font-size: 14px;
+  color: #717171;
 }
 
 .booking-list-table {
@@ -46,8 +49,74 @@
   width: 50%;
 }
 
-.no-bookings {
-  padding-top: 20px;
+.no-bookings-container {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid rgb(220, 220, 220);
+  height: 300px;
+  width: 100%;
+  border-radius: 10px;
+  margin: auto;
+  justify-content: space-between;
+}
+
+.no-bookings-info-container {
+  padding: 32px;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.no-bookings-info-container1 {
+  padding: 32px;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.pink-hand {
+  width: 48px;
+  height: 48px;
+}
+
+.booking-lg-img {
+  background-image: url(https://airbodes-bucket.s3.us-west-1.amazonaws.com/A8DEF942-2840-428E-BC1D-6C50901E06C0.jpeg);
+  width: 70%;
+  background-size: cover;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.booking-lg-img1 {
+  background-image: url(https://airbodes-bucket.s3.us-west-1.amazonaws.com/A8DEF942-2840-428E-BC1D-6C50901E06C0.jpeg);
+  width: 60%;
+  background-size: cover;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.no-bookings-p {
+  padding: 0;
+  padding-top: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #222222;
+  margin-bottom: 0;
+}
+.no-bookings-p2 {
+  padding: 0;
+  margin: 0;
+  margin-top: 10px;
+  font-size: 14px;
+  color: #717171;
+}
+
+.no-bookings-info-container .login-btn-modal {
+  margin: 0;
+  width: 50%;
+  font-size: 16px;
+  padding: 8px;
+  height: 48px;
 }
 
 .booking-list-body-row {
@@ -55,6 +124,7 @@
   height: 60px;
   border: none;
 }
+
 
 .booking-list-dig {
   text-decoration: none;
@@ -83,8 +153,17 @@
 }
 
 .booking-list-book {
-  font-size: 14px;
-  margin-top: 40px;
+  font-size: 13px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 2%;
+  width: 98%;
+  font-size: 12px;
+}
+.no-bookings-link-home  {
+  color: #222222;
 }
 
 .click-here {

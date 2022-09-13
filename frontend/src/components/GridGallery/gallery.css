@@ -22,13 +22,40 @@
 }
 .gallery-container::-webkit-scrollbar { width: 0 !important }
 
-.close-gallery {
+.close-gallery-container {
+  background-size: contain;
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  margin-left: 20px;
-  margin-top: 20px;
+  margin-left: 33px;
+  margin-top: 33px;
   cursor: pointer;
+  border: none;
+  background-color: #ffffff;
+  position: relative;
+  padding: 0 !important;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.close-gallery-container:hover {
+  background-color: #fafafa;
+}
+.close-gallery {
+  background-image: url(https://airbodes-bucket.s3.us-west-1.amazonaws.com/4A7C0A20-57D4-4BEE-ACA5-1E9533445909_4_5005_c.jpeg);
+  background-size: contain;
+  width: 23px;
+  height: 23px;
+  cursor: pointer;
+  border: none;
+  background-color: #ffffff;
+  position: relative;
+  margin: 0 !important;
+}
+.close-gallery:hover {
+  background-image: url(https://airbodes-bucket.s3.us-west-1.amazonaws.com/4E53D90E-6519-4E26-A722-D8CE0A7BDF95_4_5005_c.jpeg);
+  background-color: #fafafa;
 }
 
 .images-container {

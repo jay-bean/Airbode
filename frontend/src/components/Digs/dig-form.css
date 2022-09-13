@@ -1,22 +1,46 @@
 .new-dig-page {
-  margin: 4% 10%;
-  text-align: center;
+  margin: 2% 10%;
+  margin-bottom: 0;
+  height: 100vh;
 }
 
 .new-dig-h1 {
   font-weight: 600;
-  margin: 100px auto;
-  margin-bottom: 60px;
+  font-size: 32px;
+  margin: 40px 0;
+  width: 92%;
 }
 
 .new-dig-form {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto;
-  width: 60%;
-  margin: 0 20%;
+  margin-bottom: 8%;
+  text-align: center;
+  background-color: #ffffff;
+  border-radius: 6px !important;
+  box-shadow: rgb(0 0 0 / 20%) 0px 2px 16px 0px !important;
+  display: flex;
+  flex-direction: column;
 }
 
+.location-container,
+.title-container,
+.amenities-container {
+  display: flex;
+  flex-direction: row;
+  width: 96%;
+  margin: auto;
+  justify-content: space-between;
+}
+.title-container {
+  justify-content: flex-start;
+}
+.input-containers {
+  border: 1px solid rgb(182, 182, 182);
+  width: 94%;
+  margin-left: 2%;
+  margin-right: 2%;
+  border-radius: 8px;
+  margin: 30px 4%;
+}
 .new-dig-label {
   margin: 10px 0;
   font-size: 18px;
@@ -27,9 +51,9 @@
 
 .new-dig-input {
   border-radius: 20px;
-  padding: 6px;
-  margin-left: 10px;
-  width: 200px;
+  /* padding: 6px;
+  margin-left: 10px; */
+  /* width: 200px; */
   font-size: 18px;
   border: 1px solid #484848;
   padding-left: 20px;
@@ -46,25 +70,41 @@ input[type="file"] {
 
 .new-dig-img-div {
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
+  align-items: center;
+  width: 92%;
+  margin: auto;
+  gap: 20px;
+  margin-bottom: 20px;
 }
 
 .new-dig-label-imgs {
-  border: 1px solid #484848;
-  padding: 6px 6px;
-  cursor: pointer;
-  border-radius: 10px;
-  width: 200px;
+  background-color: white;
+  padding: 8px 0;
+  width: 20%;
+  border-radius: 8px;
+  border: 1px solid rgb(27, 27, 27);
   margin: 10px 0;
-  font-size: 18px;
+  height: 26px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
 }
 
-.new-dig-label-imgs:hover {
-  box-shadow: 1px 1px 4px #a1a1a1;
+.new-dig-label-imgs:hover{
+  background-color: #f7f7f7;
 }
 
 .fa-solid.fa-images {
-  color: #FF5A5F;
+  color: #222222;
+  margin-right: 5px;
+}
+.upload-p {
+  color: #717171;
+  font-size: 14px;
 }
 
 .new-dig-label-textarea {
@@ -90,14 +130,35 @@ input[type="file"] {
 }
 
 .new-dig-label-pets {
-  margin: 10px auto;
-  font-size: 20px;
-  display: block;
-  width: 98%;
+  font-size: 18px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   background-color: rgb(255, 90, 95);
   color: white;
-  padding: 10px;
-  border-radius: 10px;
+  gap: 1%;
+  padding: 2px 0;
+  background: linear-gradient(to right, rgb(230, 30, 77) 0%, rgb(227, 28, 95) 50%, rgb(215, 4, 102) 100%) !important;  color: white;
+  width: 100%;
+  border: .2px solid rgb(182, 182, 182);
+  margin: 20px 0;
+  height: 26px;
+  cursor: pointer;
+}
+.login-btn-modal {
+  background: linear-gradient(to right, rgb(230, 30, 77) 0%, rgb(227, 28, 95) 50%, rgb(215, 4, 102) 100%) !important;  color: white;
+  padding: 8px;
+  width: 92%;
+  border-radius: 8px;
+  border: 1px solid rgb(182, 182, 182);
+  margin: 20px 4%;
+  height: 44px;
+  cursor: pointer;
+}
+
+.login-btn-modal:hover {
+  background: linear-gradient(to left, rgb(230, 30, 77) 0%, rgb(227, 28, 95) 50%, rgb(215, 4, 102) 100%) !important;  color: white;
 }
 
 .new-dig-input-pets {
@@ -114,35 +175,50 @@ input[type="file"] {
 }
 
 .btn-div {
-  display: block;
-  width: 80%;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
   margin: auto;
+  margin-bottom: 30px;
 }
 
 .new-dig-submit-btn {
-  background-color: white;
-  padding: 10px;
-  width: 100px;
-  border-radius: 30px;
-  border: thin solid 	#484848;
-  margin: 20px auto;
-  margin-right: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to right, rgb(230, 30, 77) 0%, rgb(227, 28, 95) 50%, rgb(215, 4, 102) 100%) !important;  color: white;
+  padding: 8px;
+  width: 20%;
+  border-radius: 8px;
+  border: 1px solid rgb(182, 182, 182);
+  margin: 20px 4%;
+  height: 44px;
+  cursor: pointer;
+  font-size: 16px;
 }
 
 .new-dig-submit-btn:hover {
-  box-shadow: 1px 1px 4px #a1a1a1;
+  background: linear-gradient(to left, rgb(230, 30, 77) 0%, rgb(227, 28, 95) 50%, rgb(215, 4, 102) 100%) !important;  color: white;
 }
 
 .new-dig-cancel-btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   background-color: white;
-  padding: 10px;
-  width: 100px;
-  border-radius: 30px;
-  border: thin solid 	#484848;
-  margin: 20px auto;
-  margin-left: 30px;
+  padding: 8px;
+  width: 20%;
+  border-radius: 8px;
+  border: 1px solid rgb(27, 27, 27);
+  margin: 20px 4%;
+  height: 44px;
+  cursor: pointer;
+  font-size: 16px;
 }
 
 .new-dig-cancel-btn:hover {
-  box-shadow: 1px 1px 4px #a1a1a1;
+  background-color: #f7f7f7;
 }

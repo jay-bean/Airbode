@@ -106,7 +106,7 @@ function Dig() {
                 <div className='dig-sleep'>
                   <h3 className='sleep-h3'>Where you'll sleep</h3>
                   <div className='dig-sleep-div'>
-                    <img className='bed-img' src='https://airbodes-bucket.s3.us-west-1.amazonaws.com/708C36F6-DE10-4AD0-9CCA-6475FC62538F_4_5005_c.jpeg'/>
+                    <img className='bed-img' src='https://airbodes-bucket.s3.us-west-1.amazonaws.com/AF05805B-3374-43AE-B3B7-825DD58C2D5E_4_5005_c.jpeg'/>
                     {dig.bedrooms === 1 ? <p className='sleep-p'>{dig.bedrooms} bedroom</p> : <p className='sleep-p'>{dig.bedrooms} bedrooms</p>}
                     {dig.beds === 1 ? <p className='sleep-p beds'>{dig.beds} bed</p> : <p className='sleep-p'>{dig.beds} beds</p>}
                   </div>
