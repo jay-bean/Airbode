@@ -114,7 +114,7 @@ function Dig() {
               </div>
               <div className={scrollPosition >= 1000 ? 'dig-flex-right-bottom' : scrollPosition <= 650 ? 'dig-flex-right' : 'dig-flex-right-active'}>
                   {dig && !sessionUser && (<BookingForm price={dig.price}/>)}
-                  {dig && sessionUser && dig.userId !== sessionUser.id ? <BookingForm price={dig.price}/> : null}
+                  {dig ? <BookingForm price={dig.price}/> : null}
               </div>
             </li>
                 <div className='grid-dig-btns'>
