@@ -1,10 +1,25 @@
-.users-digs-page {
+/* .users-digs-page {
   margin: 4% 8%;
-  height: calc(100vh - 40px);
+  height: 100vh;
+  margin: 2% 10%;
+  margin-bottom: 0;
+  height: 100vh;
+} */
+
+.users-digs-page {
+  height: 100vh;
 }
 
 .users-digs-h1 {
   font-weight: 600;
+  font-size: 26px;
+  margin: 40px 4%;
+  width: 92%;
+}
+
+.users-digs-p {
+  margin: 40px 4%;
+  width: 92%;
 }
 
 .users-digs-wrapper {

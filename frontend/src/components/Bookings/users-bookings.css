@@ -1,14 +1,19 @@
 .users-bookings-page {
-  margin: 4% 10%;
-  height: calc(100vh - 40px);
+  margin: 2% 10%;
+  margin-bottom: 0;
+  height: 100vh;
 }
 
 .users-bookings-h1 {
   font-weight: 600;
+  font-size: 26px;
+  margin: 40px 0;
+  width: 92%;
 }
 
 .users-bookings-h2 {
-  font-weight: 400;
+  font-weight: 600;
+  font-size: 18px;
 }
 
 .users-bookings-p1 {
@@ -22,10 +27,11 @@
 }
 
 .booking-list-table {
-  width: 100%;
+  width: 90%;
   border-collapse: collapse;
+  margin: auto;
   margin-bottom: 2%;
-
+  margin-top: 10%;
 }
 
 .booking-list-header {

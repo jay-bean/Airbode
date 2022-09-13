@@ -1,11 +1,12 @@
 .booking-page {
   text-align: center;
-  height: 100vh;
+  height: 100%;
   margin-top: 2%;
 }
 
 .booking-page-container {
   margin: 4% 25%;
+  margin-bottom: 8%;
   text-align: center;
   background-color: #ffffff;
   padding: 20px;

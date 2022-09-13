@@ -1,17 +1,15 @@
 .users-reviews-page {
-  margin: 4% 8%;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto;
-  width: 90%;
-  overflow: hidden;
-  height: calc(100vh - 40px);
+  margin: 2% 10%;
+  margin-bottom: 0;
+  height: 100%;
 }
+.users-reviews-page::-webkit-scrollbar { width: 0 !important }
 
 .users-reviews-review-head {
-  grid-column: 1 / 2;
   font-weight: 600;
-  margin: 3% 0;
+  font-size: 26px;
+  margin: 40px 0;
+  width: 92%;
 }
 
 .users-reviews-container {
@@ -20,15 +18,25 @@
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  align-items: center;
   width: 100%;
+  gap: 20px;
+
+}
+
+.users-reviews-div-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 100px;
+}
+
+.users-reviews-dig .dig-home-page-li {
+  height: 280px;
 }
 
 .users-reviews-dig {
-  background-color: rgb(241, 241, 241);
-  padding: 30px;
-  border-radius: 30px;
-  width: 230px;
+  width: 30%;
 }
 
 .users-reviews-book-again-div {
@@ -71,52 +79,101 @@
   margin-bottom: 3%;
 }
 
+.users-digs-book-again-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between !important;
+  width: 100% !important;
+}
+
+.users-digs-book-again-div2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between !important;
+  width: 92% !important;
+  margin: auto;
+}
+
+.users-digs-book-again-div2 .login-btn-modal {
+  height: 40px;
+  width: 50%;
+  margin: 0;
+}
+
 .users-reviews-comment-container {
-  margin-left: 30px;
-  width: 80%;
-  overflow: hidden;
-  overflow-y: scroll;
+  margin: 30px;
+  width: 70%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  font-size: 16px;
 }
 
 .users-reviews-comment {
-  margin-top: 3%;
-  width: 50%;
-  overflow-x: scroll;
+  width: 100%;
+  overflow-y: scroll;
   line-height: 30px;
   word-break: break-all;
 }
 
 .users-reviews-rating {
-  margin-top: 3%;
+  margin-top: 10px;
 }
 
 .users-reviews-btn-div {
   margin-top: 4%;
+  display: flex;
+  flex-direction: row;
+  gap: 4%;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.book-again-link {
+  width: 30%;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.users-reviews-btn-div .login-btn-modal {
+  width: 100%;
+  margin: 0;
+}
+
+.users-reviews-btn-div2 {
+  display: flex;
+  flex-direction: row;
+  gap: 4%;
 }
 
 .users-reviews-delete-btn {
   background-color: white;
-  padding: 6px;
-  width: 80px;
-  margin-right: 5%;
-  border-radius: 30px;
-  border: thin solid 	#484848;
+  padding: 0px;
+  width: 100px;
+  border-radius: 8px;
+  border: 1px solid rgb(27, 27, 27);
+  height: 40px;
+  cursor: pointer;
 }
 
 .users-reviews-delete-btn:hover {
-  box-shadow: 1px 1px 4px #a1a1a1;
+  background-color: #f5f5f5;
 }
 
 .users-reviews-edit-btn {
   background-color: white;
-  padding: 6px;
-  width: 80px;
-  border-radius: 30px;
-  border: thin solid 	#484848;
+  padding: 0px;
+  width: 100px;
+  border-radius: 8px;
+  border: 1px solid rgb(27, 27, 27);
+  height: 40px;
+  cursor: pointer;
 }
 
 .users-reviews-edit-btn:hover {
-  box-shadow: 1px 1px 4px #a1a1a1;
+  background-color: #f5f5f5;
 }
 
 .edit-review-div {
