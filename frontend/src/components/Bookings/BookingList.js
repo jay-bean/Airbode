@@ -25,7 +25,6 @@ function BookingList() {
     <div>
       {bookings && Object.keys(bookings).length !== 0 && sessionUser && digs && Object.keys(digs).length !== 0 && usersBookings && usersBookings.length ?
         <div>
-          <h2 className='users-bookings-h2'>Here is a list of your upcoming trips.</h2>
           <p className='users-bookings-p1'>To view a single reservation click on a date below. There you can view your reservation and cancel if need be. Keep in mind we do have a one week cancelation policy. You can also click on a destination below to see where you will be going!</p>
           <p className='users-bookings-p2'>Thank you for choosing Airbode as your travel companion!</p>
           <table className="booking-list-table">

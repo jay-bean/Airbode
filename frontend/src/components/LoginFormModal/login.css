@@ -278,3 +278,8 @@
   width: 90%;
   margin: 8px 5%;
 }
+
+/* edit review */
+.edit-container .login-form {
+  margin-top: 80px;
+}

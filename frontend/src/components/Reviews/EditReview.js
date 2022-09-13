@@ -3,9 +3,9 @@ import { useDispatch } from 'react-redux';
 import { editReview } from '../../store/reviews';
 import './users-reviews.css';
 
-function EditReview({reviewProp, toggleShow}) {
+function EditReview({ reviewProp, setShowModal }) {
   const dispatch = useDispatch();
-
+  console.log(reviewProp, 'this is review on edit form')
   const [validationErrors, setValidationErrors] = useState();
   const [review, setReview] = useState(reviewProp.review);
   const [rating, setRating] = useState(reviewProp.rating);
@@ -15,7 +15,7 @@ function EditReview({reviewProp, toggleShow}) {
     setValidationErrors([]);
     setRating(reviewProp.review);
     setReview(reviewProp.rating);
-    toggleShow();
+    setShowModal(false)
   };
 
   const handleSubmit = async (e) => {
@@ -39,12 +39,16 @@ function EditReview({reviewProp, toggleShow}) {
       setRating('');
       setReview('');
       setValidationErrors([]);
-      toggleShow();
     }
   }
 
   return (
-      <div className='edit-review-div'>
+    <div className='edit-container'>
+      <div className='login-modal'>
+        <div className="login-title">
+          <p onClick={() => handleCancel()} className="cancel"></p>
+          <p className="login-title-p">Edit Review</p>
+        </div>
         <form
           className='login-form'
           onSubmit={handleSubmit}
@@ -78,11 +82,11 @@ function EditReview({reviewProp, toggleShow}) {
             )) : null}
           </ul>
           <div className='edit-review-btns'>
-            <button className='edit-review-submit-btn' type="submit">Submit</button>
-            <button className='edit-review-cancel-btn' type="button" onClick={handleCancel}>Cancel</button>
+            <button className='login-btn-modal' type="submit">Submit</button>
           </div>
         </form>
       </div>
+    </div>
   );
 }
 
