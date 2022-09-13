@@ -40,12 +40,13 @@ function ReviewForm({ setShowModal }) {
       setReview('');
       setValidationErrors([]);
       setLabelActive([]);
+      setShowModal(false)
       history.push(`/digs/${dig.id}`);
     }
   }
 
   return (
-    <div>
+    <div className='review-form-container'>
       <div className="login-title">
         <p onClick={() => setShowModal(false)} className="cancel"></p>
         <h2 className="login-title-p">Leave a review</h2>

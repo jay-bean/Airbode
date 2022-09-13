@@ -150,7 +150,6 @@
   padding-bottom: 50px;
   padding-top: 50px;
   width: 100%;
-  border-bottom: 1px solid rgb(219, 219, 219);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -159,6 +158,7 @@
 }
 .sleep-h3 {
   color: #222222;
+  font-size: 20px;
 }
 .sleep-p {
   margin: 0;
@@ -344,16 +344,51 @@
   box-shadow: 1px 1px 4px #a1a1a1;
 }
 
+.review-header  .review-modal-container {
+  width: 30%;
+}
+.review-header  .review-modal-container .dig-review-btn {
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+}
+
 .dig-review-container {
   overflow: hidden;
   overflow-y: scroll;
   overflow-x: hidden;
-  width: 92%;
-  margin: 10px auto;
+  width: 45%;
+  margin: 2% 0;
+  margin-right: 5%;
+}
+.review-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px 2%;
+}
+.h3-review {
+  font-size: 20px;
+  color: #222222;
+  margin: 0;
 }
 
-.dig-review-container:first-child {
+.single-review-btn-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 30px;
   margin-top: 40px;
+}
+.single-review-btn-container .users-reviews-edit-btn {
+  background-color: white;
+  padding: 8px;
+  width: 80px;
+  border-radius: 8px;
+  border: 1px solid rgb(27, 27, 27);
+  height: auto;
 }
 
 .dig-review-delete-btn {
@@ -361,8 +396,7 @@
   padding: 8px;
   width: 80px;
   border-radius: 8px;
-  border: 1px solid rgb(27, 27, 27);  margin: 20px auto;
-  margin-left: 30px;
+  border: 1px solid rgb(27, 27, 27);
 }
 
 .dig-review-delete-btn:hover {
@@ -608,6 +642,7 @@
 }
 .review-btn-div {
   margin-bottom: 600px;
+  border-top: 1px solid rgb(219, 219, 219);
 }
 .review-btn-div .dig-review-btn {
   background: linear-gradient(to right, rgb(230, 30, 77) 0%, rgb(227, 28, 95) 50%, rgb(215, 4, 102) 100%) !important;  color: white;
@@ -622,4 +657,14 @@
 
 .login-btn-modal:hover {
   background: linear-gradient(to left, rgb(230, 30, 77) 0%, rgb(227, 28, 95) 50%, rgb(215, 4, 102) 100%) !important;  color: white;
+}
+
+.review-form-container .login-form {
+  margin-top: 80px;
+}
+
+.all-reviews-div {
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
 }

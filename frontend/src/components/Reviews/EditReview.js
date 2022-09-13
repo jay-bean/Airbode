@@ -39,6 +39,7 @@ function EditReview({ reviewProp, setShowModal }) {
       setRating('');
       setReview('');
       setValidationErrors([]);
+      setShowModal(false)
     }
   }
 
