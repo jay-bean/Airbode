@@ -94,143 +94,163 @@ function NewDigForm() {
         onSubmit={handleSubmit}
         encType="multipart/form-data"
       >
-        <label className='new-dig-label'> Address:
-        <input
-          className='new-dig-input'
-          type="address"
-          required
-          value={address}
-          onChange={(e) => setAddress(e.target.value)}
-        />
-        </label>
-        <label className='new-dig-label'> City:
-        <input
-          className='new-dig-input'
-          type="city"
-          required
-          value={city}
-          onChange={(e) => setCity(e.target.value)}
-        />
-        </label>
-        <label className='new-dig-label'> State/Province:
-        <input
-          className='new-dig-input'
-          type="state"
-          required
-          value={state}
-          onChange={(e) => setState(e.target.value)}
-        />
-        </label>
-        <label className='new-dig-label'> Country:
-        <input
-          className='new-dig-input'
-          type="country"
-          required
-          value={country}
-          onChange={(e) => setCountry(e.target.value)}
-        />
-        </label>
-        <label className='new-dig-label'> Title:
-        <input
-          className='new-dig-input'
-          type="title"
-          required
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        </label>
-        <label className='new-dig-label'> Price per night:
-        <input
-          className='new-dig-input'
-          type="number"
-          min='1'
-          required
-          value={price}
-          onChange={(e) => setPrice(e.target.value)}
-        />
-        </label>
-        <label className='new-dig-label'> Guests:
-        <input
-          className='new-dig-input'
-          type="number"
-          min='1'
-          required
-          value={guests}
-          onChange={(e) => setGuests(e.target.value)}
-        />
-        </label>
-        <label className='new-dig-label'> Bedrooms:
-        <input
-          className='new-dig-input'
-          type="number"
-          min='1'
-          required
-          value={bedrooms}
-          onChange={(e) => setBedrooms(e.target.value)}
-        />
-        </label>
-        <label className='new-dig-label'> Beds:
-        <input
-          className='new-dig-input'
-          type="number"
-          min='1'
-          required
-          value={beds}
-          onChange={(e) => setBeds(e.target.value)}
-        />
-        </label>
-        <label className='new-dig-label'> Bathrooms:
-        <input
-          className='new-dig-input'
-          type="number"
-          min='1'
-          required
-          value={baths}
-          onChange={(e) => setBaths(e.target.value)}
-        />
-        </label>
-        <label className='new-dig-label-pets'> Pets Okay?
-        <input
-          className='new-dig-input-pets'
-          type="radio"
-          value="yes"
-          name="pets"
-          onChange={(e) => setPets(e.target.value)}
-          checked={pets === 'yes'}
-        /> Yes
-        <input
-          className='new-dig-input-pets'
-          type="radio"
-          value="no"
-          name="pets"
-          onChange={(e) => setPets(e.target.value)}
-          checked={pets === "no"}
-        /> No
-        </label>
-        <div className='new-dig-img-div'>
-        <label className='new-dig-label-imgs'>
-        <i className="fa-solid fa-images"></i> Upload Images
-        <input
-          className='new-dig-input-imgs'
-          type="file"
-          multiple
-          name="file"
-          onChange={(e) => setImages(e.target.files)}
-        />
-        </label>
+        <div className='title-container'>
+          <div className='input-containers'>
+            <label className='login-label-one'> Title:</label>
+            <input
+              className='login-input'
+              type="title"
+              required
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
+          </div>
+          <div className='input-containers'>
+            <label className='login-label-one'> Price per night:</label>
+            <input
+              className='login-input'
+              type="number"
+              min='1'
+              required
+              value={price}
+              onChange={(e) => setPrice(e.target.value)}
+            />
+          </div>
         </div>
-        <label className='new-dig-label-textarea'> Description:
-        <textarea
-          className='new-dig-input-textarea'
-          rows="4"
-          cols="30"
-          type="description"
-          placeholder="Tell us about your home..."
-          required
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
-        </label>
+        <div className='location-container'>
+          <div className='input-containers'>
+            <label className='login-label-one'> Address:</label>
+            <input
+              className='login-input'
+              type="address"
+              required
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+            />
+          </div>
+          <div className='input-containers'>
+            <label className='login-label-one'> City:</label>
+            <input
+              className='login-input'
+              type="city"
+              required
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
+            />
+          </div>
+          <div className='input-containers'>
+            <label className='login-label-one'> State/Province:</label>
+            <input
+              className='login-input'
+              type="state"
+              required
+              value={state}
+              onChange={(e) => setState(e.target.value)}
+            />
+          </div>
+          <div className='input-containers'>
+            <label className='login-label-one'> Country:</label>
+            <input
+              className='login-input'
+              type="country"
+              required
+              value={country}
+              onChange={(e) => setCountry(e.target.value)}
+            />
+          </div>
+        </div>
+        <div className='amenities-container'>
+          <div className='input-containers'>
+            <label className='login-label-one'> Guests:</label>
+            <input
+              className='login-input'
+              type="number"
+              min='1'
+              required
+              value={guests}
+              onChange={(e) => setGuests(e.target.value)}
+            />
+          </div>
+          <div className='input-containers'>
+            <label className='login-label-one'> Bedrooms:</label>
+            <input
+              className='login-input'
+              type="number"
+              min='1'
+              required
+              value={bedrooms}
+              onChange={(e) => setBedrooms(e.target.value)}
+            />
+          </div>
+          <div className='input-containers'>
+            <label className='login-label-one'> Beds:</label>
+            <input
+              className='login-input'
+              type="number"
+              min='1'
+              required
+              value={beds}
+              onChange={(e) => setBeds(e.target.value)}
+            />
+          </div>
+          <div className='input-containers'>
+            <label className='login-label-one'> Bathrooms:</label>
+            <input
+              className='login-input'
+              type="number"
+              min='1'
+              required
+              value={baths}
+              onChange={(e) => setBaths(e.target.value)}
+            />
+          </div>
+        </div>
+        <div>
+          <label className='new-dig-label-pets'> Pets Okay?
+          <input
+            className='new-dig-input-pets'
+            type="radio"
+            value="yes"
+            name="pets"
+            onChange={(e) => setPets(e.target.value)}
+            checked={pets === 'yes'}
+          /> Yes
+          <input
+            className='new-dig-input-pets'
+            type="radio"
+            value="no"
+            name="pets"
+            onChange={(e) => setPets(e.target.value)}
+            checked={pets === "no"}
+            /> No
+            </label>
+        </div>
+        <div className='input-containers'>
+          <label className='login-label-one-textarea'> Description:</label>
+          <textarea
+            className='new-dig-input-textarea'
+            rows="4"
+            cols="30"
+            type="description"
+            placeholder="Tell us about your home..."
+            required
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
+        </div>
+        <div className='new-dig-img-div'>
+          <label className='new-dig-label-imgs'>
+            <i className="fa-solid fa-images"></i> Upload Images
+          <input
+            className='new-dig-input-imgs'
+            type="file"
+            multiple
+            name="file"
+            onChange={(e) => setImages(e.target.files)}
+            />
+          </label>
+          <p className='upload-p'>* please upload between 5 and 20 photos</p>
+        </div>
         {images && images.length ? (
                   <div className="thumbnail-container">
                   {imagesArr.map((image, index) => {

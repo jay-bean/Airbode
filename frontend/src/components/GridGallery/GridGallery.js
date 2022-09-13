@@ -9,7 +9,7 @@ function GridGallery({ images }) {
       {!showGallery && <button onClick={() => setShowGallery(true)} className='leading-photo-btn'><span className='square-dots'></span> Show all photos</button>}
       {showGallery &&
         <div className='gallery-container'>
-          <button className='close-gallery' onClick={() => setShowGallery(false)}>x</button>
+          <button className='close-gallery-container' onClick={() => setShowGallery(false)}><p className='close-gallery'></p></button>
           <div className='images-container'>
             {images && images.length ? images.map(image => {
               return (

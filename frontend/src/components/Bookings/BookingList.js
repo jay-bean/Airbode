@@ -25,8 +25,17 @@ function BookingList() {
     <div>
       {bookings && Object.keys(bookings).length !== 0 && sessionUser && digs && Object.keys(digs).length !== 0 && usersBookings && usersBookings.length ?
         <div>
-          <p className='users-bookings-p1'>To view a single reservation click on a date below. There you can view your reservation and cancel if need be. Keep in mind we do have a one week cancelation policy. You can also click on a destination below to see where you will be going!</p>
-          <p className='users-bookings-p2'>Thank you for choosing Airbode as your travel companion!</p>
+          <div className="no-bookings-container">
+            <div className="no-bookings-info-container1">
+              <img className="pink-hand" src="https://airbodes-bucket.s3.us-west-1.amazonaws.com/20E1275D-259D-4A73-B4BE-8CFE643EC22E_4_5005_c.jpeg"/>
+              <div>
+                <p className='users-bookings-p1'>To view a single reservation click on a date below. There you can view your reservation and cancel if need be. Keep in mind we do have a one week cancelation policy. You can also click on a destination below to see where you will be going!</p>
+                <p className='users-bookings-p2'>Thank you for choosing Airbode as your travel companion!</p>
+              </div>
+              <div className="booking-list-book">Ready for another trip?<span><Link className="no-bookings-link-home" to='/'>Click here</Link></span></div>
+            </div>
+            <div className="booking-lg-img1"></div>
+          </div>
           <table className="booking-list-table">
             <thead>
               <tr className="booking-list-header">
@@ -46,8 +55,19 @@ function BookingList() {
             </tbody>
           </table>
         </div>
-      : <p className="no-bookings">You currently don't have any reservations.</p>}
-      <div className="booking-list-book">Ready for a trip?<Link className='click-here' to="/">Click Here</Link></div>
+      :
+      <div className="no-bookings-container">
+        <div className="no-bookings-info-container">
+          <img className="pink-hand" src="https://airbodes-bucket.s3.us-west-1.amazonaws.com/20E1275D-259D-4A73-B4BE-8CFE643EC22E_4_5005_c.jpeg"/>
+          <div>
+            <p className="no-bookings-p">No trips booked...yet!</p>
+            <p className="no-bookings-p2">Time to dust off your bags and start planning your next adventure</p>
+          </div>
+          <Link className="no-bookings-link-home" to='/'><button className="login-btn-modal">Start searching</button></Link>
+        </div>
+        <div className="booking-lg-img"></div>
+      </div>
+      }
     </div>
   );
 }
