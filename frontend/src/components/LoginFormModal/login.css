@@ -62,6 +62,7 @@
   margin-left: 4%;
   margin-right: 4%;
   border-radius: 8px;
+  height: 120px;
 }
 
 .login-divs {
@@ -85,17 +86,7 @@
 .login-label-six,
 .login-label-seven,
 .login-label-eight,
-.login-label-nine,
-.login-label-ten,
-.login-label-eleven,
-.login-label-twelve,
-.login-label-thirteen,
-.login-label-fourteen,
-.login-label-fifteen,
-.login-label-sixteen,
-.login-label-seventeen,
-.login-label-eighteen,
-.login-label-nineteen {
+.login-label-nine{
   right: 186px;
   top: 20px;
   width: fit-content;
@@ -135,47 +126,6 @@
   top: 20px;
   right: 210px;
 }
-.login-label-ten {
-  top: 20px;
-  right: 180px;
-}
-.login-label-eleven {
-  top: 16px;
-  right: 60px;
-}
-.login-label-twelve {
-  top: 16px;
-  right: 73px;
-}
-.login-label-thirteen {
-  top: 16px;
-  right: 40px;
-}
-.login-label-fourteen {
-  top: 16px;
-  right: 60px;
-}
-.login-label-fifteen {
-  top: 16px;
-  right: 66px;
-}
-.login-label-sixteen {
-  top: 16px;
-  right: 55px;
-}
-.login-label-seventeen {
-  top: 16px;
-  right: 70px;
-}
-.login-label-eighteen {
-  top: 16px;
-  right: 52px;
-}
-.login-label-nineteen {
-  top: 120px;
-  right: 505px;
-}
-
 
 .textarea-div {
   height: 100px;
@@ -195,17 +145,7 @@
 .login-label-active-six,
 .login-label-active-seven,
 .login-label-active-eight,
-.login-label-active-nine,
-.login-label-active-ten,
-.login-label-active-eleven,
-.login-label-active-twelve,
-.login-label-active-thirteen,
-.login-label-active-fourteen,
-.login-label-active-fifteen,
-.login-label-active-sixteen,
-.login-label-active-seventeen,
-.login-label-active-eighteen,
-.login-label-active-nineteen {
+.login-label-active-nine{
   background-color: white;
   top: -12px;
   font-size: 12px;

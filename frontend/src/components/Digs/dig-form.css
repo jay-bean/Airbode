@@ -42,6 +42,102 @@
   border-radius: 8px;
   margin: 30px 4%;
 }
+
+/* trial for responsive way */
+.signup-container {
+  border: 1px solid rgb(182, 182, 182);
+  width: 92%;
+  margin-left: 4%;
+  margin-right: 4%;
+  border-radius: 8px;
+  height: 240px;
+}
+.signup-divs-trial {
+  height: 25%;
+  max-height: 25%;
+  min-height: 25%;
+}
+.login-divs-trial {
+  height: 50%;
+  max-height: 50%;
+  min-height: 50%;
+}
+.last {
+  border-top: 1px solid rgb(182, 182, 182);
+}
+.input-containers-trial {
+  border: 1px solid rgb(182, 182, 182);
+  width: 94%;
+  margin-left: 2%;
+  margin-right: 2%;
+  border-radius: 8px;
+  margin: 30px 4%;
+  max-height: 50px;
+  min-height: 50px;
+}
+.login-input-trial {
+  width: 96%;
+  height: 30px;
+  font-size: 16px;
+  border: 1px solid transparent;
+  padding: 10px;
+  padding-bottom: 0;
+  position: relative;
+  top: -50px;
+  background: transparent;
+}
+
+.login-input-trial:focus {
+  outline: none;
+  border: 2px solid transparent;
+}
+.label-div-trial {
+  width: 96%;
+  height: 88%;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  /* cursor: pointer; */
+  color: #7c7c7c;
+  float: left;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-end;
+  background: transparent;
+  background-color: transparent;
+}
+.login-label-trial {
+  width: fit-content;
+  height: fit-content;
+  cursor: pointer;
+  color: #7c7c7c;
+
+}
+
+.login-label-active-trial {
+  z-index: 9;
+  margin-bottom: 38px;
+  padding: 0 4px;
+  background-color: white;
+  top: -12px;
+  font-size: 12px;
+  color: #7c7c7c;
+}
+.login-label-active-modal-trial {
+  z-index: 9;
+  margin-bottom: 48px;
+  padding: 0 4px;
+  background-color: white;
+  top: -12px;
+  font-size: 12px;
+  color: #7c7c7c;
+}
+
+/* trial ends here */
+
+
+
 .new-dig-label {
   margin: 10px 0;
   font-size: 18px;

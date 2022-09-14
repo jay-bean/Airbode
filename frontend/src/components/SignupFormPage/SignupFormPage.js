@@ -41,49 +41,41 @@ function SignupFormPage({ setShowModal }) {
         className="login-form"
         onSubmit={handleSubmit}
       >
-        <div className="login-container">
-          <div onClick={() => setLabelActive([0])} className="login-divs">
-            <label className={labelActive.includes(0) || email ? "login-label-three login-label-active-three" : 'login-label-three'}>
-              Email
-            </label>
+        <div className="signup-container">
+          <div onClick={() => setLabelActive([0])} className="signup-divs-trial">
+            <div className='label-div-trial'><label className={labelActive.includes(0) || email ? "login-label-trial login-label-active-modal-trial" : 'login-label-trial'}>Email</label></div>
             <input
-              className="login-input"
+              className="login-input-trial"
               type="text"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
             />
           </div>
-          <div onClick={() => setLabelActive([1])} className="login-divs">
-            <label className={labelActive.includes(1) || username ? "login-label-four login-label-active-four" : 'login-label-four'}>
-              Username
-            </label>
+          <div onClick={() => setLabelActive([1])} className="signup-divs-trial last">
+            <div className='label-div-trial'><label className={labelActive.includes(1) || username ? "login-label-trial login-label-active-modal-trial" : 'login-label-trial'}>Username</label></div>
             <input
-              className="login-input"
+              className="login-input-trial"
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               required
             />
           </div>
-          <div onClick={() => setLabelActive([2])} className="login-divs">
-            <label className={labelActive.includes(2) || password ? "login-label-five login-label-active-five" : 'login-label-five'}>
-              Password
-            </label>
+          <div onClick={() => setLabelActive([2])} className="signup-divs-trial last">
+            <div className='label-div-trial'><label className={labelActive.includes(2) || password ? "login-label-trial login-label-active-modal-trial" : 'login-label-trial'}>Password</label></div>
             <input
-              className="login-input"
+              className="login-input-trial"
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
             />
           </div>
-          <div onClick={() => setLabelActive([3])} className="login-divs">
-            <label className={labelActive.includes(3) || confirmPassword ? "login-label-six login-label-active-six" : 'login-label-six'}>
-              Confirm Password
-            </label>
+          <div onClick={() => setLabelActive([3])} className="signup-divs-trial last">
+            <div className='label-div-trial'><label className={labelActive.includes(3) || confirmPassword ? "login-label-trial login-label-active-modal-trial" : 'login-label-trial'}>Confirm Password</label></div>
             <input
-              className="login-input"
+              className="login-input-trial"
               type="password"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
