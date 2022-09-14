@@ -41,7 +41,7 @@ function Navigation({ isLoaded }){
           <p className='about-me-line'>|</p>
           <a className='about-me' href='https://github.com/jay-bean'>GitHub</a>
           <p className='about-me-line'>|</p>
-          <a className='about-me' href=''>LinkedIn</a>
+          <a className='about-me' href='https://www.linkedin.com/in/jay-hutts-300ab9180/'>LinkedIn</a>
         </div>
       </li>
       <li className='profile-host-li'>

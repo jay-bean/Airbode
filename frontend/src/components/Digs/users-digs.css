@@ -1,13 +1,5 @@
-/* .users-digs-page {
-  margin: 4% 8%;
-  height: 100vh;
-  margin: 2% 10%;
-  margin-bottom: 0;
-  height: 100vh;
-} */
-
 .users-digs-page {
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .users-digs-h1 {

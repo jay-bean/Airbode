@@ -15,14 +15,16 @@ function NewDigForm() {
   const [state, setState] = useState('');
   const [country, setCountry] = useState('');
   const [title, setTitle] = useState('');
-  const [price, setPrice] = useState(0);
+  const [price, setPrice] = useState(null);
   const [description, setDescription] = useState('');
-  const [guests, setGuests] = useState(0);
-  const [bedrooms, setBedrooms] = useState(0);
-  const [beds, setBeds] = useState(0);
-  const [baths, setBaths] = useState(0);
+  const [guests, setGuests] = useState(null);
+  const [bedrooms, setBedrooms] = useState(null);
+  const [beds, setBeds] = useState(null);
+  const [baths, setBaths] = useState(null);
   const [pets, setPets] = useState('no');
   const [images, setImages] = useState({});
+
+  const [labelActive, setLabelActive] = useState([]);
 
   const handleCancel = () => {
     setValidationErrors([]);
@@ -95,8 +97,8 @@ function NewDigForm() {
         encType="multipart/form-data"
       >
         <div className='title-container'>
-          <div className='input-containers'>
-            <label className='login-label-one'> Title:</label>
+          <div onClick={() => setLabelActive([0])} className='input-containers'>
+            <label className={labelActive.includes(0) || title ? "login-label-nine login-label-active-nine" : 'login-label-nine'}> Title</label>
             <input
               className='login-input'
               type="title"
@@ -105,8 +107,8 @@ function NewDigForm() {
               onChange={(e) => setTitle(e.target.value)}
             />
           </div>
-          <div className='input-containers'>
-            <label className='login-label-one'> Price per night:</label>
+          <div onClick={() => setLabelActive([1])} className='input-containers'>
+            <label className={labelActive.includes(1) || price ? "login-label-ten login-label-active-ten" : 'login-label-ten'}> Price per night</label>
             <input
               className='login-input'
               type="number"
@@ -117,9 +119,9 @@ function NewDigForm() {
             />
           </div>
         </div>
-        <div className='location-container'>
-          <div className='input-containers'>
-            <label className='login-label-one'> Address:</label>
+        <div  className='location-container'>
+          <div onClick={() => setLabelActive([2])} className='input-containers'>
+            <label className={labelActive.includes(2) || address ? "login-label-eleven login-label-active-eleven" : 'login-label-eleven'}> Address</label>
             <input
               className='login-input'
               type="address"
@@ -128,8 +130,8 @@ function NewDigForm() {
               onChange={(e) => setAddress(e.target.value)}
             />
           </div>
-          <div className='input-containers'>
-            <label className='login-label-one'> City:</label>
+          <div onClick={() => setLabelActive([3])} className='input-containers'>
+            <label className={labelActive.includes(3) || city ? "login-label-twelve login-label-active-twelve" : 'login-label-twelve'}> City</label>
             <input
               className='login-input'
               type="city"
@@ -138,8 +140,8 @@ function NewDigForm() {
               onChange={(e) => setCity(e.target.value)}
             />
           </div>
-          <div className='input-containers'>
-            <label className='login-label-one'> State/Province:</label>
+          <div onClick={() => setLabelActive([4])} className='input-containers'>
+            <label className={labelActive.includes(4) || state ? "login-label-thirteen login-label-active-thirteen" : 'login-label-thirteen'}> State/Province</label>
             <input
               className='login-input'
               type="state"
@@ -148,8 +150,8 @@ function NewDigForm() {
               onChange={(e) => setState(e.target.value)}
             />
           </div>
-          <div className='input-containers'>
-            <label className='login-label-one'> Country:</label>
+          <div onClick={() => setLabelActive([5])} className='input-containers'>
+            <label className={labelActive.includes(5) || country ? "login-label-fourteen login-label-active-fourteen" : 'login-label-fourteen'}> Country</label>
             <input
               className='login-input'
               type="country"
@@ -160,8 +162,8 @@ function NewDigForm() {
           </div>
         </div>
         <div className='amenities-container'>
-          <div className='input-containers'>
-            <label className='login-label-one'> Guests:</label>
+          <div onClick={() => setLabelActive([6])} className='input-containers'>
+            <label className={labelActive.includes(6) || guests ? "login-label-fifteen login-label-active-fifteen" : 'login-label-fifteen'}> Guests</label>
             <input
               className='login-input'
               type="number"
@@ -171,8 +173,8 @@ function NewDigForm() {
               onChange={(e) => setGuests(e.target.value)}
             />
           </div>
-          <div className='input-containers'>
-            <label className='login-label-one'> Bedrooms:</label>
+          <div onClick={() => setLabelActive([7])} className='input-containers'>
+            <label className={labelActive.includes(7) || bedrooms ? "login-label-sixteen login-label-active-sixteen" : 'login-label-sixteen'}> Bedrooms</label>
             <input
               className='login-input'
               type="number"
@@ -182,8 +184,8 @@ function NewDigForm() {
               onChange={(e) => setBedrooms(e.target.value)}
             />
           </div>
-          <div className='input-containers'>
-            <label className='login-label-one'> Beds:</label>
+          <div onClick={() => setLabelActive([8])} className='input-containers'>
+            <label className={labelActive.includes(8) || beds ? "login-label-seventeen login-label-active-seventeen" : 'login-label-seventeen'}> Beds</label>
             <input
               className='login-input'
               type="number"
@@ -193,8 +195,8 @@ function NewDigForm() {
               onChange={(e) => setBeds(e.target.value)}
             />
           </div>
-          <div className='input-containers'>
-            <label className='login-label-one'> Bathrooms:</label>
+          <div onClick={() => setLabelActive([9])} className='input-containers'>
+            <label className={labelActive.includes(9) || baths ? "login-label-eighteen login-label-active-eighteen" : 'login-label-eighteen'}> Bathrooms</label>
             <input
               className='login-input'
               type="number"
@@ -225,14 +227,10 @@ function NewDigForm() {
             /> No
             </label>
         </div>
-        <div className='input-containers'>
-          <label className='login-label-one-textarea'> Description:</label>
+        <div onClick={() => setLabelActive([10])} className='input-containers'>
+          <label className={labelActive.includes(10) || baths ? "login-label-nineteen login-label-active-nineteen" : 'login-label-nineteen'}> Description</label>
           <textarea
-            className='new-dig-input-textarea'
-            rows="4"
-            cols="30"
-            type="description"
-            placeholder="Tell us about your home..."
+            className='login-input textarea'
             required
             value={description}
             onChange={(e) => setDescription(e.target.value)}

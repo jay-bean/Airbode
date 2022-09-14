@@ -78,12 +78,19 @@ function Dig() {
       <div>
         {dig && (
           <ul className='dig-grid'>
-              <li className='dig-li'>
+            <li className='dig-li title-li'>
+              <div>
                 <div className='dig-title'>{dig.title}</div>
-              </li>
-              <li className='dig-li'>
                 <div className='dig-address'>{dig.city}, {dig.state} {dig.country}</div>
-              </li>
+              </div>
+              {dig && sessionUser && dig.userId === sessionUser.id ?
+              <div className='grid-dig-btns'>
+                <Link className='dig-bookings-link' to={`/digs/${dig.id}/bookings`}>View Bookings</Link>
+                <Link to={`/digs/${dig.id}/edit`}><button className='dig-review-delete-btn'>Edit</button></Link>
+                <button className='dig-review-delete-btn' onClick={deleteHandler}>Delete</button>
+              </div>
+              : null}
+            </li>
               {leadingPhotos && leadingPhotos.length ?
                 <div className='leading-photo-container'>
                   <div className='leading-photo-div-one'>
@@ -126,17 +133,12 @@ function Dig() {
                   {dig ? <BookingForm price={dig.price}/> : null}
               </div>
             </li>
-                <div className='grid-dig-btns'>
-                  {dig && sessionUser && dig.userId === sessionUser.id ? <Link to={`/digs/${dig.id}/edit`}><button className='dig-edit-btn'>Edit</button></Link> : null}
-                  {dig && sessionUser && dig.userId === sessionUser.id ? <button className='dig-delete-btn' onClick={deleteHandler}>Delete</button> : null}
-                </div>
                 <div className='grid-dig-links'>
-                  {dig && sessionUser && dig.userId === sessionUser.id ? <Link className='dig-bookings-link' to={`/digs/${dig.id}/bookings`}>View Bookings</Link> : null}
                 </div>
                 <div className='review-btn-div'>
                 <div className='all-reviews-container'>
                   <div className='review-header'>
-                    {digsReviews && digsReviews.length === 1 ? <h3 className='h3-review'>{digsReviews.length} review</h3> : <h3 className='h3-review'>{digsReviews.length} reviews</h3>}
+                    {digsReviews && digsReviews.length === 1 ? <h3 className='h3-review'>{digsReviews.length} review</h3> : digsReviews.length === 0 ? <h3 className='h3-review'>Reviews</h3> : <h3 className='h3-review'>{digsReviews.length} reviews</h3>}
                     <ReviewModal/>
                   </div>
                   {digsReviews && digsReviews.length ?

@@ -117,6 +117,12 @@
   margin: 4px;
   line-height: 24px;
 }
+.title-li {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
 
 .pets-div {
   padding-bottom: 50px;
@@ -319,15 +325,17 @@
 
 .dig-bookings-link {
   text-decoration: none;
-  border-bottom: thin solid black;
   padding-bottom: 4px;
-  color: black;
-  font-size: 18px;
+  color: #222222;
+  font-size: 14px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 .dig-bookings-link:hover {
-  color: #7a7979;
-  border-bottom: thin solid #7a7979;
+  text-decoration: underline;
 }
 
 .dig-review-btn {
@@ -541,7 +549,9 @@
   font-size: 16px;
   margin-bottom: 26px;
 }
-
+.booking-errors {
+  padding: 0;
+}
 .booking-form-p {
   font-size: 14px;
   letter-spacing: 1px;
@@ -556,8 +566,10 @@
 }
 
 .grid-dig-btns {
-  margin-left: 100px;
-  margin-bottom: 40px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin-right: 10px;
 }
 
 .grid-dig-links {
@@ -641,7 +653,7 @@
   font-size: 14px;
 }
 .review-btn-div {
-  margin-bottom: 600px;
+  margin-bottom: 60px;
   border-top: 1px solid rgb(219, 219, 219);
 }
 .review-btn-div .dig-review-btn {
@@ -667,4 +679,8 @@
   display: flex;
   flex-flow: row wrap;
   width: 100%;
+}
+
+.all-reviews-container {
+  margin-top: 40px;
 }

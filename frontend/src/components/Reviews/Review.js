@@ -31,8 +31,8 @@ function Review({review}) {
         <p className='review-comment'>{review.review}</p>
         {sessionUser && sessionUser.id === review.userId && (
           <div className='single-review-btn-container'>
-            <button className='dig-review-delete-btn' onClick={deleteHandler}>Delete</button>
             <EditReviewModal review={review}/>
+            <button className='dig-review-delete-btn' onClick={deleteHandler}>Delete</button>
           </div>
         )}
       </div>

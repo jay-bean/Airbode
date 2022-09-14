@@ -48,7 +48,7 @@ function BookingList() {
                 return (
                   <tr className="booking-list-body-row" key={booking.id}>
                     <td><Link className="booking-list-dig" to={`/digs/${digs[booking.digId].id}`}>{digs[booking.digId].title}</Link></td>
-                    <td><Link className="booking-list-res" to={`/bookings/${booking.id}`}>{moment(booking.startDate).format('L')} - {moment(booking.endDate).format('L')}</Link></td>
+                    <td><Link className="booking-list-res" to={`/bookings/${booking.id}`}>{moment(booking.startDate).format('LL')} - {moment(booking.endDate).format('LL')}</Link></td>
                   </tr>
                 )
               }))}

@@ -108,11 +108,6 @@ function Calender({ price }) {
 
   return (
     <div className='booking-form-container'>
-      {validationErrors.length > 0 && (
-        validationErrors.map(error => {
-          return <div className='errors' key={error}>{error}</div>
-        })
-      )}
       <div className='booking-form-h2'><span className='booking-form-span'>${price}</span> night</div>
       <form
         className='booking-form'
@@ -131,6 +126,11 @@ function Calender({ price }) {
           focusedInput={focusedInput}
           onFocusChange={(focusedInput) => setFocusedInput(focusedInput)}
         />
+        <ul className="login-form-errors booking-errors">
+          {validationErrors.length ? validationErrors.map((error, idx) => (
+            <li className="login-form-errors-li" key={idx}>{error}</li>
+          )) : null}
+        </ul>
         {startDate && endDate ? <button className='login-btn-modal' type="submit">Reserve</button> : <button className='login-btn-modal' type="button" onClick={() => handleClick}>Check Availability</button>}
       </form>
       {startDate && endDate ?

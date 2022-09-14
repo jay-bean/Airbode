@@ -48,12 +48,11 @@ function UserSingleReview({review}) {
         <div className='users-reviews-rating'>{review.rating} / 5</div>
         {sessionUser && sessionUser.id === review.userId && (
           <div className='users-reviews-btn-div'>
-            {dig && <Link to={`/digs/${dig.id}`} className='book-again-link'><button className='login-btn-modal'>Book again</button></Link>}
             <div className='users-reviews-btn-div2'>
+              {dig && review && <EditReviewModal dig={dig} review={review}/>}
               <button className='users-reviews-delete-btn' onClick={deleteHandler}>Delete</button>
-              {/* <button className='users-reviews-edit-btn' onClick={editHandler}>Edit</button> */}
-             {dig && review && <EditReviewModal dig={dig} review={review}/>}
             </div>
+            {dig && <Link to={`/digs/${dig.id}`} className='book-again-link'><button className='login-btn-modal'>Book again</button></Link>}
 
           </div>
         )}

@@ -1,7 +1,7 @@
 .users-reviews-page {
   margin: 2% 10%;
   margin-bottom: 0;
-  height: 100vh;
+  min-height: 100vh;
 }
 .users-reviews-page::-webkit-scrollbar { width: 0 !important }
 
@@ -37,6 +37,7 @@
 
 .users-reviews-dig {
   width: 30%;
+  max-width: 300px;
 }
 
 .users-reviews-book-again-div {
@@ -125,10 +126,10 @@
 .users-reviews-btn-div {
   margin-top: 4%;
   display: flex;
-  flex-direction: row;
-  gap: 4%;
+  flex-direction: column;
+  gap: 10px;
   width: 100%;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 
 .book-again-link {
@@ -138,14 +139,15 @@
 }
 
 .users-reviews-btn-div .login-btn-modal {
-  width: 100%;
+  width: 210px;
   margin: 0;
+  height: 40px;
 }
 
 .users-reviews-btn-div2 {
   display: flex;
   flex-direction: row;
-  gap: 4%;
+  gap: 10px;
 }
 
 .users-reviews-delete-btn {
