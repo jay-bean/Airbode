@@ -26,6 +26,7 @@ router.post('/',
   handleUpload,
   digValidators,
   asyncHandler(async (req, res) => {
+    console.log('hi')
     const { address, city, state, country, title, price, description, guests, bedrooms, beds, baths, pets, userId } = req.body;
     const validationErrors = validationResult(req);
 

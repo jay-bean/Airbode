@@ -1,7 +1,8 @@
 .new-dig-page {
-  margin: 2% 10%;
+  margin: 5% auto;
   margin-bottom: 0;
   min-height: 100vh;
+  width: 60%;
 }
 
 .new-dig-h1 {
@@ -144,6 +145,17 @@
   width: 90%;
   margin: 30px 5%;
 }
+.reviews-container {
+  height: 220px;
+}
+.textarea-container-review {
+  width: 100%;
+}
+.rating-container {
+  height: 28%;
+  max-height: 28%;
+  min-height: 28%;
+}
 .textarea {
   min-height: 80px !important;
   max-height: 80px !important;
@@ -234,7 +246,7 @@
   background: linear-gradient(to right, rgb(230, 30, 77) 0%, rgb(227, 28, 95) 50%, rgb(215, 4, 102) 100%) !important;  color: white;
   width: 100%;
   border: .2px solid rgb(182, 182, 182);
-  margin: 20px 0;
+  margin: 60px 0;
   height: 26px;
   cursor: pointer;
 }
@@ -308,4 +320,36 @@
 
 .new-dig-cancel-btn:hover {
   background-color: #f7f7f7;
+}
+
+/* thumbnail imgs */
+.thumbnail-container {
+  display: flex;
+  flex-flow: row wrap;
+  width: 98%;
+  margin-left: 1%;
+  margin-right: 1%;
+  justify-content: center;
+}
+
+.thumbnail-divs {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 160px;
+  margin: 1em;
+}
+
+.thumbnail-remove-btn {
+  border-radius: 50%;
+  border: thin solid #9c9c9c;
+  padding: 4px;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: #797979;
+  transform: translate(10px, 10px);
 }

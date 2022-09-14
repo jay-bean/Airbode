@@ -15,12 +15,12 @@ function NewDigForm() {
   const [state, setState] = useState('');
   const [country, setCountry] = useState('');
   const [title, setTitle] = useState('');
-  const [price, setPrice] = useState(null);
+  const [price, setPrice] = useState();
   const [description, setDescription] = useState('');
-  const [guests, setGuests] = useState(null);
-  const [bedrooms, setBedrooms] = useState(null);
-  const [beds, setBeds] = useState(null);
-  const [baths, setBaths] = useState(null);
+  const [guests, setGuests] = useState();
+  const [bedrooms, setBedrooms] = useState();
+  const [beds, setBeds] = useState();
+  const [baths, setBaths] = useState();
   const [pets, setPets] = useState('no');
   const [images, setImages] = useState({});
 
@@ -33,6 +33,9 @@ function NewDigForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (images.length > 20) return setValidationErrors(['Only twenty photos max are allowed.']);
+    if (images.length < 5) return setValidationErrors(['Please upload at least five photos of your property.']);
 
     const formData = new FormData();
     formData.append('title', title);
@@ -86,11 +89,6 @@ function NewDigForm() {
   return (
     <div className='new-dig-page'>
       <h1 className='new-dig-h1'>Host Form</h1>
-      {validationErrors.length > 0 && (
-        validationErrors.map(error => {
-          return <div className='errors' key={error}>{error}</div>
-        })
-      )}
       <form
         className='new-dig-form'
         onSubmit={handleSubmit}
@@ -197,8 +195,8 @@ function NewDigForm() {
             />
           </div>
         </div>
-        <div>
-          <label className='new-dig-label-pets'> Pets Okay?
+
+        <label className='new-dig-label-pets'> Pets Okay?
           <input
             className='new-dig-input-pets'
             type="radio"
@@ -214,9 +212,8 @@ function NewDigForm() {
             name="pets"
             onChange={(e) => setPets(e.target.value)}
             checked={pets === "no"}
-            /> No
-            </label>
-        </div>
+          /> No
+        </label>
 
         <div onClick={() => setLabelActive([10])} className='input-containers-trial textarea-container'>
           <div className='label-div-trial-textarea'><label className={labelActive.includes(10) || description ? "login-label-trial login-label-active-trial-textarea" : 'login-label-trial'}>Description</label></div>
@@ -242,7 +239,7 @@ function NewDigForm() {
                   <div className="thumbnail-container">
                   {imagesArr.map((image, index) => {
                     return (
-                      <div className='thumbnail-divs'>
+                      <div key={index} className='thumbnail-divs'>
                         <button type='button' className='thumbnail-remove-btn' onClick={(e) => removeSelectedImage(e, index)}>
                           X
                         </button>
@@ -256,6 +253,16 @@ function NewDigForm() {
                   })}
                 </div>
             ) : null}
+        {/* {validationErrors.length > 0 && (
+          validationErrors.map(error => {
+            return <div className='errors' key={error}>{error}</div>
+          })
+        )} */}
+        <ul className="login-form-errors">
+          {validationErrors.length ? validationErrors.map((error, idx) => (
+            <li className="login-form-errors-li" key={idx}>{error}</li>
+          )) : null}
+        </ul>
         <div className='btn-div'>
           <button className='new-dig-submit-btn' type="submit">Add Home</button>
           <button className='new-dig-cancel-btn' type="button" onClick={handleCancel}>Cancel</button>
