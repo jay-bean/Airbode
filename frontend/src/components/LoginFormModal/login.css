@@ -127,16 +127,6 @@
   right: 210px;
 }
 
-.textarea-div {
-  height: 100px;
-}
-.textarea {
-  height: 100px;
-  resize: none;
-  overflow-y: scroll;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
 .login-label-active-one,
 .login-label-active-two,
 .login-label-active-three,

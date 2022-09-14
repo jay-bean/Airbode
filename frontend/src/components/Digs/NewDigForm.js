@@ -111,8 +111,6 @@ function NewDigForm() {
             <div className='label-div-trial'><label className={labelActive.includes(1) || price ? "login-label-trial login-label-active-trial" : 'login-label-trial'}>Price per night</label></div>
             <input
               className='login-input-trial'
-              type="number"
-              min='1'
               required
               value={price}
               onChange={(e) => setPrice(e.target.value)}
@@ -219,15 +217,17 @@ function NewDigForm() {
             /> No
             </label>
         </div>
-        <div onClick={() => setLabelActive([10])} className='input-containers'>
-          <div className='label-div-trial'><label className={labelActive.includes(10) || description ? "login-label-trial login-label-active-trial" : 'login-label-trial'}>Description</label></div>
+
+        <div onClick={() => setLabelActive([10])} className='input-containers-trial textarea-container'>
+          <div className='label-div-trial-textarea'><label className={labelActive.includes(10) || description ? "login-label-trial login-label-active-trial-textarea" : 'login-label-trial'}>Description</label></div>
           <textarea
-            className='login-input textarea'
+            className='login-input-trial textarea'
             required
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
         </div>
+
         <div className='new-dig-img-div'>
           <label className='new-dig-label-imgs'>
             <i className="fa-solid fa-images"></i> Upload Images

@@ -43,7 +43,7 @@
   margin: 30px 4%;
 }
 
-/* trial for responsive way */
+/* trial for responsive way for labels/inputs*/
 .signup-container {
   border: 1px solid rgb(182, 182, 182);
   width: 92%;
@@ -68,8 +68,6 @@
 .input-containers-trial {
   border: 1px solid rgb(182, 182, 182);
   width: 94%;
-  margin-left: 2%;
-  margin-right: 2%;
   border-radius: 8px;
   margin: 30px 4%;
   max-height: 50px;
@@ -85,6 +83,7 @@
   position: relative;
   top: -50px;
   background: transparent;
+  cursor: pointer;
 }
 
 .login-input-trial:focus {
@@ -96,7 +95,6 @@
   height: 88%;
   margin-left: 10px;
   margin-bottom: 10px;
-  /* cursor: pointer; */
   color: #7c7c7c;
   float: left;
   padding: 0;
@@ -110,9 +108,7 @@
 .login-label-trial {
   width: fit-content;
   height: fit-content;
-  cursor: pointer;
   color: #7c7c7c;
-
 }
 
 .login-label-active-trial {
@@ -133,18 +129,57 @@
   font-size: 12px;
   color: #7c7c7c;
 }
+.textarea-div {
+  min-height: 100px !important;
+  max-height: 100px !important;
+  resize: none;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+.textarea-container {
+  min-height: 100px !important;
+  max-height: 100px !important;
+  width: 90%;
+  margin: 30px 5%;
+}
+.textarea {
+  min-height: 80px !important;
+  max-height: 80px !important;
+  resize: none;
+  overflow-y: scroll;
+  font-family: Arial, Helvetica, sans-serif;
+  top: -100px !important;
+}
+.label-div-trial-textarea {
+  width: 96%;
+  height: 96px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  /* cursor: pointer; */
+  color: #7c7c7c;
+  float: left;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-end;
+  background: transparent;
+  background-color: transparent;
+}
+.login-label-active-trial-textarea {
+  z-index: 9;
+  margin-bottom: 90px;
+  padding: 0 4px;
+  background-color: white;
+  top: -12px;
+  font-size: 12px;
+  color: #7c7c7c;
+}
 
 /* trial ends here */
 
-
-
-.new-dig-label {
-  margin: 10px 0;
-  font-size: 18px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
 
 input[type="file"] {
   display: none;
@@ -189,24 +224,6 @@ input[type="file"] {
   font-size: 14px;
 }
 
-.new-dig-label-textarea {
-  margin: 10px 0;
-  font-size: 20px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.new-dig-input-textarea {
-  width: 100%;
-  font-size: 16px;
-  margin: 0;
-}
-.new-dig-input-textarea:focus {
-  outline: none;
-  border: transparent;
-}
-
 .new-dig-label-pets {
   overflow: hidden;
   font-size: 18px;
@@ -247,11 +264,6 @@ input[type="file"] {
   font-size: 18px;
   border: 1px solid #484848;
 }
-
-/* .new-dig-input-pet:focus {
-  outline: none;
-  border: 2px solid #FF5A5F;
-} */
 
 .btn-div {
   display: flex;
