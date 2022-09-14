@@ -229,16 +229,13 @@ function NewDigForm() {
         </div>
 
         <div className='new-dig-img-div'>
-          <label className='new-dig-label-imgs'>
-            <i className="fa-solid fa-images"></i> Upload Images
-          <input
-            className='new-dig-input-imgs'
-            type="file"
-            multiple
-            name="file"
-            onChange={(e) => setImages(e.target.files)}
-            />
-          </label>
+            <input
+              className='new-dig-label-imgs'
+              type="file"
+              multiple
+              name="file"
+              onChange={(e) => setImages(e.target.files)}
+              />
           <p className='upload-p'>* please upload between 5 and 20 photos</p>
         </div>
         {images && images.length ? (
