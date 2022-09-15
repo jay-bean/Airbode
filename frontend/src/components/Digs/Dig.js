@@ -64,6 +64,15 @@ function Dig() {
       setScrollPosition(position);
   };
 
+  let bookingFormHeight;
+  let reviewPosition;
+  if (document.getElementById("booking-form") && document.getElementById("review-container")) {
+    reviewPosition = document.getElementById("review-container").getBoundingClientRect().top + window.scrollY;
+    bookingFormHeight = document.getElementById("booking-form").offsetHeight;
+    console.log(bookingFormHeight, 'height');
+    console.log(reviewPosition, 'review top')
+  }
+
   useEffect(() => {
       window.addEventListener('scroll', handleScroll, { passive: true });
 
@@ -128,13 +137,13 @@ function Dig() {
                   </div>
                 </div>
               </div>
-              <div className={scrollPosition >= 1000 ? 'dig-flex-right-bottom' : scrollPosition <= 650 ? 'dig-flex-right' : 'dig-flex-right-active'}>
+              <div id='booking-form' className={ scrollPosition >= reviewPosition - 380 && bookingFormHeight < 300 ? 'dig-flex-right-bottom' : scrollPosition >= reviewPosition - 630 && bookingFormHeight > 300 ? 'dig-flex-right-bottom-two' : scrollPosition <= 650 ? 'dig-flex-right' : 'dig-flex-right-active'}>
                   {dig ? <BookingForm price={dig.price}/> : null}
               </div>
             </li>
                 <div className='grid-dig-links'>
                 </div>
-                <div className='review-btn-div'>
+                <div id='review-container' className='review-btn-div'>
                 <div className='all-reviews-container'>
                   <div className='review-header'>
                     {digsReviews && digsReviews.length === 1 ? <h3 className='h3-review'>{digsReviews.length} review</h3> : digsReviews.length === 0 ? <h3 className='h3-review'>Reviews</h3> : <h3 className='h3-review'>{digsReviews.length} reviews</h3>}

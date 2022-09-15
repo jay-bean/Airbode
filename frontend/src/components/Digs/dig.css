@@ -143,9 +143,13 @@
 .dig-description {
   margin: 0 1%;
   line-height: 24px;
-  padding: 50px 0;
+  padding: 30px 0;
   width: 98%;
   border-bottom: 1px solid rgb(219, 219, 219);
+  height: 200px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 .dig-description-p {
   line-height: 1.5;
@@ -233,7 +237,16 @@
   width: 40%;
   align-items: center;
   position: absolute;
-  top: 1100px;
+  top: 1330px;
+  right: 100px;
+}
+.dig-flex-right-bottom-two {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  align-items: center;
+  position: absolute;
+  top: 1080px;
   right: 100px;
 }
 
@@ -263,7 +276,7 @@
   font-size: 16px;
   width: 100%;
   margin: 0;
-  padding-bottom: 32px;
+  padding-bottom: 48px;
   border-bottom: 1px solid rgb(219, 219, 219);
 }
 
@@ -520,7 +533,7 @@
   padding: 24px;
   box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
   width: 330px;
-  height: 480px;
+  /* height: 480px; */
   height: fit-content;
   display: flex;
   flex-direction: column;
@@ -655,6 +668,7 @@
 .review-btn-div {
   margin-bottom: 60px;
   border-top: 1px solid rgb(219, 219, 219);
+  margin-top: 40px;
 }
 .review-btn-div .dig-review-btn {
   background: linear-gradient(to right, rgb(230, 30, 77) 0%, rgb(227, 28, 95) 50%, rgb(215, 4, 102) 100%) !important;  color: white;

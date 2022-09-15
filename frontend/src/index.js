@@ -9,6 +9,7 @@ import { ModalProvider } from "./context/Modal";
 import configureStore from "./store";
 import { restoreCSRF, csrfFetch } from "./store/csrf";
 import * as sessionActions from "./store/session";
+import ScrollToTop from "./context/ScrollToTop";
 
 const store = configureStore();
 
@@ -25,7 +26,9 @@ function Root() {
     <Provider store={store}>
       <ModalProvider>
         <BrowserRouter>
+        <ScrollToTop>
           <App />
+        </ScrollToTop>
         </BrowserRouter>
       </ModalProvider>
     </Provider>

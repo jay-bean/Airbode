@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { DateRangePicker } from "react-dates";
@@ -32,6 +32,15 @@ function Calender({ price }) {
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
   const [focusedInput, setFocusedInput] = useState();
+
+  const inputRef = useRef(null);
+
+  // console.log(inputRef.current, 'innyrefff')
+  const handleAvailability = () => {
+    // inputRef.current.container.ref.click()
+    // inputRef.current.state.isDateRangePickerInputFocused = true;
+    // console.log(inputRef.current.state.isDateRangePickerInputFocused, 'inside')
+  }
 
   // disabled days
   useEffect(() => {
@@ -114,6 +123,8 @@ function Calender({ price }) {
         onSubmit={handleSubmit}
       >
         <DateRangePicker
+          startDatePlaceholderText='Check-in'
+          endDatePlaceholderText='Check out'
           isDayBlocked={(day) => disabledDays.some(date => day.isSame(date, 'day'))}
           startDate={startDate}
           startDateId="start-date"
@@ -125,13 +136,14 @@ function Calender({ price }) {
           }}
           focusedInput={focusedInput}
           onFocusChange={(focusedInput) => setFocusedInput(focusedInput)}
+          ref={inputRef}
         />
         <ul className="login-form-errors booking-errors">
           {validationErrors.length ? validationErrors.map((error, idx) => (
             <li className="login-form-errors-li" key={idx}>{error}</li>
           )) : null}
         </ul>
-        {startDate && endDate ? <button className='login-btn-modal' type="submit">Reserve</button> : <button className='login-btn-modal' type="button" onClick={() => handleClick}>Check Availability</button>}
+        {startDate && endDate ? <button className='login-btn-modal' type="submit">Reserve</button> : <button className='login-btn-modal' type="button" onClick={handleAvailability}>Check Availability</button>}
       </form>
       {startDate && endDate ?
 
