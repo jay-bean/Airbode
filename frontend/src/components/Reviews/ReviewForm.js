@@ -66,9 +66,9 @@ function ReviewForm({ setShowModal }) {
             />
           </div>
           <div onClick={() => setLabelActive([0])} className="login-divs-trial last textarea-container-review">
-            <div className='label-div-trial'><label className={labelActive.includes(0) || review ? "login-label-trial login-label-active-modal-trial" : 'login-label-trial'}>Tell us about your stay</label></div>
-            <input
-              className='login-input-trial'
+            <div className='label-div-trial-review'><label className={labelActive.includes(0) || review ? "login-label-trial-review login-label-active-modal-trial-review" : 'login-label-trial-review'}>Tell us about your stay</label></div>
+            <textarea
+              className='login-input-trial-review'
               required
               value={review}
               onChange={(e) => setReview(e.target.value)}

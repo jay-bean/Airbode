@@ -32,13 +32,13 @@ const fileFilter = (_req, file, cb) => {
     }
 };
 
-const upload = multer({ storage: fileStorage, fileFilter: fileFilter }).array('image', 10);
+const upload = multer({ storage: fileStorage, fileFilter: fileFilter }).array('image', 20);
 
 const handleUpload = (req, res, next) => {
   upload(req, res, function (err) {
     if (err instanceof multer.MulterError) {
       if (err.code === 'LIMIT_UNEXPECTED_FILE') {
-        return res.status(400).json({errors: ['You cannot upload more than 10 photos.']});
+        return res.status(400).json({errors: ['You cannot upload more than 20 photos.']});
       }
       return next(err);
       // check if max count error. Validation error instance with our message. next(err)

@@ -96,12 +96,12 @@ const digValidators = [
   }),
   check('baths')
     .exists({ checkFalsy: true })
-    .withMessage('Please provide a number of baths')
+    .withMessage('Please provide a number of bathrooms')
     .isNumeric()
-    .withMessage('Baths must be a number')
+    .withMessage('Bathrooms must be a number')
     .custom((value) => {
       if (value < 1) {
-        return Promise.reject('Baths must be greater than zero');
+        return Promise.reject('Bathrooms must be greater than zero');
       }
       else {
         return true
@@ -206,12 +206,12 @@ const editDigValidators = [
   }),
   check('baths')
     .exists({ checkFalsy: true })
-    .withMessage('Please provide a number of baths')
+    .withMessage('Please provide a number of bathrooms')
     .isNumeric()
-    .withMessage('Baths must be a number')
+    .withMessage('Bathrooms must be a number')
     .custom((value) => {
       if (value < 1) {
-        return Promise.reject('Baths must be greater than zero');
+        return Promise.reject('Bathrooms must be greater than zero');
       }
       else {
         return true

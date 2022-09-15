@@ -21,7 +21,6 @@ function Dig() {
 
   let digsReviews;
   if (dig && reviews) {
-    console.log(reviews)
     digsReviews = Object.values(reviews).filter(review => review.digId === dig.id).reverse();
   }
 
