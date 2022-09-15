@@ -7,6 +7,8 @@ import ReviewModal from '../Reviews/ReviewModal';
 import './dig.css';
 import GridGallery from '../GridGallery/GridGallery';
 import { getUsers } from '../../store/users';
+import { getReviews } from '../../store/reviews';
+import Review from '../Reviews/Review';
 
 function Dig() {
   const history = useHistory();
@@ -15,6 +17,12 @@ function Dig() {
   const dig = useSelector(state => state.digs[digId]);
   const sessionUser = useSelector(state => state.session.user);
   const [users, setUsers] = useState([]);
+  const reviews = useSelector((state) => state.reviews);
+
+  let digsReviews;
+  if (dig && reviews) {
+    digsReviews = Object.values(reviews).filter(review => review.digId === dig.id).reverse();
+  }
 
   let owner;
   if (dig && users && users.length) {
@@ -24,6 +32,7 @@ function Dig() {
   useEffect(() => {
     dispatch(getDigs())
     dispatch(getUsers())
+    dispatch(getReviews());
   }, [digId, dispatch]);
 
   useEffect(() => {
@@ -68,12 +77,19 @@ function Dig() {
       <div>
         {dig && (
           <ul className='dig-grid'>
-              <li className='dig-li'>
+            <li className='dig-li title-li'>
+              <div>
                 <div className='dig-title'>{dig.title}</div>
-              </li>
-              <li className='dig-li'>
                 <div className='dig-address'>{dig.city}, {dig.state} {dig.country}</div>
-              </li>
+              </div>
+              {dig && sessionUser && dig.userId === sessionUser.id ?
+              <div className='grid-dig-btns'>
+                <Link className='dig-bookings-link' to={`/digs/${dig.id}/bookings`}>View Bookings</Link>
+                <Link to={`/digs/${dig.id}/edit`}><button className='dig-review-delete-btn'>Edit</button></Link>
+                <button className='dig-review-delete-btn' onClick={deleteHandler}>Delete</button>
+              </div>
+              : null}
+            </li>
               {leadingPhotos && leadingPhotos.length ?
                 <div className='leading-photo-container'>
                   <div className='leading-photo-div-one'>
@@ -113,20 +129,25 @@ function Dig() {
                 </div>
               </div>
               <div className={scrollPosition >= 1000 ? 'dig-flex-right-bottom' : scrollPosition <= 650 ? 'dig-flex-right' : 'dig-flex-right-active'}>
-                  {dig && !sessionUser && (<BookingForm price={dig.price}/>)}
                   {dig ? <BookingForm price={dig.price}/> : null}
               </div>
             </li>
-                <div className='grid-dig-btns'>
-                  {dig && sessionUser && dig.userId === sessionUser.id ? <Link to={`/digs/${dig.id}/edit`}><button className='dig-edit-btn'>Edit</button></Link> : null}
-                  {dig && sessionUser && dig.userId === sessionUser.id ? <button className='dig-delete-btn' onClick={deleteHandler}>Delete</button> : null}
-                </div>
                 <div className='grid-dig-links'>
-                  {/* {dig && sessionUser && dig.userId === sessionUser.id ? <Link className='dig-homes-link' to="/digs">View Your Homes</Link> : null} */}
-                  {dig && sessionUser && dig.userId === sessionUser.id ? <Link className='dig-bookings-link' to={`/digs/${dig.id}/bookings`}>View Bookings</Link> : null}
                 </div>
                 <div className='review-btn-div'>
-                  <ReviewModal/>
+                <div className='all-reviews-container'>
+                  <div className='review-header'>
+                    {digsReviews && digsReviews.length === 1 ? <h3 className='h3-review'>{digsReviews.length} review</h3> : digsReviews.length === 0 ? <h3 className='h3-review'>Reviews</h3> : <h3 className='h3-review'>{digsReviews.length} reviews</h3>}
+                    <ReviewModal/>
+                  </div>
+                  {digsReviews && digsReviews.length ?
+                    <div>
+                      <div className='all-reviews-div'>
+                        {digsReviews.map(review => (<Review review={review} key={review.id}/>))}
+                      </div>
+                    </div>
+                    : <p className='no-reviews-p'>There are currently no reviews.</p>}
+                </div>
                 </div>
           </ul>
         )}

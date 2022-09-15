@@ -31,24 +31,20 @@ function LoginForm({ setShowModalLogin }) {
       <h1 className="login-h1">Welcome to Airbode</h1>
       <form className="login-form" onSubmit={handleSubmit}>
         <div className="login-container">
-          <div onClick={() => setLabelActive([0])} className="login-divs">
-            <label className={labelActive.includes(0) || credential ? "login-label-one login-label-active-one" : 'login-label-one'}>
-              Username or Email
-            </label>
+          <div onClick={() => setLabelActive([0])} className="login-divs-trial">
+            <div className='label-div-trial'><label className={labelActive.includes(0) || credential ? "login-label-trial login-label-active-modal-trial" : 'login-label-trial'}>Username or Email</label></div>
             <input
-              className="login-input"
+              className="login-input-trial"
               type="text"
               value={credential}
               onChange={(e) => setCredential(e.target.value)}
               required
             />
           </div>
-          <div onClick={() => setLabelActive([1])} className="login-divs">
-            <label className={labelActive.includes(1) || password ? "login-label-two login-label-active-two" : 'login-label-two'}>
-              Password
-            </label>
+          <div onClick={() => setLabelActive([1])} className="login-divs-trial last">
+            <div className='label-div-trial'><label className={labelActive.includes(1) || password ? "login-label-trial login-label-active-modal-trial" : 'login-label-trial'}>Password</label></div>
             <input
-              className="login-input"
+              className="login-input-trial"
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}

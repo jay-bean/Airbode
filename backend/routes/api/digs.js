@@ -118,6 +118,7 @@ router.put(`/:digId(\\d+)`,
       where: { digId: req.params.digId},
       raw: true
     })
+    
 
     if (req.body.oldImage && req.body.oldImage.length && currentImages.length) {
       for (let i = 0; i < req.body.oldImage.length; i++)  {

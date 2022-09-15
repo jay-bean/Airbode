@@ -5,7 +5,6 @@ import './users-reviews.css';
 
 function EditReview({ reviewProp, setShowModal }) {
   const dispatch = useDispatch();
-  console.log(reviewProp, 'this is review on edit form')
   const [validationErrors, setValidationErrors] = useState();
   const [review, setReview] = useState(reviewProp.review);
   const [rating, setRating] = useState(reviewProp.rating);
@@ -32,13 +31,14 @@ function EditReview({ reviewProp, setShowModal }) {
     }
     catch (error) {
       const err = await error.json();
-      setValidationErrors(err);
+      setValidationErrors(err.errors);
     }
 
     if (newReview) {
       setRating('');
       setReview('');
       setValidationErrors([]);
+      setShowModal(false)
     }
   }
 
@@ -53,23 +53,20 @@ function EditReview({ reviewProp, setShowModal }) {
           className='login-form'
           onSubmit={handleSubmit}
         >
-          <div className='login-container'>
-            <div onClick={() => setLabelActive([1])} className="login-divs">
-              <label className={labelActive.includes(1) || rating ? "login-label-seven login-label-active-seven edit-review-one-active" : 'login-label-seven edit-review-one'}>Rating</label>
+          <div className='login-container reviews-container'>
+          <div onClick={() => setLabelActive([1])} className="login-divs-trial rating-container">
+              <div className='label-div-trial'><label className={labelActive.includes(1) || rating ? "login-label-trial login-label-active-modal-trial" : 'login-label-trial'}>Rating</label></div>
               <input
-                className='login-input'
-                type="number"
-                min='1'
-                max='5'
+                className='login-input-trial'
                 required
                 value={rating}
                 onChange={(e) => setRating(e.target.value)}
               />
             </div>
-            <div onClick={() => setLabelActive([0])} className="login-divs textarea-div">
-              <label className={labelActive.includes(0) || review ? "login-label-eight login-label-active-eight edit-review-two-active" : 'login-label-eight edit-review-two'}> Tell us about your stay</label>
+            <div onClick={() => setLabelActive([0])} className="login-divs-trial last textarea-container-review">
+              <div className='label-div-trial-review'><label className={labelActive.includes(0) || review ? "login-label-trial-review login-label-active-modal-trial-review" : 'login-label-trial-review'}>Tell us about your stay</label></div>
               <textarea
-                className='login-input textarea'
+                className='login-input-trial-review'
                 required
                 value={review}
                 onChange={(e) => setReview(e.target.value)}
@@ -77,9 +74,9 @@ function EditReview({ reviewProp, setShowModal }) {
             </div>
           </div>
           <ul className="login-form-errors">
-            {validationErrors && validationErrors.length ? validationErrors.map((error, idx) => (
-              <li className="login-form-errors-li" key={idx}>{error}</li>
-            )) : null}
+          <ul className="login-form-errors">
+            {validationErrors && validationErrors.length ? validationErrors.map((error, idx) => <li className="login-form-errors-li" key={idx}>{error}</li>) : null}
+          </ul>
           </ul>
           <div className='edit-review-btns'>
             <button className='login-btn-modal' type="submit">Submit</button>

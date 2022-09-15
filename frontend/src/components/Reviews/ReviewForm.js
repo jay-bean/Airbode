@@ -10,7 +10,7 @@ function ReviewForm({ setShowModal }) {
   const { digId } = useParams();
   const dig = useSelector(state => state.digs[digId]);
 
-  const [validationErrors, setValidationErrors] = useState();
+  const [validationErrors, setValidationErrors] = useState([]);
   const [review, setReview] = useState('');
   const [rating, setRating] = useState('');
   const [labelActive, setLabelActive] = useState([]);
@@ -32,7 +32,7 @@ function ReviewForm({ setShowModal }) {
     }
     catch (error) {
       const err = await error.json();
-      setValidationErrors(err);
+      if (err.errors && err.errors.length > 0) return setValidationErrors(err.errors);
     }
 
     if (newReview) {
@@ -40,12 +40,13 @@ function ReviewForm({ setShowModal }) {
       setReview('');
       setValidationErrors([]);
       setLabelActive([]);
+      setShowModal(false)
       history.push(`/digs/${dig.id}`);
     }
   }
 
   return (
-    <div>
+    <div className='review-form-container'>
       <div className="login-title">
         <p onClick={() => setShowModal(false)} className="cancel"></p>
         <h2 className="login-title-p">Leave a review</h2>
@@ -54,23 +55,20 @@ function ReviewForm({ setShowModal }) {
         className='login-form'
         onSubmit={handleSubmit}
       >
-        <div className='login-container'>
-          <div onClick={() => setLabelActive([1])} className="login-divs">
-            <label className={labelActive.includes(1) || rating ? "login-label-seven login-label-active-seven" : 'login-label-seven'}>Rating</label>
+        <div className='login-container reviews-container'>
+          <div onClick={() => setLabelActive([1])} className="login-divs-trial rating-container">
+            <div className='label-div-trial'><label className={labelActive.includes(1) || rating ? "login-label-trial login-label-active-modal-trial" : 'login-label-trial'}>Rating</label></div>
             <input
-              className='login-input'
-              type="number"
-              min='1'
-              max='5'
+              className='login-input-trial'
               required
               value={rating}
               onChange={(e) => setRating(e.target.value)}
             />
           </div>
-          <div onClick={() => setLabelActive([0])} className="login-divs textarea-div">
-            <label className={labelActive.includes(0) || review ? "login-label-eight login-label-active-eight" : 'login-label-eight'}>Tell us about your stay</label>
+          <div onClick={() => setLabelActive([0])} className="login-divs-trial last textarea-container-review">
+            <div className='label-div-trial-review'><label className={labelActive.includes(0) || review ? "login-label-trial-review login-label-active-modal-trial-review" : 'login-label-trial-review'}>Tell us about your stay</label></div>
             <textarea
-              className='login-input textarea'
+              className='login-input-trial-review'
               required
               value={review}
               onChange={(e) => setReview(e.target.value)}
@@ -78,9 +76,7 @@ function ReviewForm({ setShowModal }) {
           </div>
         </div>
         <ul className="login-form-errors">
-          {validationErrors && validationErrors.length ? validationErrors.map((error, idx) => (
-            <li className="login-form-errors-li" key={idx}>{error}</li>
-        )) : null}
+          {validationErrors && validationErrors.length ? validationErrors.map((error, idx) => <li className="login-form-errors-li" key={idx}>{error}</li>) : null}
         </ul>
         <button className="login-btn-modal" type="submit">Submit</button>
       </form>

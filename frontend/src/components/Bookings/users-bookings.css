@@ -58,6 +58,7 @@
   border-radius: 10px;
   margin: auto;
   justify-content: space-between;
+  overflow: hidden;
 }
 
 .no-bookings-info-container {
@@ -83,16 +84,12 @@
   background-image: url(https://airbodes-bucket.s3.us-west-1.amazonaws.com/A8DEF942-2840-428E-BC1D-6C50901E06C0.jpeg);
   width: 70%;
   background-size: cover;
-  border-bottom-right-radius: 10px;
-  border-top-right-radius: 10px;
 }
 
 .booking-lg-img1 {
   background-image: url(https://airbodes-bucket.s3.us-west-1.amazonaws.com/A8DEF942-2840-428E-BC1D-6C50901E06C0.jpeg);
   width: 60%;
   background-size: cover;
-  border-bottom-right-radius: 10px;
-  border-top-right-radius: 10px;
 }
 
 .no-bookings-p {
@@ -170,4 +167,13 @@
   margin-left: .5%;
   text-decoration: none;
   color: #ff385c;
+}
+
+@media only screen and (max-width: 1300px) {
+  .users-bookings-p1 {
+    margin-top: 0;
+  }
+  .users-bookings-p2 {
+    margin: 0;
+  }
 }
