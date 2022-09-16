@@ -35,13 +35,6 @@ function Calender({ price }) {
 
   const inputRef = useRef(null);
 
-  // console.log(inputRef.current, 'innyrefff')
-  const handleAvailability = () => {
-    // inputRef.current.container.ref.click()
-    // inputRef.current.state.isDateRangePickerInputFocused = true;
-    // console.log(inputRef.current.state.isDateRangePickerInputFocused, 'inside')
-  }
-
   // disabled days
   useEffect(() => {
     dispatch(getBookings());
@@ -77,7 +70,7 @@ function Calender({ price }) {
 
 
     if(!startDate || !endDate) {
-      setValidationErrors(['Please select a start and end date!']);
+      setValidationErrors(['Please select a start and end date']);
       return;
     }
     const currentBooking = getBookingRange(startDate, endDate);
@@ -143,7 +136,7 @@ function Calender({ price }) {
             <li className="login-form-errors-li" key={idx}>{error}</li>
           )) : null}
         </ul>
-        {startDate && endDate ? <button className='login-btn-modal' type="submit">Reserve</button> : <button className='login-btn-modal' type="button" onClick={handleAvailability}>Check Availability</button>}
+        <button className='login-btn-modal' type="submit">Reserve</button>
       </form>
       {startDate && endDate ?
 

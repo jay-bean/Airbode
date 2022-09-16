@@ -4,13 +4,13 @@
   height: fit-content;
 }
 
-.buffer {
+/* .buffer {
   border-bottom: 1px solid rgb(220, 220, 220);
   height: 80px;
   position: sticky;
   top: 80px;
   background-color: white;
-}
+} */
 
 .digs-home-page-ul {
   display: grid;

@@ -6,7 +6,7 @@ function DigList() {
 
   return (
     <>
-      <div className="buffer"></div>
+      {/* <div className="buffer"></div> */}
       <div className="digs-home-page">
         <ul className="digs-home-page-ul">
           {Object.values(digs).map(dig => {
