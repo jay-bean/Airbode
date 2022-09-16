@@ -69,8 +69,6 @@ function Dig() {
   if (document.getElementById("booking-form") && document.getElementById("review-container")) {
     reviewPosition = document.getElementById("review-container").getBoundingClientRect().top + window.scrollY;
     bookingFormHeight = document.getElementById("booking-form").offsetHeight;
-    console.log(bookingFormHeight, 'height');
-    console.log(reviewPosition, 'review top')
   }
 
   useEffect(() => {

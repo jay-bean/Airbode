@@ -36,15 +36,13 @@ function EditDigForm() {
 
   const handleCancel = (e) => {
     setValidationErrors([]);
-    history.push("/")
+    history.push(`/digs/${id}`)
   };
 // how can I make sure that only 10 photos are uploaded? can I delete the photos somehow??
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
 
-      console.log(oldImages.length , 'old imgys');
-      console.log(Object.values(images).length, 'new imgysss')
       if (oldImages.length > 20 || images.length > 20 || oldImages.length + images.length > 20) return setValidationErrors(['Only twenty photos max are allowed.']);
       if (oldImages.length < 5 && Object.values(images).length === 0 || oldImages.length === 0 && Object.values(images).length < 5 || oldImages.length + Object.values(images).length < 5) return setValidationErrors(['Please upload at least five photos of your property.']);
 
