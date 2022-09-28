@@ -1,7 +1,6 @@
 .new-dig-page {
   margin: 5% auto;
   margin-bottom: 0;
-  min-height: 100vh;
   width: 60%;
 }
 
@@ -232,12 +231,12 @@
   background: transparent;
   cursor: pointer;
   font-family: Arial, Helvetica, sans-serif;
+  resize: none;
+  overflow-y: scroll;
 }
 .login-input-trial-review:focus {
   outline: none;
   border: 2px solid transparent;
-  resize: none;
-  overflow-y: scroll;
 }
 
 /* trial ends here */
