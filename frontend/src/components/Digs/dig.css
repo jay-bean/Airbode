@@ -1,7 +1,8 @@
 .dig-ind-page {
-  margin: 2% 10%;
+  margin: 2% auto;
   margin-bottom: 0;
   height: 100%;
+  max-width: 1120px;
 }
 
 .dig-grid {
@@ -204,6 +205,7 @@
 .dig-flex-box {
   display: flex;
   flex-direction: row;
+  width: 1120px;
 }
 
 .dig-flex-left {
@@ -217,28 +219,28 @@
   display: flex;
   flex-direction: column;
   width: 40%;
-  align-items: center;
+  align-items: flex-start;
   position: absolute;
   top: 750px;
-  right: 100px;
+  right: 10px;
 }
 .dig-flex-right-active {
   position: fixed;
   top: 100px;
-  right: 100px;
+  right: 10px;
   display: flex;
   flex-direction: column;
   width: 40%;
-  align-items: center;
+  align-items: flex-start;
 }
 .dig-flex-right-bottom {
   display: flex;
   flex-direction: column;
   width: 40%;
-  align-items: center;
+  align-items: flex-start;
   position: absolute;
   top: 1330px;
-  right: 100px;
+  right: 10px;
 }
 .dig-flex-right-bottom-two {
   display: flex;
