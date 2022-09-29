@@ -9,6 +9,7 @@ import GridGallery from '../GridGallery/GridGallery';
 import { getUsers } from '../../store/users';
 import { getReviews } from '../../store/reviews';
 import Review from '../Reviews/Review';
+import AverageRating from './AverageRating';
 
 function Dig() {
   const history = useHistory();
@@ -87,7 +88,20 @@ function Dig() {
             <li className='dig-li title-li'>
               <div>
                 <div className='dig-title'>{dig.title}</div>
-                <div className='dig-address'>{dig.city}, {dig.state} {dig.country}</div>
+                <div className='dig-title-info'>
+                  <AverageRating dig={dig} reviews={reviews}/>
+                  <div className='dig-review-top-container'
+                    onClick={() =>
+                    window.scrollTo({
+                      left: 0,
+                      top: 1550,
+                      behavior: "smooth",
+                    })
+                  }>
+                    {digsReviews && digsReviews.length === 1 ? <p className='dig-review-top'>{digsReviews.length} review</p> : digsReviews.length === 0 ? <p className='dig-review-top'>Reviews</p> : <p className='dig-review-top'>{digsReviews.length} reviews</p>}
+                  </div>
+                  <div className='dig-address'>{dig.city}, {dig.state}, {dig.country}</div>
+                </div>
               </div>
               {dig && sessionUser && dig.userId === sessionUser.id ?
               <div className='grid-dig-btns'>

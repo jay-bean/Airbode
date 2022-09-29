@@ -1,0 +1,18 @@
+.average-rating-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.avg-rating-p {
+  font-size: 13px;
+  color: black;
+  margin: 0;
+}
+
+
+.home-stars {
+  width: 18px;
+  height: 18px;
+}

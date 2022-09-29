@@ -256,9 +256,21 @@
   color: #222222;
 }
 
+.dig-title-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.dig-review-top {
+  font-size: 14px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 .dig-address {
   font-size: 14px;
-  margin-bottom: 20px;
 }
 
 .hosted-by-div {
@@ -523,6 +535,28 @@
   height: fit-content;
   line-height: 1.8;
   font-size: 14px;
+}
+
+/* stars */
+.star-rating-div {
+  display: flex;
+  flex-direction: row;
+  max-width: 100px;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+  margin-left: 10px;
+}
+
+.star-img {
+  display: flex;
+  flex-direction: row;
+  width: 40px;
+  height: 40px;
+}
+
+.star-img:hover {
+  width: 40px;
+  height: 40px;
 }
 
 .booking-form-container {

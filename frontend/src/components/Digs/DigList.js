@@ -1,8 +1,11 @@
-import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import AverageRating from "./AverageRating";
+import { useSelector } from "react-redux";
 
 function DigList() {
+
   const digs = useSelector((state) => state.digs);
+  const reviews = useSelector(state => state.reviews);
 
   return (
     <>
@@ -20,6 +23,9 @@ function DigList() {
                     <div className="dig-home-div">
                       <div className="dig-home-location">{dig.city}, {dig.state}</div>
                       <div className="dig-home-price"><span className="dig-home-span">${dig.price}</span> night</div>
+                    </div>
+                    <div>
+                      <AverageRating dig={dig} reviews={reviews}/>
                     </div>
                   </div>
                 </li>

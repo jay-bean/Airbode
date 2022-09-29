@@ -241,17 +241,17 @@ const reviewValidators = [
     .withMessage('Review must be between 5-255 characters'),
   check('rating')
     .exists({ checkFalsy: true })
-    .withMessage('Please provide a rating')
-    .isNumeric()
-    .withMessage('Rating must be a number')
-    .custom((value) => {
-      if (value < 1 || value > 5) {
-        return Promise.reject('Rating must be between one and five');
-      }
-      else {
-        return true
-      }
-    }),
+    .withMessage('Please provide a star rating'),
+    // .isNumeric()
+    // .withMessage('Rating must be a number')
+    // .custom((value) => {
+    //   if (value < 1 || value > 5) {
+    //     return Promise.reject('Rating must be between one and five');
+    //   }
+    //   else {
+    //     return true
+    //   }
+    // }),
   handleValidationErrors
 ];
 

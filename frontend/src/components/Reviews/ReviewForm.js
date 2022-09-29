@@ -14,7 +14,7 @@ function ReviewForm({ setShowModal }) {
   const [review, setReview] = useState('');
   const [rating, setRating] = useState('');
   const [labelActive, setLabelActive] = useState([]);
-
+  const [hover, setHover] = useState(0);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -55,8 +55,9 @@ function ReviewForm({ setShowModal }) {
         className='login-form'
         onSubmit={handleSubmit}
       >
-        <div className='login-container reviews-container'>
-          <div onClick={() => setLabelActive([1])} className="login-divs-trial rating-container">
+        {/* <div className='login-container reviews-container'> */}
+        <div className=''>
+          {/* <div onClick={() => setLabelActive([1])} className="login-divs-trial rating-container">
             <div className='label-div-trial'><label className={labelActive.includes(1) || rating ? "login-label-trial login-label-active-modal-trial" : 'login-label-trial'}>Rating</label></div>
             <input
               className='login-input-trial'
@@ -64,9 +65,31 @@ function ReviewForm({ setShowModal }) {
               value={rating}
               onChange={(e) => setRating(e.target.value)}
             />
-          </div>
-          <div onClick={() => setLabelActive([0])} className="login-divs-trial last textarea-container-review">
-            <div className='label-div-trial-review'><label className={labelActive.includes(0) || review ? "login-label-trial-review login-label-active-modal-trial-review" : 'login-label-trial-review'}>Tell us about your stay</label></div>
+          </div> */}
+          <div className="star-rating-div">
+          {[...Array(5).keys()].map((index) => {
+            index += 1;
+            return (
+              <button
+                style={{backgroundColor: 'transparent', border: 'none', width: '40px', height: '40px'}}
+                type="button"
+                key={index}
+                className={index <= rating || hover ? "on" : "off"}
+                onClick={() => setRating(index)}
+                onMouseOver={() => setHover(index)}
+                onMouseOut={() => setHover(rating)}
+              >
+                <img
+                  className='star-img'
+                  src={index <= hover ? "https://airbodes-bucket.s3.us-west-1.amazonaws.com/7263DF98-7537-43BD-89C6-A183631FB8D8_4_5005_c.jpeg" : "https://airbodes-bucket.s3.us-west-1.amazonaws.com/DEB9C14F-B25A-4AC4-86F8-E76B92895023_4_5005_c.jpeg"}
+                  alt={index <= rating || hover ? "filled star" : "empty star"}
+                />
+              </button>
+            );
+          })}
+        </div>
+          <div onClick={() => setLabelActive([0])} className="login-container reviews-container">
+            <div className='label-div-trial-review review-text-area-div'><label className={labelActive.includes(0) || review ? "login-label-trial-review login-label-active-modal-trial-review" : 'login-label-trial-review'}>Tell us about your stay</label></div>
             <textarea
               className='login-input-trial-review'
               required

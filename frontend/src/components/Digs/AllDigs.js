@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import DigList from './DigList';
 import { getDigs } from '../../store/digs';
+import { getReviews } from '../../store/reviews';
 import './dig-list.css';
 
 function AllDigsPage() {
@@ -9,6 +10,7 @@ function AllDigsPage() {
 
   useEffect(() => {
     dispatch(getDigs());
+    dispatch(getReviews());
   }, [dispatch]);
 
   return (
