@@ -55,17 +55,7 @@ function ReviewForm({ setShowModal }) {
         className='login-form'
         onSubmit={handleSubmit}
       >
-        {/* <div className='login-container reviews-container'> */}
         <div className=''>
-          {/* <div onClick={() => setLabelActive([1])} className="login-divs-trial rating-container">
-            <div className='label-div-trial'><label className={labelActive.includes(1) || rating ? "login-label-trial login-label-active-modal-trial" : 'login-label-trial'}>Rating</label></div>
-            <input
-              className='login-input-trial'
-              required
-              value={rating}
-              onChange={(e) => setRating(e.target.value)}
-            />
-          </div> */}
           <div className="star-rating-div">
           {[...Array(5).keys()].map((index) => {
             index += 1;

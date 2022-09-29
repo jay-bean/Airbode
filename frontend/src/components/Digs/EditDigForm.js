@@ -263,9 +263,7 @@ function EditDigForm() {
                     {imagesArr.map((image, index) => {
                       return (
                         <div key={index} className='thumbnail-divs'>
-                          <button type='button' className='thumbnail-remove-btn' onClick={(e) => removeNewSelectedImage(e, index)}>
-                            X
-                          </button>
+                          <p className='cancel thumbnail-remove-btn' onClick={(e) => removeNewSelectedImage(e, index)}></p>
                           <img
                             style={{maxWidth: "100%", maxHeight: '320px' }}
                             src={URL.createObjectURL(image)}
@@ -281,9 +279,7 @@ function EditDigForm() {
               {oldImagesArr.map((image, index) => {
                 return (
                   <div key={index} className='thumbnail-divs'>
-                    <button className='thumbnail-remove-btn' onClick={(e) => removeOldSelectedImage(e, index)}>
-                      X
-                    </button>
+                    <p className='cancel thumbnail-remove-btn' onClick={(e) => removeOldSelectedImage(e, index)}></p>
                     <img
                       style={{maxWidth: "100%", maxHeight: '320px' }}
                       src={image.url}

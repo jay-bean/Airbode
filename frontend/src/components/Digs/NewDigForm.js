@@ -240,9 +240,7 @@ function NewDigForm() {
                   {imagesArr.map((image, index) => {
                     return (
                       <div key={index} className='thumbnail-divs'>
-                        <button type='button' className='thumbnail-remove-btn' onClick={(e) => removeSelectedImage(e, index)}>
-                          X
-                        </button>
+                        <p className='cancel thumbnail-remove-btn' onClick={(e) => removeSelectedImage(e, index)}></p>
                         <img
                           style={{maxWidth: "100%", maxHeight: '320px' }}
                           src={URL.createObjectURL(image)}
