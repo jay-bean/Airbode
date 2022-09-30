@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
 import './login.css'
@@ -10,6 +10,7 @@ function LoginForm({ setShowModalLogin }) {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
   const [labelActive, setLabelActive] = useState([]);
+  const [showModalSignup, setShowModalSignup] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,6 +22,20 @@ function LoginForm({ setShowModalLogin }) {
       }
     );
   };
+
+  // const setShowModalLoginTimeout = () => {
+  //   setShowModalLogin(false);
+  //   setTimeout(() => {
+  //     setShowModalSignup(true);
+  //   }, 1000)
+  // }
+
+//   useEffect(() => {
+//     setShowModalLoginTimeout();
+//     return () => {
+//       setShowModalSignup(true);
+//     };
+// }, []);
 
   return (
     <div className="login-modal">
@@ -64,9 +79,9 @@ function LoginForm({ setShowModalLogin }) {
         <p className="or">or</p>
         <p className="line-thru-or"></p>
         <div className="below-btns-div">
-          <div>
-            <SignupFormModal setShowModalLogin={setShowModalLogin}/>
-          </div>
+          {/* <div onClick={setShowModalLoginTimeout}> */}
+            <SignupFormModal setShowModalSignup={setShowModalSignup}/>
+          {/* </div> */}
           <button className="below-btns" type="button"><a className="below-btns-links" href="https://github.com/jay-bean">GitHub</a></button>
           <button className="below-btns" type="button"><a className="below-btns-links" href="https://www.linkedin.com/in/jay-hutts-300ab9180/">LinkedIn</a></button>
           <button className="below-btns" type="button"><a className="below-btns-links" href="https://www.jayhutts.dev/">Personal Site</a></button>

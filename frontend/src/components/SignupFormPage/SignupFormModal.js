@@ -3,8 +3,13 @@ import { Modal } from '../../context/Modal';
 import SignupFormPage from './SignupFormPage';
 import '../SignupFormPage/SignupForm.css';
 
-function SignupFormModal({ setShowModalLogin }) {
+function SignupFormModal({ showModalSignup }) {
   const [showModal, setShowModal] = useState(false);
+
+  if (showModalSignup) {
+    console.log(showModalSignup, 'signup true hopefully')
+    setShowModal(true)
+  };
 
   return (
     <div className='nav-signup'>
