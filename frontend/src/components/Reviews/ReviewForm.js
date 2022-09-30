@@ -18,6 +18,8 @@ function ReviewForm({ setShowModal }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    if (!sessionUser) return window.alert('You must be logged in to leave a review');
 
     const data = {
       review,

@@ -25,9 +25,9 @@ function LoginForm({ setShowModalLogin }) {
 
   // const setShowModalLoginTimeout = () => {
   //   setShowModalLogin(false);
-  //   setTimeout(() => {
-  //     setShowModalSignup(true);
-  //   }, 1000)
+
+  //     // setShowModalSignup(true);
+
   // }
 
 //   useEffect(() => {
