@@ -90,7 +90,6 @@ function LoginForm({ setShowModal, signupBtn }) {
             <p className="or">or</p>
             <p className="line-thru-or"></p>
             <div className="below-btns-div">
-              {/* <SignupFormModal setShowModalSignup={setShowModalSignup}/> */}
               <button className="below-btns" type="button" onClick={() => setSignup(true)}>Sign Up</button>
               <button className="below-btns" type="button"><a className="below-btns-links" href="https://github.com/jay-bean">GitHub</a></button>
               <button className="below-btns" type="button"><a className="below-btns-links" href="https://www.linkedin.com/in/jay-hutts-300ab9180/">LinkedIn</a></button>
@@ -163,7 +162,6 @@ function LoginForm({ setShowModal, signupBtn }) {
             <p className="or">Already have an account with us?</p>
             <p className="line-thru-or"></p>
             <button className="below-btns login-instead" type="button" onClick={() => setSignup(false)}>Log In</button>
-            {/* <LoginFormModal/> */}
           </div>
         </div>
       }
