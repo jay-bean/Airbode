@@ -1,31 +1,26 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import './login.css'
-import SignupFormModal from "../SignupFormPage/SignupFormModal";
 
 function LoginForm({ setShowModal, signupBtn }) {
   const dispatch = useDispatch();
-  const sessionUser = useSelector((state) => state.session.user);
 
-  const [signup, setSignup] = useState(false);
-
-  if (signupBtn) setSignup(true);
+  // is signup is true then display signup form, else display login form
+  const [signup, setSignup] = useState(signupBtn ? true : false);
 
   // login info
   const [credential, setCredential] = useState("");
-  const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState([]);
-  const [labelActive, setLabelActive] = useState([]);
-  // const [showModalSignup, setShowModalSignup] = useState(false);
 
   // signup info
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
-  // const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  // const [errors, setErrors] = useState([]);
-  // const [labelActive, setLabelActive] = useState([]);
+
+  // shared info
+  const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState([]);
+  const [labelActive, setLabelActive] = useState([]);
 
   const handleLogin = (e) => {
     e.preventDefault();
