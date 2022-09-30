@@ -28,11 +28,10 @@
 .cancel {
   position: relative;
   z-index: 11;
-  padding: 8px;
   right: 196px;
   border-radius: 50%;
-  width: fit-content;
-  height: 4px;
+  width: 20px;
+  height: 20px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -40,12 +39,12 @@
   margin-left: 18px;
   margin: 0;
   cursor: pointer;
-  background-image: url(https://airbodes-bucket.s3.us-west-1.amazonaws.com/51A165D4-6105-4710-BEAE-08A7E9DE3B24_4_5005_c.jpeg);
-  background-size: contain;
+  background-image: url(https://airbodes-bucket.s3.us-west-1.amazonaws.com/2A646652-D9CF-4A68-91BF-5F790D78A93C.png);
+  background-size: cover;
 }
 
 .cancel:hover {
-  background-image: url(https://airbodes-bucket.s3.us-west-1.amazonaws.com/209B0D43-13B7-470F-8842-FAA34FE49E8C_4_5005_c.jpeg);
+  background-image: url(https://airbodes-bucket.s3.us-west-1.amazonaws.com/47B525C5-6A06-4F37-B4E6-680E01D2C128.png);
 }
 
 .login-form {

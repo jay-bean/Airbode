@@ -246,10 +246,10 @@
   display: flex;
   flex-direction: column;
   width: 40%;
-  align-items: center;
+  align-items: flex-start;
   position: absolute;
   top: 1080px;
-  right: 100px;
+  right: 10px;
 }
 
 .dig-title {
