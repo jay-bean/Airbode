@@ -24,8 +24,6 @@ function Navigation({ isLoaded }){
         <DemoUser/>
         <LoginFormModal />
         <LoginFormModal signupBtn={true}/>
-        {/* <SignupFormModal/> */}
-        {/* <NavLink className='nav-signup' to="/signup">Sign Up</NavLink> */}
       </div>
     );
   }

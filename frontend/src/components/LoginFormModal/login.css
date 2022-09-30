@@ -257,6 +257,7 @@
   border-radius: 8px;
   border: 1px solid rgb(27, 27, 27);
   margin: 10px 0;
+  margin-top: 6px;
   height: 44px;
   cursor: pointer;
 }
