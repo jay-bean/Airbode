@@ -246,6 +246,10 @@
   border: 1px solid rgb(27, 27, 27);
 }
 
+.login-instead {
+  margin-top: 40px !important;
+}
+
 .below-btns {
   background-color: white;
   padding: 8px;
