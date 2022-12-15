@@ -117,6 +117,12 @@
   }
 }
 
+@media only screen and (min-width: 551px) and (max-width: 950px) {
+  .digs-home-page {
+    margin-bottom: 500px;
+  }
+}
+
 @media only screen and (max-width: 950px) {
 
   .digs-home-page-ul {
@@ -125,9 +131,6 @@
   .dig-home-page-li {
     height: 400px;
   }
-  /* .dig-home-page-image-div {
-    height: 100%;
-  } */
 }
 
 @media only screen and (max-width: 700px) {

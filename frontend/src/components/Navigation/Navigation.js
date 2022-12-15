@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState, useEffect} from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
@@ -8,6 +8,13 @@ import DemoUser from '../DemoUser/DemoUser';
 
 function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
+
+  function getWindowWidth() {
+    const {innerWidth: width} = window;
+    return {
+      width
+    };
+  }
 
   let sessionLinks;
   if (sessionUser) {
