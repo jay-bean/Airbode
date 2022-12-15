@@ -177,3 +177,24 @@
   box-shadow: 2px 4px 3px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 5%);
 
 }
+
+@media only screen and (max-width: 1257px) {
+  .home-li {
+    width: 35%;
+  }
+  .about-me-li {
+    width: 30%;
+    margin: 0;
+  }
+  .profile-host-li {
+    width: 35%;
+  }
+  .about-me-div {
+    margin: 0;
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 1174px) {
+  
+}
