@@ -180,15 +180,27 @@
   .middle-child-p {
     display: none;
   }
+  .social-img {
+    border: 1px solid rgb(152, 152, 152);
+    border-radius: 6px;
+  }
 }
 
 @media only screen and (max-width: 487px) {
+  .footer {
+    overflow-y: hidden;
+  }
   .footer-thanks {
     width: 80%;
     margin: auto;
     justify-content: center;
+    height: fit-content;
   }
   .footer-thanks-p {
     display: none;
+  }
+  .social-img {
+    border: 1px solid rgb(152, 152, 152);
+    border-radius: 6px;
   }
 }
