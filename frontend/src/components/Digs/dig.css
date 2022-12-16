@@ -2,14 +2,12 @@
   margin: 2% auto;
   margin-bottom: 0;
   height: 100%;
-  max-width: 1120px;
+  width: 65%;
 }
 
 .dig-grid {
   display: flex;
   flex-direction: column;
-  /* grid-template-columns: repeat(4 1fr);
-  grid-template-rows: repeat(2 1fr); */
   width: auto;
   padding: 0;
 }
@@ -28,22 +26,21 @@
 }
 
 .leading-photo-div-two {
-  width: 24%;
+  width: 24.5%;
   height: 100%;
-  margin-right: 2.5px;
+  margin-left: .5%;
 }
 .leading-photo-div-three {
-  width: 24%;
+  width: 24.5%;
   height: 100%;
-  margin-left: 2.5px;
+  margin-left: .5%;
 }
 
 .leading-photo-img-one {
-  width: 99.3%;
+  width: 100%;
   height: 100%;
   border-bottom-left-radius: 10px;
   border-top-left-radius: 10px;
-  margin-right: .5px;
   object-fit: cover;
 }
 .leading-photo-img-two,
